@@ -1,0 +1,38 @@
+#TopBar{
+    width: 100%;
+    position: absolute;
+    background-color: navy;
+    color: white;
+    height: 10%;
+    top: 0;                  
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
+}
+#PageTitle{
+    height: 80%;
+    display: flex;
+    padding-left: 2rem;
+    padding-top: 1.5rem;
+    font-weight: bold;
+    width: 40%;
+    font-family: 'Inter';
+    font-size: 150%;
+    cursor: pointer;        
+}
+#PageTitle a{
+    color: white;         
+    text-decoration: none;
+}
+#LogoutArea{
+    float: right; 
+    margin-left: 86rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+#LogoutArea:hover{
+    background-color: rgb(65, 65, 141);
+}
+#LogoutArea:active{
+    background-color: rgb(89, 89, 149);
+}

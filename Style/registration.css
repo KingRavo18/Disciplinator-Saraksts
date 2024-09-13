@@ -1,0 +1,275 @@
+html, body{
+    background: navy;
+    margin: 0;
+    overflow-x: hidden;
+}
+main{
+    height: 90%;
+}
+h1{
+    color: white;
+    font-size: 500%;
+    text-shadow: 6px 6px #000000;
+    font-family: 'Inter'
+}
+h2{
+    font-family: 'Inter';
+}
+p{
+    font-family: 'Inter';
+    font-size: 150%;
+}
+i {
+    position: fixed;
+    margin-left: 19.7rem;
+    margin-top: 2.4rem;
+    cursor: pointer;
+}
+#PageTitle{
+    width: 100%;
+    height: 10rem;
+    margin-top: -2rem;
+    text-align: center;
+}
+#InputWindows{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+#Explanation{
+    width: 27%;
+    height: 25rem;
+    margin: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    color: white;
+}
+.Registration{
+    width: 25%;
+    height: 24rem;
+    margin: 4rem;
+    background: white;
+    border-radius: 10%;
+}
+.RegistrationTitle{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+.RegistrationInput{
+    width: 80%;
+    height: 60%;
+    margin-left: 10%;
+}
+.RegistrationInput input{
+    width: 100%;
+    height: 2rem;
+    margin-top: 2rem;
+    border: none;
+    border-bottom: 2px solid black;
+    font-family: 'Inter';
+    font-size: 120%;
+}
+.RegistrationInputPassword{
+    display: flex;
+}
+.RegistrationInputPassword{
+    width: 101%;
+}
+.RegistrationLink{
+    width: 110%;
+    margin-left: -5%;
+    text-align: right;
+}
+.RegistrationLink a{
+    color: blue;              
+    text-decoration: underline; 
+    cursor: pointer;       
+}
+#RegistrationButton1{
+    width: 80%;
+    height: 20%;
+    margin-left: 10%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.RegistrationButton2{
+    width: 80%;
+    height: 20%;
+    margin-left: 10%;
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+#RegistrationButton1 button,
+.RegistrationButton2 button{
+    background-color: #d3d3d3; 
+    border: none;            
+    color: #000;              
+    padding: 10px 20px;      
+    text-align: center;      
+    text-decoration: none;    
+    display: inline-block;     
+    font-size: 16px;           
+    border-radius: 5px;        
+    cursor: pointer;           
+    transition: background-color 0.3s ease; 
+}
+#RegistrationButton1 button:hover,
+.RegistrationButton2 button:hover{
+    background-color: #c0c0c0;
+}
+#RegistrationButton1 button:active,
+.RegistrationButton2 button:active{
+    background-color: #a9a9a9;
+}
+#OpenFeatures button{
+    position: fixed;
+    top: 5rem;
+    left: 1rem;
+    border-radius: 10px;
+    width: 10rem;
+    color:white;
+    height: 2rem;
+    background: rgb(68, 68, 68);
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+#OpenFeatures button:hover{
+    background: rgb(140, 140, 140);
+}
+#OpenFeatures button:active{
+    background: rgb(217, 217, 217);
+}
+.footer{
+    width: 100%;
+    text-align: right;
+    color: white;
+}
+.footer p{
+    font-size: 100%;
+    margin-right: 1rem;
+}
+.material-symbols-outlined{
+    margin-right: 1rem;
+}
+#ErrorArea1{
+    width: 80%;
+    margin-left: 10%;
+    height: 3rem;
+}
+#ErrorArea1 p{
+    color: red;
+    font-size: 100%;
+}
+#ErrorArea2{
+    width: 80%;
+    margin-left: 10%;
+    height: 3rem;
+}
+#ErrorArea2 p{
+    color: red;
+    font-size: 100%;
+}
+/* Feature Sidebar */
+#FeatureSidebar{
+    position: fixed;
+    top: 0;
+    left: -400rem;
+    background: rgb(68, 68, 68);
+    width: 40%;
+    height: 100vh;
+    z-index: 1000;
+    transition: all 0.2s ease;
+}
+#FeatureSidebar-Content{
+    height: auto;
+}
+#FeatureSidebarCloseButtonArea{
+    width: 100%;
+    margin-top: 1rem;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+#CloseButton{
+    height: 1.3rem;
+    margin-left: 95%;
+    background: rgb(68, 68, 68);
+    color: white;
+    border-radius: 0.2rem;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+#CloseButton:hover{
+    background: rgb(140, 140, 140);
+}
+#FeatureSidebarTitle{
+    text-align: center;
+    width: 100%;
+    height: 5rem;
+    color: white;
+}
+.FeatureSidebarMessage{
+    width: 95%;
+    margin-left: 2.5%;
+    min-height: 5rem;
+    margin-top: 10px;
+    background: rgb(58, 58, 58);
+    max-height: auto;
+    border-style: solid;
+    color: white;
+    border-color: rgb(24, 24, 24);
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
+}
+.FeatureSidebarMessageDate{
+    width: 95%;
+    margin-left: 2.5%;
+    text-align: right;
+}
+.FeatureSidebarMessageDate p{
+    font-size: 90%;
+    margin-right: 1rem;
+}
+.FeatureSidebarMessageTitle{
+    display: flex;
+    width: 95%;
+    background-color: rgb(46, 46, 46);
+    margin-left: 2.5%;
+    height: 2rem;
+    align-items: center;
+    border-radius: 10px;
+}
+.FeatureSidebarMessageTitle p{
+    font-size: 110%;
+    margin-left: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+.FeatureSidebarMessageText{
+    width: 95%;
+    background-color: rgb(46, 46, 46);
+    margin-left: 2.5%;
+    border-radius: 10px;
+    min-height: 3rem;
+    max-height: auto;
+    margin-bottom: 1rem;
+}
+.FeatureSidebarMessageText p{
+    font-size: 100%;
+    margin-left: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
