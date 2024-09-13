@@ -68,7 +68,7 @@
         <script src="registration.js"></script>
     </main>
     <div class="footer">
-        <p>&copy; 2024 Disciplinators | Version 1.0.0</p>
+        <p>&copy; 2024 Disciplinators | Versija 1.0.0</p>
     </div>
 </body>
 </html>
