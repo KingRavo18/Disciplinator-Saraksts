@@ -41,6 +41,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 if (password_verify($pass, $row['password'])) {
                     // Successful login
                     $_SESSION['username'] = $row['username'];
+                    $_SESSION['points'] = $row['points'];
                     $_SESSION['id'] = $row['id'];
                     header("Location: ../MainPage/index.php");
                     exit();

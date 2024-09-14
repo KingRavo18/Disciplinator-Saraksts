@@ -1,0 +1,107 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px; /* collapsed width */
+    height: 100%;
+    background-color: navy;
+    margin-top: 4.5%;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    font-family: 'Inter';
+}
+
+/* Expand the sidebar on hover */
+.sidebar:hover {
+    width: 200px; /* expanded width */
+}
+
+/* Sidebar links */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    width: 100%;
+    height: 3rem;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover{
+    background-color: rgb(65, 65, 141);
+}
+.sidebar ul li a:active{
+    background-color: rgb(89, 89, 149);
+}
+
+#LogoutFullArea{
+    position: fixed;
+    display: none;
+    top: 0;
+    width:  100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+#LogoutArea{
+    display: none;
+    width: 20rem;
+    height: 10rem;
+    background-color: rgb(68, 68, 68); 
+    border-radius: 10px;
+    z-index: 88888;  
+    position: fixed;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+}
+#LogoutTitle{
+    text-align: center;
+    width: 100%;
+    height: 3rem;
+    color: white;
+}
+.LogoutYesNoButtons{
+    width: 80%;
+    height: 20%;
+    margin-left: 10%;
+    margin-top: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.LogoutYesNoButtons button,
+.LogoutYesNoButtons a{
+    background-color: #d3d3d3; 
+    border: none;            
+    color: #000;              
+    padding: 10px 20px;      
+    text-align: center;      
+    text-decoration: none;    
+    display: inline-block;     
+    font-size: 16px;
+    font-family: 'Inter';           
+    border-radius: 5px;     
+    margin-left: 5%;
+    margin-right: 5%;   
+    cursor: pointer;           
+    transition: background-color 0.3s ease; 
+}
+.LogoutYesNoButtons button:hover,
+.LogoutYesNoButtons a:hover{
+    background-color: #c0c0c0;
+}
+.LogoutYesNoButtons button:active,
+.LogoutYesNoButtons a:active{
+    background-color: #a9a9a9;
+}

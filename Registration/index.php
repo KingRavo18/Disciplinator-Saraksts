@@ -24,7 +24,7 @@
                             <input type="password" id="password-1" placeholder="Parole" name="password" required>
                             <i id="visibilityBtn-1"><span id="icon-1" class="material-symbols-outlined">visibility</span></i>
                         </div>
-                        <div class="RegistrationLink"><a href="">Aizmirstāt Paroli?</a></div>
+                        <div class="RegistrationLink"><a onclick="ShowForgotPasswordArea()">Aizmirstāt Paroli?</a></div>
                     </div>
                     <div id="ErrorArea1">
                         <?php
@@ -40,6 +40,9 @@
             </div>
             <?php
                 require "FeatureSidebar.php";
+            ?> 
+            <?php
+                require "../forgotPassword/forgot-password.php";
             ?> 
             <div class="Registration">
                 <div class="RegistrationTitle"><h2>REĢISTRĒTIES</h2></div>

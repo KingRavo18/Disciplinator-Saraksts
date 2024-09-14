@@ -2,7 +2,7 @@
     session_start();
 
     // Check if user is logged in by verifying session variables
-    if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+    if (isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_SESSION['points'])) {
 ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Style/mainPageTopBar.css">
+    <link rel="stylesheet" href="../Style/sidebar.css">
     <link rel="stylesheet" href="../Style/mainPage.css">
     <link rel="icon" type="image/x-icon" href="../Images/FistLogoCut.png">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
@@ -18,6 +19,7 @@
 <body>
     <?php
         require "../Accesories/mainPageTopBar.php";
+        require "../Accesories/sidebar.php";
     ?>
     <main>
         <h1>Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></h1> <!-- htmlspecialchars for security -->
