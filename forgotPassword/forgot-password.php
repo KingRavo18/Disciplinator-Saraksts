@@ -6,12 +6,12 @@
         <div id="ForgotPasswordTitle">
             <h2>Atiestatiet Savu Paroli</h2>
         </div>
-        <form action="../forgotPassword/forgot_password.php" method="POST">
+        <form action="../forgotPassword/send-password-reset.php" method="POST">
             <div class="ForgotPasswordInfo">
                 <p>Ievadiet save e-pasta adresi un mēs nosūtīsim jums saiti lai atiestatītu jūsu paroli.</p>
             </div>
             <div class="ForgotPasswordInput">
-                <input type="email" id="email" name="email" placeholder="epasts" required>
+                <input type="email" id="email" name="email" placeholder="E-pasts" title="Ievadiet e-pasta adresi" required>
             </div>
             <div id="ForgotPassowrdConfirmationButton">    
                 <button type="submit">Sūtīt Saiti</button>

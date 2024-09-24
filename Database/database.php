@@ -1,12 +1,15 @@
 <?php
     // Database configuration
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "Disciplinators";
+    $host = 'localhost';
+    $db = 'Disciplinators';
+    $user = 'root';
+    $pass = '';
     // Create connection using mysqli
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: Please try again later."); // Generic error message
+    $mysqli = new mysqli($host, $user, $pass, $db);
+
+    // Check for connection errors
+    if ($mysqli->connect_error) {
+        die('Connection failed: ' . $mysqli->connect_error);
     }
+
+    return $mysqli;

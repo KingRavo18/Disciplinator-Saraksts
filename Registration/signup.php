@@ -58,7 +58,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     } else {
         // Check if the username or email already exists
         $sql = "SELECT * FROM users WHERE username=? OR email=?";
-        $stmt = mysqli_prepare($conn, $sql);
+        $stmt = mysqli_prepare($mysqli, $sql);
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "ss", $username, $email);
             mysqli_stmt_execute($stmt);
@@ -74,13 +74,13 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
 
                 // Insert new user into the database
                 $sql_insert = "INSERT INTO users (username, email, password, points, user_role) VALUES (?, ?, ?, 0, 'user')";
-                $stmt_insert = mysqli_prepare($conn, $sql_insert);
+                $stmt_insert = mysqli_prepare($mysqli, $sql_insert);
                 if ($stmt_insert) {
                     mysqli_stmt_bind_param($stmt_insert, "sss", $username, $email, $hashed_pass);
                     mysqli_stmt_execute($stmt_insert);
 
                     // Fetch the newly inserted user's ID (optional, but good for session management)
-                    $new_user_id = mysqli_insert_id($conn);
+                    $new_user_id = mysqli_insert_id($mysqli);
 
                     // Start a session for the newly registered user
                     $_SESSION['username'] = $username;

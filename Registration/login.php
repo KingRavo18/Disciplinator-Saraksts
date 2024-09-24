@@ -25,7 +25,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     } else {
         // Use a prepared statement to prevent SQL injection
         $sql = "SELECT * FROM users WHERE username=?";
-        $stmt = mysqli_prepare($conn, $sql);
+        $stmt = mysqli_prepare($mysqli, $sql);
 
         if ($stmt) {
             // Bind parameters and execute the statement
@@ -42,6 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     // Successful login
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['points'] = $row['points'];
+                    $_SESSION['email'] = $row['email'];
                     $_SESSION['id'] = $row['id'];
                     header("Location: ../MainPage/index.php");
                     exit();

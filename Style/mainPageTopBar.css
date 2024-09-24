@@ -27,4 +27,8 @@
 #PointArea{
     margin-left: 96rem;
     margin-top: -5.4rem;
+    display: flex;
+}
+#PointArea p{
+    font-family: 'Inter';
 }

@@ -9,7 +9,7 @@
 <?php
     require "../Database/database.php"; 
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT title, message, date FROM features_news ORDER BY date");
+    $stmt = $mysqli->prepare("SELECT title, message, date FROM features_news ORDER BY date DESC");
     $stmt->execute();
     $result = $stmt->get_result();
     // Check if there are any results
@@ -42,7 +42,7 @@
     }
     // Close the statement and connection
     $stmt->close();
-    $conn->close();
+    $mysqli->close();
 ?>
     </div>
 </div>

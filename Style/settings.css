@@ -1,0 +1,126 @@
+html, body{
+    background: white;
+    margin: 0;
+    overflow-x: hidden;
+}
+h1{
+    color: white;
+    font-size: 500%;
+    text-shadow: 6px 6px #000000;
+    font-family: 'Inter'
+}
+h2{
+    font-family: 'Inter';
+}
+p{
+    font-family: 'Inter';
+    font-size: 150%;
+}
+.settingsdiv{
+    background: rgb(68, 68, 68);
+    width: 40%;
+    min-height: 30rem;
+    height: auto;
+    margin-top: 7rem;
+    margin-left: 30%;
+    border-radius: 10px;
+    color: white;
+}
+.SettingsTitle{
+    margin-top: 2rem;
+    height: auto;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+.ProfileArea1{
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    height: 10rem;
+}
+.ProfilePicture{
+    width: auto;
+    height: 100%;
+}
+.ProfilePicture button{
+    background-color: #d3d3d3; 
+    margin-left: 1.5rem;
+    border: none;            
+    color: #000;              
+    padding: 10px 20px;      
+    text-align: center;      
+    text-decoration: none;    
+    display: inline-block;     
+    font-size: 16px; 
+    margin-top: 1rem;          
+    border-radius: 5px;    
+    cursor: pointer;           
+    transition: background-color 0.3s ease; 
+}
+.ProfilePicture button:hover{
+    background-color: #c0c0c0;
+}
+.ProfilePicture button:active{
+    background-color: #a9a9a9;
+}
+.ProfileCircle img{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    border-style: solid;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+}
+.ProfileNames{
+    height: 100%;
+    width: 70%;
+    margin-left: 5%;
+}
+.ProfileNames p{
+    font-weight: bold;
+}
+.ProfileArea2{
+    height: 10rem;
+    width: 60%;
+    margin-right: 5%;
+    float: right;
+}
+.ChangeArea{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+}
+.ChangeArea input{
+    width: 50%;
+    padding: 6px 0px; 
+    margin-left: 1rem;
+    margin-top: 8px;
+    border: none;
+    border-bottom: 2px solid black;
+    font-family: 'Inter';
+    font-size: 120%;
+    border-radius: 5px;
+}
+.ChangeArea button{
+    background-color: #d3d3d3; 
+    border: none;            
+    color: #000;              
+    padding: 8px 16px;      
+    text-align: center;      
+    text-decoration: none;    
+    display: inline-block;     
+    font-size: 16px;        
+    margin-bottom: 1px;
+    border-radius: 5px;    
+    cursor: pointer;           
+    transition: background-color 0.3s ease; 
+}
+.ChangeArea button:hover{
+    background-color: #c0c0c0;
+}
+.ChangeArea button:active{
+    background-color: #a9a9a9;
+}

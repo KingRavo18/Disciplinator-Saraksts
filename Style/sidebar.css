@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 50px; /* collapsed width */
+    width: 50px; 
     height: 100%;
     background-color: navy;
     margin-top: 4.5%;
@@ -10,39 +10,49 @@
     transition: width 0.3s ease;
     font-family: 'Inter';
 }
-
-/* Expand the sidebar on hover */
 .sidebar:hover {
-    width: 200px; /* expanded width */
+    width: 220px; 
 }
-
-/* Sidebar links */
 .sidebar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-
 .sidebar ul li {
     width: 100%;
     height: 3rem;
+    display: flex;
+    align-items: center;
 }
-
 .sidebar ul li a {
     text-decoration: none;
     color: white;
-    display: block;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.3s;
 }
-
-.sidebar ul li a:hover{
+.sidebar ul li a:hover {
     background-color: rgb(65, 65, 141);
 }
-.sidebar ul li a:active{
+.sidebar ul li a:active {
     background-color: rgb(89, 89, 149);
 }
-
+.material-symbols-outlined {
+    font-size: 1.5rem; 
+    display: block;
+    margin-left: 0.7rem;
+    cursor: pointer; 
+}
+.label {
+    display: none;
+    margin-left: 1rem;
+    white-space: nowrap; 
+    cursor: pointer; 
+}
+.sidebar:hover .label {
+    display: inline-block;
+}
 #LogoutFullArea{
     position: fixed;
     display: none;
@@ -104,4 +114,7 @@
 .LogoutYesNoButtons button:active,
 .LogoutYesNoButtons a:active{
     background-color: #a9a9a9;
+}
+#ToDoList{
+    margin-left: -0.01rem;
 }
