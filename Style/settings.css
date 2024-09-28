@@ -1,120 +1,87 @@
-html, body{
-    background: white;
-    margin: 0;
-    overflow-x: hidden;
-}
-h1{
-    color: white;
-    font-size: 500%;
-    text-shadow: 6px 6px #000000;
-    font-family: 'Inter'
-}
-h2{
-    font-family: 'Inter';
-}
-p{
-    font-family: 'Inter';
-    font-size: 150%;
-}
 .settingsdiv{
     background: rgb(68, 68, 68);
     width: 40%;
-    min-height: 30rem;
-    height: auto;
-    margin-top: 7rem;
+    min-height: 33rem;
+    margin-top: 2rem;
     margin-left: 30%;
     border-radius: 10px;
     color: white;
 }
 .SettingsTitle{
     margin-top: 2rem;
-    height: auto;
     padding: 10px;
-    width: 100%;
     text-align: center;
+    border-bottom: 2px solid rgb(24, 24, 24);
 }
-.ProfileArea1{
+.ProfileArea1 {
     display: flex;
-    width: 90%;
-    margin-left: 5%;
-    height: 10rem;
+    gap: 20px;
+    border-bottom: 2px solid rgb(24, 24, 24);
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
-.ProfilePicture{
-    width: auto;
-    height: 100%;
+.ProfilePicture {
+    width: 80%;
+    padding: 0;
+    padding-left: 20px;
 }
-.ProfilePicture button{
+.ProfileCircle img{
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border-style: solid;
+    margin-bottom: 2px;
+    object-fit: cover;
+}
+.FileInput input{
+    width: 100%;
+}
+.FileInput button{
+    width: 80%;
     background-color: #d3d3d3; 
-    margin-left: 1.5rem;
-    border: none;            
-    color: #000;              
-    padding: 10px 20px;      
-    text-align: center;      
-    text-decoration: none;    
+    border: none;                       
+    padding: 10px 0;      
+    margin-top: 10px;
+    text-align: center;        
     display: inline-block;     
-    font-size: 16px; 
-    margin-top: 1rem;          
-    border-radius: 5px;    
+    font-size: 16px;           
+    border-radius: 5px;        
     cursor: pointer;           
     transition: background-color 0.3s ease; 
 }
-.ProfilePicture button:hover{
+.FileInput button:hover{
     background-color: #c0c0c0;
 }
-.ProfilePicture button:active{
+.FileInput button:active{
     background-color: #a9a9a9;
 }
-.ProfileCircle img{
-    height: 10rem;
-    width: 10rem;
-    border-radius: 50%;
-    border-style: solid;
-    margin-top: -2rem;
-    margin-bottom: 1rem;
-}
-.ProfileNames{
-    height: 100%;
-    width: 70%;
-    margin-left: 5%;
-}
-.ProfileNames p{
-    font-weight: bold;
-}
-.ProfileArea2{
-    height: 10rem;
-    width: 60%;
-    margin-right: 5%;
+.ProfileNames {
     float: right;
+    width: 400px;
 }
-.ChangeArea{
-    height: 40%;
-    width: 100%;
-    display: flex;
-    justify-content: center;  
-    align-items: center;
+.ProfileArea2 {
+    margin: auto;
 }
 .ChangeArea input{
-    width: 50%;
-    padding: 6px 0px; 
-    margin-left: 1rem;
-    margin-top: 8px;
-    border: none;
-    border-bottom: 2px solid black;
-    font-family: 'Inter';
-    font-size: 120%;
+    width: 400px;
+    padding: 10px 0;
+    margin-left: 60px;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.ChangeArea input:hover{
+    background-color: rgb(211, 211, 211);
 }
 .ChangeArea button{
+    width: 200px;
     background-color: #d3d3d3; 
-    border: none;            
-    color: #000;              
-    padding: 8px 16px;      
-    text-align: center;      
-    text-decoration: none;    
+    border: none;                       
+    padding: 10px 0;      
+    margin-top: 10px;
+    text-align: center;        
     display: inline-block;     
-    font-size: 16px;        
-    margin-bottom: 1px;
-    border-radius: 5px;    
+    font-size: 16px;           
+    border-radius: 5px;        
     cursor: pointer;           
     transition: background-color 0.3s ease; 
 }

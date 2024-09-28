@@ -1,0 +1,129 @@
+/*the button for making the popup, for changing the pages style color, appear*/
+.ColorPopupButton{
+    margin-left: 1rem;
+    height: 2.7rem;
+    width: 3.8%;
+    font-size: 90%;
+    border-radius: 0.3rem;
+    border: 0.1rem solid rgb(155, 155, 155);  
+    color: black;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+/*creates the hover effect for the button for making the popup, for changing the pages style color, appear*/
+.ColorPopupButton:hover {
+    background-color: rgba(168, 168, 168, 0.958);
+    color: rgb(128, 128, 128);
+}
+/*a popup which lets one change the colour style of the page*/
+.ColorPopup{
+    position: absolute;
+    display: none;
+    height: 10.5%;
+    width: 3.8%;
+    bottom: 81%;
+    left: 0.9%;
+    background-color: white;
+    border-radius: 5px;
+    border: 0.1rem solid rgb(155, 155, 155);  
+    z-index: 2;
+}
+/*the div where the style colour changing buttons stay*/
+.styleColors{
+    width: auto;
+    height: 7rem;
+}
+.blueButton,
+.redButton,
+.greenButton,
+.purpleButton,
+.pinkButton,
+.blackButton{
+    border-radius: 0.2rem;
+    margin-left: 0.26rem;
+    width: 40%;
+    height: 12%;
+    cursor: pointer;
+}
+/*the button for making the page's style blue*/
+.blueButton{
+    background-color: rgb(18, 7, 99);
+}
+/*the button for making the page's style red*/
+.redButton{
+    background-color: rgb(146, 12, 12); 
+    margin-left: 0.08rem;
+}
+/*the button for making the page's style green*/
+.greenButton{
+    background-color: rgb(11, 86, 9); 
+}
+/*the button for making the page's style purple*/
+.purpleButton{
+    background-color: rgb(68, 8, 93); 
+    margin-left: 0.08rem;
+}
+/*the button for making the page's style pink*/
+.pinkButton{
+    background-color: rgb(230, 24, 233); 
+}
+/*the button for making the page's style black*/
+.blackButton{
+    background-color: rgb(0, 0, 0); 
+    margin-left: 0.08rem;
+}
+/*creates the X which lets one close the popup for changing the pages color style*/
+.ColorCloseButton{
+    height: 1.3rem;
+    margin-left: 30.5%;
+    background-color: white;
+    border-radius: 0.2rem;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.ColorCloseButton:hover{
+    background-color: red;
+}
+/*creates the X which lets one close the popup for changing the pages color style*/
+.ColorCloseButton:after{
+    display: inline-block;
+    content: "\00d7";
+    font-size: 150%;
+    font-weight: lighter;
+}
+@media only screen and (max-width: 1400px) {
+    .ColorPopup{
+        bottom: 78.35%;
+        left: 0.75%;
+        width: 4.7%;
+        height: 13%;
+    }
+}
+/* makes the screen compatible with mobile devices*/
+@media only screen and (max-width: 600px) {
+    .ColorPopupButton{
+        width: 4rem;
+    }
+    .ColorPopup{
+        bottom: 77.9%;
+        left: 4%;
+        width: 17%;
+        height:12%;
+    }
+    .blueButton{
+        margin-left:4px;
+    }
+    .greenButton{
+        margin-left:4px;
+    }
+    .pinkButton{
+        margin-left:4px;
+        width: 40%;
+    }
+    .ColorCloseButton{
+        margin-left: 31%;
+    }
+}

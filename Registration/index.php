@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../Style/registration.css">
-        <link rel="icon" type="image/x-icon" href="../Images/FistLogoCut.png">
+        <link rel="icon" type="image/x-icon" href="../Images/FistLogoCut.png" media="(prefers-color-scheme: light)">
+        <link rel="icon" type="image/x-icon" href="../Images/FistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>

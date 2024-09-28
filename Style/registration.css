@@ -177,7 +177,7 @@ i {
     transition: 0.4s;
 }
 #CloseButton:hover{
-    background: rgb(140, 140, 140);
+    background: red
 }
 #FeatureSidebarTitle{
     text-align: center;

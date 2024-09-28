@@ -1,7 +1,7 @@
 <div class="sidebar">
     <ul>
         <li><a href="../MainPage/Index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">lists</span></span><span class="label">Saraksts</span></a></li>
-        <li><a href="#"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">event</span></span><span class="label">Ilgtermiņa plānotājs</span></a></li>
+        <li><a href="../GameList/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">sports_esports</span></span><span class="label">Vidiospēļu Saraksts</span></a></li>
         <li><a href="#"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">event_list</span></span><span class="label">Dienas plānotājs</span></a></li>
         <li><a href="../Settings/index.php"><span class="material-symbols-outlined">settings</span><span class="label">Iestatījumi</span></a></li>
         <li><a onclick="ShowLogoutArea()"><span class="material-symbols-outlined">logout</span><span class="label">Atslēgties</span></a></li>

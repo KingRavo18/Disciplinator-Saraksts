@@ -1,0 +1,40 @@
+html, body{
+    background: white;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Inter'
+}
+h1{
+    color: white;
+    font-size: 500%;
+    text-shadow: 6px 6px #000000;
+}
+p{
+    font-size: 150%;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: white; 
+}
+::-webkit-scrollbar-thumb {
+    background: #d3d3d3; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #8f8e8e; 
+}
+main{
+    display: grid;
+    height: auto;
+    width: 100%;
+    margin-top: 4rem;
+}
+.PageTitle h1{
+    color: navy;
+    margin-top: 70px;
+    font-size: 300%;
+    text-shadow: none;
+    text-align: center;
+    font-weight: 800;
+}

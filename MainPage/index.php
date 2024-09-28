@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="../Style/mainPageTopBar.css">
     <link rel="stylesheet" href="../Style/sidebar.css">
     <link rel="stylesheet" href="../Style/mainPage.css">
-    <link rel="icon" type="image/x-icon" href="../Images/FistLogoCut.png">
+    <link rel="stylesheet" href="../Style/global.css"/>
+    <link rel="icon" type="image/x-icon" href="../Images/FistLogoCut.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/x-icon" href="../Images/FistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <title>Disciplanators - Saraksts</title>
 </head>
@@ -23,7 +25,9 @@
         require "../Accesories/sidebar.php";
     ?>
     <main>
-        <h1>Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></h1> <!-- htmlspecialchars for security -->
+        <div class="PageTitle">
+            <h1>DARĀMO DARBU SARAKSTS</h1>
+        </div>
     </main>
 </body>
 </html>
