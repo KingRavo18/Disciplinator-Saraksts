@@ -29,6 +29,7 @@ i {
     font-size: 150%;
     justify-content: center;
     align-items: center;   
+    text-align: center;
     color: white;
 }
 .Registration{
@@ -347,4 +348,41 @@ i {
 }
 #ForgotPassowrdConfirmationButton button:active{
     background-color: #a9a9a9;
+}
+@media only screen and (max-width: 600px) {
+    h1{
+        font-size: 200%;
+    }
+    .PageTitle{
+        margin-top: 2rem;
+    }
+    .InputWindows{
+        display: block;
+    }
+    .Explanation{
+       margin: 140px auto;
+    }
+    .OpenFeatures button{
+        top: 7rem;
+    }
+    .Registration{
+        width: 80%;
+        padding-top: 20px;
+        margin: 4rem auto;
+    }
+    #forgotPasswordArea{
+        width: 20rem;
+    }
+    #ForgotPasswordCloseButtonArea{
+        width: 96%;
+    }
+    .footer {
+        font-size: 70%;
+    }
+    #FeatureSidebar{
+        width: 100%;
+    }
+    #FeatureSidebarCloseButtonArea{
+        width: 98%;
+    }
 }

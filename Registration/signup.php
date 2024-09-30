@@ -84,6 +84,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
 
                     // Start a session for the newly registered user
                     $_SESSION['username'] = $username;
+                    $_SESSION['user_id'] = $row['id'];
                     $_SESSION['id'] = $new_user_id; // Save user ID in session
 
                     // Redirect to the main page

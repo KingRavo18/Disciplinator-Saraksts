@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../Style/ColorPopup.css">
+<link rel="stylesheet" href="../Style/changeColorPopup.css">
 <script src="defaultColours.js" defer></script>
 <div>
     <button onclick="ColorPopup()" class="ColorPopupButton" title="Change the webpage's colour style">Change Style</button>

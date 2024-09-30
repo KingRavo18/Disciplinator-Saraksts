@@ -71,9 +71,12 @@ article{
     }
     article{
         float: center;
-        height: 23rem;
+        height: 33rem;
         margin: 0.6rem 0 0 2.3rem;
         width: 80%;
+    }
+    .ShowListTitle{
+        height: auto;
     }
     .ShowListDescription-Content{
         min-width: 110px;

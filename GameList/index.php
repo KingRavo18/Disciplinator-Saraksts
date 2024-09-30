@@ -17,10 +17,10 @@ session_start();
         across this page, please kindly go away."/>
         <meta property="og:title" content="Game List"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-        <link rel="icon" type="image/x-icon" href="../Images/FistLogoCut.png" media="(prefers-color-scheme: light)">
-        <link rel="icon" type="image/x-icon" href="../Images/FistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
+        <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
+        <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-        <link rel="stylesheet" href="./Style/index.css"/>
+        <link rel="stylesheet" href="../Style/gameList.css"/>
         <link rel="stylesheet" href="../Style/global.css"/>
         <link rel="stylesheet" href="../Style/mainPageTopBar.css">
         <link rel="stylesheet" href="../Style/sidebar.css">
@@ -37,7 +37,7 @@ session_start();
             <section>
                 <?php 
                     //Creates articles that contain list data
-                    require "./List.php"; 
+                    require "./list.php"; 
                 ?>
             </section>
         </main>

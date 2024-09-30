@@ -50,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                 if (in_array($file_type, $allowed_types)) {
                     // Define where the image will be saved
-                    $uploads_dir = '../uploads/profile_pictures/';
+                    $uploads_dir = '../ImageUploads/profile_pictures/';
                     if (!is_dir($uploads_dir)) {
                         mkdir($uploads_dir, 0777, true); // Create directory if it doesn't exist
                     }
@@ -90,8 +90,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="../Images/FistLogoCut.png" media="(prefers-color-scheme: light)">
-        <link rel="icon" type="image/x-icon" href="../Images/FistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
+        <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
+        <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <link rel="stylesheet" href="../Style/settings.css">
         <link rel="stylesheet" href="../Style/sidebar.css">
@@ -117,7 +117,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             <div class="ProfilePicture">
                                 <div class="ProfileCircle">
                                     <!-- Check if profile_picture is set in the session -->
-                                    <img src="<?= isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : '../uploads/default_profile.jpg'; ?>" alt="Profile Picture">
+                                    <img src="<?= isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : '../Images/default_profile.jpg'; ?>" alt="Profile Picture">
                                 </div>
                                 <div class="FileInput">
                                     <input type="file" name="profile_picture">

@@ -1,4 +1,15 @@
 <?php
+// Start the session to retrieve the logged-in user's ID
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    die("You must be logged in to add a game.");
+}
+
+// Get the logged-in user's ID from the session
+$user_id = $_SESSION['user_id'];
+
 // Get POST data
 $img = $_POST["img"];
 $title = $_POST["title"];
@@ -27,8 +38,8 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-// SQL query to insert data into the `games` table
-$sql = "INSERT INTO games (img, title, release_date, description, developer, game_completion, rating) VALUES (?, ?, ?, ?, ?, ?, ?)";
+// SQL query to insert data into the `games` table, including the user_id
+$sql = "INSERT INTO games (user_id, img, title, release_date, description, developer, game_completion, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 // Initialize a prepared statement
 $stmt = $mysqli->stmt_init();
@@ -39,7 +50,7 @@ if (!$stmt->prepare($sql)) {
 }
 
 // Bind the variables to the statement parameters
-$stmt->bind_param("sssssii", $img, $title, $release_date, $description, $developer, $game_completion, $rating);
+$stmt->bind_param("isssssii", $user_id, $img, $title, $release_date, $description, $developer, $game_completion, $rating);
 
 // Execute the statement
 if ($stmt->execute()) {

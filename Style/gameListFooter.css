@@ -172,8 +172,8 @@ footer button:hover {
     }
     .AddContentPopup{
         bottom: 10%;
-        left: 10%;
-        width: 80%;
+        left: 5%;
+        width: 90%;
     }
     .UploadWindowWithLongInput{
         margin: 0 0 1rem 1.5rem;

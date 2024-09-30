@@ -1,5 +1,5 @@
 <!--Style-->
-<link rel="stylesheet" href="./Style/footer.css">
+<link rel="stylesheet" href="../Style/gameListFooter.css">
 <!--A popup for new entries-->
 <div id="AddContentFullPage" class="AddContentFullPage">
     <div id="AddContentPopup" class="AddContentPopup">
