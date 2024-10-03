@@ -26,7 +26,7 @@
     ?>
     <main>
         <div class="PageTitle">
-            <h1>DARĀMO DARBU SARAKSTS</h1>
+            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">DARĀMO DARBU SARAKSTS</h1>
         </div>
     </main>
 </body>

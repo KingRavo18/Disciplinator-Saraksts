@@ -2,26 +2,44 @@
 session_start();
 require '../Database/database.php'; // Assuming you have a file to connect to the database
 
+// CSRF Token generation and validation
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // Check if the session has the necessary variables set
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
-    // Handling form submission for changing username
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Function to update user data
+    function updateUserData($mysqli, $column, $value, $userId) {
+        $stmt = $mysqli->prepare("UPDATE users SET $column = ? WHERE id = ?");
+        if ($stmt) {
+            $stmt->bind_param("si", $value, $userId);
+            return $stmt->execute();
+        }
+        return false;
+    }
+
+    // Handling form submission for changing username, email, and profile picture
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // CSRF protection
+        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            $_SESSION['error'] = "CSRF token validation failed";
+            header("Location: settings.php");
+            exit();
+        }
 
         // Handling username update
         if (isset($_POST['username'])) {
             $new_username = htmlspecialchars(trim($_POST['username']));
             if (!empty($new_username)) {
-                // Update username in the database
-                $stmt = $mysqli->prepare("UPDATE users SET username = ? WHERE id = ?");
-                $stmt->bind_param("si", $new_username, $_SESSION['id']);
-                if ($stmt->execute()) {
+                if (updateUserData($mysqli, 'username', $new_username, $_SESSION['id'])) {
                     $_SESSION['username'] = $new_username; // Update session value
-                    echo "Lietotājvārds veiksmīgi atjaunināts!";
+                    $_SESSION['success'] = "Lietotājvārds veiksmīgi atjaunināts!";
                 } else {
-                    echo "Kļūda atjauninot lietotājvārdu.";
+                    $_SESSION['error'] = "Kļūda atjauninot lietotājvārdu.";
                 }
-                $stmt->close();
             }
         }
 
@@ -29,22 +47,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         if (isset($_POST['email'])) {
             $new_email = htmlspecialchars(trim($_POST['email']));
             if (!empty($new_email) && filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
-                // Update email in the database
-                $stmt = $mysqli->prepare("UPDATE users SET email = ? WHERE id = ?");
-                $stmt->bind_param("si", $new_email, $_SESSION['id']);
-                if ($stmt->execute()) {
+                if (updateUserData($mysqli, 'email', $new_email, $_SESSION['id'])) {
                     $_SESSION['email'] = $new_email; // Update session value
-                    echo "E-pasts veiksmīgi atjaunināts!";
+                    $_SESSION['success'] = "E-pasts veiksmīgi atjaunināts!";
                 } else {
-                    echo "Kļūda atjauninot e-pastu.";
+                    $_SESSION['error'] = "Kļūda atjauninot e-pastu.";
                 }
-                $stmt->close();
+            } else {
+                $_SESSION['error'] = "Lūdzu, ievadiet derīgu e-pasta adresi.";
             }
         }
 
         // Handling profile picture upload
         if (isset($_POST['upload_picture'])) {
-            if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
+            if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === 0) {
                 $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
                 $file_type = $_FILES['profile_picture']['type'];
 
@@ -62,26 +78,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     // Move the uploaded file to the uploads directory
                     $file_path = $uploads_dir . $new_filename;
                     if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $file_path)) {
-                        // Update the user's profile picture in the database
-                        $stmt = $mysqli->prepare("UPDATE users SET profile_picture = ? WHERE id = ?");
-                        $stmt->bind_param("si", $file_path, $_SESSION['id']);
-                        if ($stmt->execute()) {
+                        if (updateUserData($mysqli, 'profile_picture', $file_path, $_SESSION['id'])) {
                             $_SESSION['profile_picture'] = $file_path; // Update session value
-                            echo "Profila bilde veiksmīgi atjaunināta!";
+                            $_SESSION['success'] = "Profila bilde veiksmīgi atjaunināta!";
                         } else {
-                            echo "Kļūda atjauninot profila bildi.";
+                            $_SESSION['error'] = "Kļūda atjauninot profila bildi.";
                         }
-                        $stmt->close();
                     } else {
-                        echo "Neizdevās augšupielādēt failu.";
+                        $_SESSION['error'] = "Neizdevās augšupielādēt failu.";
                     }
                 } else {
-                    echo "Atļauts augšupielādēt tikai JPG, PNG vai GIF formātā.";
+                    $_SESSION['error'] = "Atļauts augšupielādēt tikai JPG, PNG vai GIF formātā.";
                 }
             } else {
-                echo "Neizdevās augšupielādēt profila bildi.";
+                $_SESSION['error'] = "Neizdevās augšupielādēt profila bildi.";
             }
         }
+
+        header("Location: settings.php");
+        exit();
     }
 
 ?>
@@ -103,20 +118,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <body>
         <main>
             <div class="PageTitle">
-                <h1>IESTATĪJUMI</h1>
+                <h1 id="Title" style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">IESTATĪJUMI</h1>
             </div>
             <?php
                 require "../Accesories/mainPageTopBar.php";
                 require "../Accesories/sidebar.php";
+
+                if (isset($_SESSION['error'])) {
+                    echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
+                    unset($_SESSION['error']);
+                }
+                if (isset($_SESSION['success'])) {
+                    echo '<div class="success-message">' . $_SESSION['success'] . '</div>';
+                    unset($_SESSION['success']);
+                }
             ?>
-            <section>
+            <section class="SettingsPage">
                 <div class="settingsdiv">
                     <div class="SettingsTitle"><h2>PROFILS</h2></div>
                     <div class="ProfileArea1">
                         <form method="POST" enctype="multipart/form-data">
                             <div class="ProfilePicture">
                                 <div class="ProfileCircle">
-                                    <!-- Check if profile_picture is set in the session -->
                                     <img src="<?= isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : '../Images/default_profile.jpg'; ?>" alt="Profile Picture">
                                 </div>
                                 <div class="FileInput">
@@ -128,7 +151,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             </div>
                         </form>
                         <div class="ProfileNames">
-                            <!-- Check if session variables are set before displaying them -->
                             <p><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Unknown User'; ?></p>
                             <p><?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : 'Unknown Email'; ?></p>
                         </div>
@@ -136,25 +158,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <div class="ProfileArea2">
                         <div class="ChangeArea">
                             <form method="POST">
-                                <input type="text" placeholder=" Jauns Lietotājvārds" name="username" required>
+                                <input type="text" placeholder="Jauns Lietotājvārds" name="username" required>
                                 <button type="submit">Mainīt lietotājvārdu</button>
                             </form>
                         </div>
                         <div class="ChangeArea">
                             <form method="POST">
-                                <input type="email" placeholder=" Jauns e-pasts" name="email" required>
+                                <input type="email" placeholder="Jauns e-pasts" name="email" required>
                                 <button type="submit">Mainīt e-pastu</button>
                             </form>
                         </div>
                     </div>
                 </div>
+                <?php require "themeChange.php"; ?>
             </section>
         </main>
     </body>
 </html>
 <?php 
 } else {
-    header("Location: login.php"); // Redirect to login if session is not set
+    header("Location: login.php"); 
     exit();
 }
 ?>

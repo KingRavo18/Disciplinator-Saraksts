@@ -1,6 +1,7 @@
 article{
     float: left;
     height: auto;
+    padding-bottom: 20px;
     width: 25%;
     margin: 2.4rem 4.28rem;
     border-radius: 10px;
@@ -11,6 +12,7 @@ article{
 .ShowListImg{
     height: 13rem;
     width: 100%;
+    border-radius: 10px;
     object-fit: cover;
 }
 .ShowListTitle{
@@ -34,7 +36,7 @@ article{
 }
 .ShowListRating{
     width: 96%;
-    margin-bottom: 5%;
+    margin-bottom: 10px;
 }
 .ShowListDescription{
     position: relative;
@@ -71,7 +73,7 @@ article{
     }
     article{
         float: center;
-        height: 33rem;
+        height: auto;
         margin: 0.6rem 0 0 2.3rem;
         width: 80%;
     }

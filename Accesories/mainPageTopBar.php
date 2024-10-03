@@ -1,4 +1,4 @@
-<header id="TopBar">   
+<header id="TopBar" style="background-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">   
     <div id="PageTitle">
         <a href="../MainPage/Index.php">DISCIPLINATORS</a>
     </div>

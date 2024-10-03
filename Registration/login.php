@@ -45,7 +45,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['user_id'] = $row['id'];
                     $_SESSION['id'] = $row['id'];
-                    $_SESSION['user_role'] = $user_role;
+                    $_SESSION['user_role'] = $row['user_role'];
+                    $_SESSION['profile_picture'] = $row['profile_picture'];
+                    $_SESSION['page_theme'] = $row['page_theme'];
                     header("Location: ../MainPage/index.php");
                     exit();
                 } else {

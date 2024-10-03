@@ -18,7 +18,7 @@
             die("There is an empty result. Execution has been halted");
         }
 ?>
-        <article id="ListBorderColor">
+        <article id="ListBorderColor" style="border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
             <img class="ShowListImg" src="<?=$ListArticle["img"]?>" alt="<?=$ListArticle["title"]?> Title Image"/>
             <p class="ShowListTitle">
                 <?=$ListArticle["title"]?>

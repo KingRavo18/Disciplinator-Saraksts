@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="lv">
     <head>
-        <title>Disciplinators - Vidiospēļu Saraksts</title>
+        <title>Disciplinators - Filmu/Seriālu Saraksts</title>
         <meta charset="UTF-8"/>
         <meta name="author" content="Raivo Kingovskis"/>
         <meta name="description" content="The Ultimate List is a webpage for me and me only to 
@@ -20,15 +20,15 @@ session_start();
         <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
         <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-        <link rel="stylesheet" href="../Style/gameList.css"/>
+        <link rel="stylesheet" href="../Style/gameMovieBookList.css"/>
         <link rel="stylesheet" href="../Style/global.css"/>
         <link rel="stylesheet" href="../Style/mainPageTopBar.css">
         <link rel="stylesheet" href="../Style/sidebar.css">
     </head>
     <body>
-        <main>
+    <main>
             <div class="PageTitle">
-                <h1>VIDIOSPĒĻU SARAKSTS</h1>
+                <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">FILMU/SERIĀLU SARAKSTS</h1>
             </div>
             <?php
                 require "../Accesories/mainPageTopBar.php";

@@ -1,0 +1,211 @@
+/*creates the footer where the button for the addNewEntry popup is located*/
+footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    z-index: 4;
+}
+/*the button which lets you make a popup for new entries appear*/
+footer button{
+    display: block;
+    width: 200px;
+    background-color: #d3d3d3;
+    border: none; 
+    color: black;
+    margin: auto;
+    padding: 0.7rem;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+/*the effect when you hover over the button which lets you make a popup for new entries appear */
+footer button:hover {
+    background-color: #c0c0c0;
+}
+/*the popup for new entries*/
+.AddContentFullPage{    
+    position: fixed;
+    display: none;
+    top: 0;
+    width:  100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.AddContentPopup{
+    position: fixed;
+    display: none;
+    margin-bottom: -10px;
+    height: 70%;
+    width: 40%;
+    bottom: 10%;
+    left: 30%;
+    background: rgb(68, 68, 68);
+    color: white;
+    border: 0.15rem solid rgb(155, 155, 155);  
+    z-index: 7;
+}
+/*the div where the X which closes the popup  for new list entries is located*/
+.CloseAddContent{
+    float: right;
+    height: auto;
+    width: 99%;
+    margin-bottom: 2.3rem;
+}
+/*the X which closes the popup for new list entries*/
+.CloseAddContentButton{
+    float: right;
+    height: 1.4rem;
+    border-style: none;
+    background: rgb(68, 68, 68);
+    color: white;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.CloseAddContentButton:hover{
+    background:red;
+}
+/*the X which closes the popup for new list entries*/
+.CloseAddContentButton:after{
+    display: inline-block;
+    content: "\00d7";
+    font-size: 150%;
+    font-weight: lighter;
+}
+/*the div where the label and the input for uploading the image Url for new entries is located*/
+.UploadWindowWithLongInput{
+    height: auto;
+    margin: 0 0 2.3rem 1.8rem;
+    width: 99.5%;
+    font-size: 110%;
+}
+/*input for uploading the iamge Url*/
+.LongInput{
+    width: 90%;
+    padding: 0.4rem;
+    border-style: none;
+    cursor: pointer;
+}
+.LongInput:hover{
+    background-color: rgb(211, 211, 211);
+}
+.uploadReleaseDateAndDescription,
+.uploadDeveloperAndGameCompletion{
+    display: flex;
+    height: auto;
+    width: 99.5%;
+    margin: 0 0 2.3rem 1.8rem;
+}
+.ReleaseDate,
+.Description,
+.Developer,
+.GameCompletion{
+    width: 45%;
+    margin-right: 5%;
+    font-size: 110%;
+}
+.uploadReleaseDate,
+.uploadDescription,
+.uploadDeveloper,
+.uploadGameCompletion{
+    width:80%;
+    font-size: 110%;
+}
+.uploadReleaseDate-input,
+.uploadDeveloper-input,
+.uploadGameCompletion-input{
+    width: 111%;
+    padding: 0.4rem;
+    border-style: none;
+    cursor: pointer;
+}
+.uploadReleaseDate-input:hover,
+.uploadDeveloper-input:hover,
+.uploadGameCompletion-input:hover{
+    background-color: rgb(211, 211, 211);
+}
+.uploadGameCompletion {
+    width: 99%;
+}
+.uploadDescription-input{
+    width: 114%;
+    resize: none;
+    height: 1.4rem;
+    padding: 0.4rem 0 0 0.4rem;
+    border-style: none;
+    cursor: pointer;
+}
+.uploadDescription-input:hover{
+    background-color: rgb(211, 211, 211);
+}
+.NewEntrySubmit{
+    margin-top: 5rem;
+    width: 99.5%;
+    height: auto;
+}
+.NewEntrySubmitButton{
+    background-color: #d3d3d3;
+    border: none; 
+    color: black;
+    display: block;
+    font-weight: bold;
+    width: 200px;
+    padding: 10px 0; 
+    font-size: 16px;           
+    border-radius: 5px; 
+    margin: auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+.NewEntrySubmitButton:hover {
+    background-color: #c0c0c0;
+}
+.NewEntrySubmitButton:active {
+    background-color: #a9a9a9;
+}
+/* makes the screen compatible with mobile devices*/
+@media only screen and (max-width: 600px) {
+    footer button{
+        width: 30%;
+    }
+    .AddContentPopup{
+        bottom: 10%;
+        left: 5%;
+        width: 90%;
+    }
+    .UploadWindowWithLongInput{
+        margin: 0 0 1rem 1.5rem;
+        font-size: 90%;
+    }
+    .LongInput{
+        width: 80%;
+    }
+    .uploadReleaseDateAndDescription,
+    .uploadDeveloperAndGameCompletion{
+        width: 99.5%;
+        margin: 0 0 1rem 1.5rem;
+    }
+    .uploadReleaseDate,
+    .uploadDescription,
+    .uploadDeveloper,
+    .uploadGameCompletion{
+        width:80%;
+        font-size: 80%;
+    }
+    .uploadReleaseDate-input,
+    .uploadDeveloper-input,
+    .uploadGameCompletion-input{
+        width: 84%;
+    }
+    .uploadDescription-input{
+        width: 90%;
+    }
+    .NewEntrySubmitButton{
+        width: 30%;
+    }
+}

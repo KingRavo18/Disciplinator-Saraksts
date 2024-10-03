@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="lv">
 <head>
@@ -20,11 +23,18 @@
     ?>
     <main>
         <div class="PageTitle">
-            <h1>ADMINISTRATORA LOGS</h1>
+            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">ADMINISTRATORA LOGS</h1>
         </div>
         <section>
             <div class="AdminDiv">
                 <div class="AdminTitle"><h2>FUNKCIJAS UN JAUNUMI</h2></div>
+                <div class="AdminForm">
+                <form method="POST" action="features&news.php">
+                    <input type="text" name="title" placeholder="Tēma " required><br>
+                    <textarea name="info" placeholder="Informācija " required></textarea><br>
+                    <button class="adminButton">Pievienot</button>
+                </form>
+            </div>
             </div>
         </section>
     </main>

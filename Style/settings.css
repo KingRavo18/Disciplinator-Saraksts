@@ -1,15 +1,17 @@
+.SettingsPage {
+    display: flex;
+}
 .settingsdiv{
     background: rgb(68, 68, 68);
     width: 40%;
     min-height: 33rem;
     margin-top: 2rem;
-    margin-left: 30%;
+    margin-left: 24%;
     border-radius: 10px;
     color: white;
     margin-bottom: 10px;
 }
 .SettingsTitle{
-    margin-top: 2rem;
     padding: 10px;
     text-align: center;
     border-bottom: 2px solid rgb(24, 24, 24);
@@ -90,6 +92,148 @@
     background-color: #c0c0c0;
 }
 .ChangeArea button:active{
+    background-color: #a9a9a9;
+}
+/* Theme Change */
+.settingsThemediv{
+    background: rgb(68, 68, 68);
+    width: 11%;
+    min-height: 33rem;
+    margin-top: 2rem;
+    margin-left: 1%;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 10px;
+}
+.themechange {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.container {
+    display: block;
+    position: relative;
+    padding-left: 70px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .checkmarkRed,
+  .checkmarkBlue,
+  .checkmarkGreen,
+  .checkmarkPurple,
+  .checkmarkPink,
+  .checkmarkBlack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 60px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease; 
+  }
+  .checkmarkBlue {
+    background-color: navy;
+  }
+  .container:hover input ~ .checkmarkBlue {
+    background-color: rgb(1, 1, 185);
+  }
+  .container input:checked ~ .checkmarkBlue {
+    background-color: navy;
+    border: 1px solid white;
+  }
+  .checkmarkRed {
+    background-color: rgb(128, 0, 0);
+  }
+  .container:hover input ~ .checkmarkRed {
+    background-color: rgb(185, 0, 0);
+  }
+  .container input:checked ~ .checkmarkRed {
+    background-color: rgb(128, 0, 0);
+    border: 1px solid white;
+  }
+  .checkmarkGreen {
+    background-color: rgb(1, 102, 18);
+  }
+  .container:hover input ~ .checkmarkGreen {
+    background-color: rgb(4, 182, 34);
+  }
+  .container input:checked ~ .checkmarkGreen {
+    background-color: rgb(1, 102, 18);
+    border: 1px solid white;
+  }
+  .checkmarkPurple {
+    background-color: purple;
+  }
+  .container:hover input ~ .checkmarkPurple {
+    background-color: rgb(180, 1, 180);
+  }
+  .container input:checked ~ .checkmarkPurple {
+    background-color: purple;
+    border: 1px solid white;
+  }
+  .checkmarkPink {
+    background-color: rgb(230, 24, 233);
+  }
+  .container:hover input ~ .checkmarkPink {
+    background-color: rgb(218, 115, 220);
+  }
+  .container input:checked ~ .checkmarkPink {
+    background-color: rgb(230, 24, 233);
+    border: 1px solid white;
+  }
+  .checkmarkBlack {
+    background-color: rgb(0, 0, 0);
+  }
+  .container:hover input ~ .checkmarkBlack {
+    background-color: rgb(48, 48, 48);
+  }
+  .container input:checked ~ .checkmarkBlack {
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+  }
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  .container .checkmark:after,
+  .container .checkmarkBlue:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+.themechange button{
+    width: 80%;
+    background-color: #d3d3d3; 
+    border: none;                       
+    padding: 10px 0;      
+    margin-top: 10px;
+    text-align: center;        
+    display: inline-block;     
+    font-size: 16px;           
+    border-radius: 5px;        
+    cursor: pointer;           
+    transition: background-color 0.3s ease; 
+}
+.themechange button:hover{
+    background-color: #c0c0c0;
+}
+.themechange button:active{
     background-color: #a9a9a9;
 }
 @media only screen and (max-width: 600px) {

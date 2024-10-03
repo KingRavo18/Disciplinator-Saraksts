@@ -1,0 +1,35 @@
+.leaderboardDiv {
+    background: rgb(68, 68, 68);
+    width: 40%;
+    padding-top: 5px;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: 30%;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 10px;
+}
+.LeaderTable {
+    width:100%;
+    margin: 30px 10px 10px 2.5%;
+    height: auto;
+}
+.LeaderTable table, th {
+    border-style: solid;
+    background-color: rgb(87, 87, 87);;
+    width: 95%;
+    text-align: center;
+}
+.LeaderTable table, td {
+    border-left: solid;
+    border-right: solid;
+}
+.TableOne {
+    width: 10%;
+}
+.TableTwo {
+    width: 60%;
+}
+.TableThree {
+    width: 30%;
+}

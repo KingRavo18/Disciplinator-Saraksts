@@ -1,7 +1,6 @@
 #TopBar{
     width: 100%;
     position: fixed;
-    background-color: navy;
     color: white;
     height: 10%;
     top: 0;                  
@@ -25,7 +24,7 @@
     font-family: 'Inter';
 }
 #PointArea{
-    margin-left: 90rem;
+    margin-left: 92rem;
     margin-top: -5.4rem;
     display: flex;
 }
