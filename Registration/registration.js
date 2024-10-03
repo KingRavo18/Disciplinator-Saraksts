@@ -26,7 +26,6 @@ function toggleVisibility(passwordId, iconId) {
         icon.innerText = "visibility"
     }
 }
-// Error messages
 window.addEventListener('load', function() {
     const url = new URL(window.location);
     

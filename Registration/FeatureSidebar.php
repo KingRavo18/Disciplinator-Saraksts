@@ -8,14 +8,11 @@
         </div>
 <?php
     require "../Database/database.php"; 
-    // Use prepared statements to prevent SQL injection
     $stmt = $mysqli->prepare("SELECT title, message, date FROM features_news ORDER BY date DESC");
     $stmt->execute();
     $result = $stmt->get_result();
-    // Check if there are any results
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            // Check if any of the fields are empty
             if (empty($row["title"]) || empty($row["message"]) || empty($row["date"])) {
                 die("There is an empty result. Execution has been halted");
             }
