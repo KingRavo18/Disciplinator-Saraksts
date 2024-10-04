@@ -30,16 +30,6 @@
                         </label>
                     </div>
                 </div>
-                <div class="Description">
-                    <div class="uploadDescription">
-                        <label>
-                            Description
-                            <textarea type="text" class="uploadDescription-input" name="description" required></textarea>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="uploadDeveloperAndGameCompletion">
                 <div class="Developer">
                     <div class="uploadDeveloper">
                         <label>
@@ -48,6 +38,8 @@
                         </label>
                     </div>
                 </div>
+            </div>
+            <div class="uploadDeveloperAndGameCompletion">
                 <div class="GameCompletion">
                     <div class="uploadGameCompletion">
                         <label>

@@ -14,12 +14,11 @@ $user_id = $_SESSION['user_id'];
 $img = $_POST["img"];
 $title = $_POST["title"];
 $release_date = $_POST["release_date"];
-$description = $_POST["description"];
 $director = $_POST["director"];
 $rating = filter_input(INPUT_POST, "rating", FILTER_VALIDATE_INT);
 
 // Check if any required field is missing
-if (!$img || !$title || !$release_date || !$description || !$director || !$rating) {
+if (!$img || !$title || !$release_date || !$director || !$rating) {
     die("All entries must be filled");
 }
 
@@ -38,7 +37,7 @@ if ($mysqli->connect_error) {
 }
 
 // SQL query to insert data into the `games` table, including the user_id
-$sql = "INSERT INTO movies (user_id, img, title, release_date, description, director, rating) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO movies (user_id, img, title, release_date, director, rating) VALUES (?, ?, ?, ?, ?, ?)";
 
 // Initialize a prepared statement
 $stmt = $mysqli->stmt_init();
@@ -49,7 +48,7 @@ if (!$stmt->prepare($sql)) {
 }
 
 // Bind the variables to the statement parameters
-$stmt->bind_param("isssssi", $user_id, $img, $title, $release_date, $description, $director, $rating);
+$stmt->bind_param("issssi", $user_id, $img, $title, $release_date, $director, $rating);
 
 // Execute the statement
 if ($stmt->execute()) {

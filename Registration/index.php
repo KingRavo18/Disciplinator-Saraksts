@@ -14,8 +14,8 @@
     <body>
         <main>
             <?php 
-            require "featureSidebar.php"; 
-            require "../ForgotPassword/forgot-password.php";
+                require "featureSidebar.php"; 
+                require "../ForgotPassword/forgot-password.php";
             ?> 
             <div class="OpenFeatures"><button onclick="FeatureSidebar()">Lapas Funkcijas</button></div>
             <div class="PageTitle"><h1>DISCIPLINATORS</h1></div>

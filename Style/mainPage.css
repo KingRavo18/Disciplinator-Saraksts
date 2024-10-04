@@ -1,0 +1,29 @@
+.ToDoList {
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    height: 30rem;
+}
+.ToDoList-Left {
+    border-style: solid;
+    width: 60%;
+    min-height: 30rem;
+}
+.ToDoList-Right {
+    width: 30%;
+    margin-left: 5%;
+    min-height: 30rem;
+}
+.ToDoList-Form {
+    Width: 99%;
+    margin-top: 5%;
+    background: rgb(68, 68, 68);
+    border-radius: 10px;
+    height: 89%;
+}
+.ToDoListTitle {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid rgb(24, 24, 24);
+}

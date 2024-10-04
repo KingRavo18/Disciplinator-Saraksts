@@ -28,6 +28,16 @@
         <div class="PageTitle">
             <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">DARĀMO DARBU SARAKSTS</h1>
         </div>
+        <div class="ToDoList">
+            <div class="ToDoList-Left"></div>
+            <div class="ToDoList-Right">
+                <div class="ToDoList-Form">
+                    <div class="ToDoListTitle"><h2>PIEVIENOT DARBU</h2></div>
+                    <textarea></textarea><br>
+                    <button>Pievienot</button>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 </html>

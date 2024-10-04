@@ -41,7 +41,7 @@ footer button:hover {
     position: fixed;
     display: none;
     margin-bottom: -10px;
-    height: 80%;
+    height: 70%;
     width: 40%;
     bottom: 10%;
     left: 30%;
@@ -164,6 +164,9 @@ footer button:hover {
 }
 .NewEntrySubmitButton:active {
     background-color: #a9a9a9;
+}
+.uploadReleaseDate-input {
+    padding: 5.1px 6.2px;
 }
 /* makes the screen compatible with mobile devices*/
 @media only screen and (max-width: 600px) {

@@ -168,6 +168,13 @@ footer button:hover {
 .NewEntrySubmitButton:active {
     background-color: #a9a9a9;
 }
+.GameCompletion {
+    margin-left: 10rem;
+    padding: 0.4rem 0 0 0.4rem;
+}
+.uploadReleaseDate-input {
+    padding: 5px;
+}
 /* makes the screen compatible with mobile devices*/
 @media only screen and (max-width: 600px) {
     footer button{

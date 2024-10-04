@@ -4,7 +4,7 @@
     }
     $user_id = $_SESSION['user_id'];
     require "../Database/database.php"; 
-    $sql = "SELECT id, img, title, release_date, description, director, rating 
+    $sql = "SELECT id, img, title, release_date, director, rating 
             FROM movies 
             WHERE user_id = ? 
             ORDER BY title";
@@ -14,7 +14,7 @@
     $result = $stmt->get_result();
     
     while ($ListArticle = $result->fetch_assoc()) {
-        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["release_date"] || !$ListArticle["description"] || !$ListArticle["director"] || !$ListArticle["rating"]) {
+        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["release_date"] || !$ListArticle["director"] || !$ListArticle["rating"]) {
             die("There is an empty result. Execution has been halted");
         }
 ?>
@@ -26,18 +26,10 @@
             <p class="ListArticle">
                 Release Date: <?=$ListArticle["release_date"]?> 
             </p>
-            <div class="ListArticle">
-                <div class="ShowListDescription"> 
-                    <span>Description</span>
-                    <div class="ShowListDescription-Content"> 
-                        <p><?=$ListArticle["description"]?></p>
-                    </div>
-                </div>
-            </div>
             <p class="ListArticle">
                 Director: <?=$ListArticle["director"]?>
             </p>
-            <p class="ListArticle">
+            <p class="ShowListRating">
                 Rating: <?=$ListArticle["rating"]?>
             </p>
         </article>

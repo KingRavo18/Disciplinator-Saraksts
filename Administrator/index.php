@@ -29,12 +29,22 @@ session_start();
             <div class="AdminDiv">
                 <div class="AdminTitle"><h2>FUNKCIJAS UN JAUNUMI</h2></div>
                 <div class="AdminForm">
-                <form method="POST" action="features&news.php">
-                    <input type="text" name="title" placeholder="Tēma " required><br>
-                    <textarea name="info" placeholder="Informācija " required></textarea><br>
-                    <button class="adminButton">Pievienot</button>
-                </form>
+                    <form method="POST" action="features&news.php">
+                        <input type="text" name="title" placeholder="Tēma " required><br>
+                        <textarea name="info" placeholder="Informācija " required></textarea><br>
+                        <button class="adminButton">Pievienot</button>
+                    </form>
+                </div>
             </div>
+        </section>
+        <section>
+            <div class="AdminDiv">
+                <div class="AdminTitle"><h2>LIETOTĀJU REDIĢĒTĀJS</h2></div>
+                <div class="AdminForm">
+                    <form method="POST" action="features&news.php">
+                        
+                    </form>
+                </div>
             </div>
         </section>
     </main>

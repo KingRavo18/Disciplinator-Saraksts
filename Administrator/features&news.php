@@ -23,8 +23,8 @@ if (isset($_POST['title']) && isset($_POST['info'])) {
         header("Location: index.php?error=Informācija ir nepieciešama");
         exit();
     } else {
-        // Insert the new feature or news into the database
-        $sql_insert = "INSERT INTO features_news (title, message) VALUES (?, ?)";
+        // Insert the new feature or news along with the current timestamp
+        $sql_insert = "INSERT INTO features_news (title, message, date) VALUES (?, ?, NOW())";
         $stmt_insert = mysqli_prepare($mysqli, $sql_insert);
 
         if ($stmt_insert) {

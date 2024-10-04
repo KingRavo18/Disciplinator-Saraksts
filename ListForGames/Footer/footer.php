@@ -30,16 +30,6 @@
                         </label>
                     </div>
                 </div>
-                <div class="Description">
-                    <div class="uploadDescription">
-                        <label>
-                            Description
-                            <textarea type="text" class="uploadDescription-input" name="description" required></textarea>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="uploadDeveloperAndGameCompletion">
                 <div class="Developer">
                     <div class="uploadDeveloper">
                         <label>
@@ -48,6 +38,8 @@
                         </label>
                     </div>
                 </div>
+            </div>
+            <div class="uploadDeveloperAndGameCompletion">
                 <div class="GameCompletion">
                     <div class="uploadGameCompletion">
                         <label>
@@ -56,12 +48,14 @@
                         </label>
                     </div>
                 </div>
-            </div>
-            <div class="UploadWindowWithLongInput">
-                <label>
-                    Rating
-                    <div><input type="number" max="10" min="1" class="LongInput" name="rating" required/></div>
-                </label>
+                <div class="GameCompletion">
+                    <div class="uploadGameCompletion">
+                        <label>
+                            Rating
+                            <div><input type="number" max="10" min="1" class="uploadGameCompletion-input" name="rating" required/></div>
+                        </label>
+                    </div>
+                </div>
             </div>
             <div class="NewEntrySubmit">
                 <button class="NewEntrySubmitButton" type="submit">Add</button>
