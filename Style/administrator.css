@@ -1,13 +1,14 @@
 .AdminDiv {
     background: rgb(68, 68, 68);
     width: 40%;
-    min-height: 18rem;
+    min-height: 13rem;
     height: auto;
     margin-top: 2rem;
     margin-left: 30%;
     border-radius: 10px;
     color: white;
     margin-bottom: 10px;
+    padding-bottom: 5px;
 }
 .AdminTitle{
     margin-top: 2rem;
@@ -68,6 +69,31 @@
 }
 .AdminForm textarea:hover{
     background-color: rgb(211, 211, 211);
+}
+.deleteButton {
+    width: 200px;
+    margin-left: 34%;
+    background-color: rgb(46, 46, 46); 
+    color: red;
+    border: none;                       
+    padding: 10px 0;      
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;        
+    display: inline-block;     
+    font-size: 16px;           
+    border-radius: 5px;        
+    cursor: pointer;           
+    transition: background-color 0.3s ease; 
+}
+.deleteButton:hover {
+    background-color: rgb(80, 80, 80);
+}
+.feedback-message p{
+    font-size: 100%;
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 5px;
 }
 @media only screen and (max-width: 600px) {
     .AdminDiv {

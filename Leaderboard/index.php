@@ -52,10 +52,17 @@ session_start();
                         }
                 ?>
                     <tr>
-                        <td><?= $place ?>.</td>
-                        <td><?= $leaderboardEntry["username"] ?></td>
-                        <td><?= $leaderboardEntry["points"] ?></td>
+                        <td onclick="ShowUserArea()"><?= $place ?>.</td>
+                        <td onclick="ShowUserArea()"><?= $leaderboardEntry["username"] ?></td>
+                        <td onclick="ShowUserArea()"><?= $leaderboardEntry["points"] ?></td>
                     </tr>
+                    <div id="UserFullArea">
+                        <div id="UserArea">
+                            <div id="UserTitle">
+                                <h2>Vai esat pārliecināti?</h2>
+                            </div>
+                        </div>
+                    </div>
                 <?php 
                     $place++; 
                     }
@@ -65,6 +72,18 @@ session_start();
                 </table>
             </div>
         </div>
+            
+        </div>
     </main>
 </body>
+<script>
+    function ShowUserArea(){
+        var ShowLogout = document.getElementById("UserArea").style.display = "block";
+        var ShowLogoutArea = document.getElementById("UserFullArea").style.display = "block";
+    }
+    function HideUserArea(){
+        var HideLogout = document.getElementById("UserArea").style.display = "none";
+        var HideLogoutArea = document.getElementById("UserFullArea").style.display = "none";
+    }
+</script>
 </html>

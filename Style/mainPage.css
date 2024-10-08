@@ -2,17 +2,107 @@
     display: flex;
     width: 90%;
     margin-left: 5%;
-    height: 30rem;
+    min-height: 26rem;
+    height: auto;
+}
+.no-tasks-message {
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    margin: 20px 0;
+    margin-top: 180px;
 }
 .ToDoList-Left {
-    border-style: solid;
     width: 60%;
-    min-height: 30rem;
+    min-height: 26rem;
+    height: auto;
+}
+.task {
+    background: rgb(68, 68, 68);
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: rgb(46, 46, 46);
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease-in-out;
+}
+.completed-task {
+    border-color: rgb(2, 224, 2);
+}
+.failed-task {
+    border: 3px solid red;
+}
+.taskArea {
+    background-color: rgb(46, 46, 46);
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 97%;
+    height: auto;
+    border-radius: 10px;
+    padding: 1px 4px 5px 4px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    color: white;
+}
+.taskBottomArea {
+    display: flex;
+}
+.CompleteButton{
+    margin-top: 4px;
+    color: rgb(2, 224, 2);
+    background-color: rgb(46, 46, 46);
+    text-align: center;        
+    display: inline-block;  
+    font-size: 16px;           
+    border-radius: 5px;
+    height: 33px;
+    padding: 0 6px;       
+    cursor: pointer;           
+    transition: background-color 0.3s ease;  
+}
+.DeleteButton{
+    margin-top: 4px;
+    color: red;
+    background-color: rgb(46, 46, 46);
+    text-align: center;        
+    display: inline-block;  
+    font-size: 16px;           
+    border-radius: 5px;
+    margin-left: 5px;   
+    height: 33px;    
+    padding: 0 6px;  
+    cursor: pointer;           
+    transition: background-color 0.3s ease;  
+}
+.DeleteButton:hover,
+.CompleteButton:hover {
+    background-color: rgb(80, 80, 80);
+}
+.timeArea {
+    background-color: rgb(46, 46, 46);
+    margin-top: 4px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 4px;
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+    padding: 1px 4px 5px 4px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    color: white;
+}
+.timeArea p,
+.taskArea p {
+    font-size: 100%; 
+    margin: 4px;
 }
 .ToDoList-Right {
     width: 30%;
     margin-left: 5%;
-    min-height: 30rem;
+    min-height: 26rem;
 }
 .ToDoList-Form {
     Width: 99%;
@@ -26,4 +116,59 @@
     padding: 10px;
     text-align: center;
     border-bottom: 2px solid rgb(24, 24, 24);
+}
+.ToDoList-Form textarea {
+    width: 80%;
+    min-height: 80px;
+    max-height: 80px;
+    max-width: 80%;
+    min-width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 7.6%;
+    border-radius: 5px;
+    font-family: 'Inter';
+    transition: background-color 0.3s ease;
+}
+.ToDoList-Form textarea:hover {
+    background-color: rgb(211, 211, 211);
+}
+.ToDoList-Form label {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+}
+.ToDoList-Form input {
+    width: 40%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 27%;
+    border-radius: 5px;
+    font-family: 'Inter';
+    transition: background-color 0.3s ease;
+}
+.ToDoList-Form input:hover {
+    background-color: rgb(211, 211, 211);
+}
+.ToDoList-Form button {
+    width: 200px;
+    margin-left: 28%;
+    background-color: #d3d3d3; 
+    border: none;                       
+    padding: 10px 0;      
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;        
+    display: inline-block;     
+    font-size: 16px;           
+    border-radius: 5px;        
+    cursor: pointer;           
+    transition: background-color 0.3s ease; 
+}
+.ToDoList-Form button:hover {
+    background-color: #c0c0c0;
+}
+.ToDoList-Form button:active {
+    background-color: #a9a9a9;
 }

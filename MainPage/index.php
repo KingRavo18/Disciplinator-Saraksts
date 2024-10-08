@@ -1,8 +1,16 @@
 <?php
-    session_start();
+session_start();
 
-    // Check if user is logged in by verifying session variables
-    if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+    require '../Database/database.php'; 
+
+    // Fetch tasks
+    $user_id = $_SESSION['id'];
+    $sql = "SELECT id, task, completeTime, is_completed FROM tasks WHERE user_id = ? ORDER BY created_at DESC";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('i', $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -29,12 +37,37 @@
             <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">DARĀMO DARBU SARAKSTS</h1>
         </div>
         <div class="ToDoList">
-            <div class="ToDoList-Left"></div>
+            <div class="ToDoList-Left">
+                <?php if ($result->num_rows > 0) { ?>
+                    <?php while ($task = $result->fetch_assoc()) { ?>
+                        <div class="task <?= $task['is_completed'] ? 'completed-task' : ''; ?>">
+                            <div class="taskArea"><p><?= htmlspecialchars($task['task']); ?></p></div>
+                            <div class="taskBottomArea">
+                                <div class="timeArea"><p>Pabeigt līdz <?= htmlspecialchars($task['completeTime']); ?></p></div>
+                                <form method="POST" action="completeTask.php" style="display: inline;">
+                                    <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
+                                    <button class="CompleteButton" <?= $task['is_completed'] ? 'disabled' : ''; ?>>Pabeigts</button>
+                                </form>
+                                <form method="POST" action="deleteTask.php" style="display: inline;">
+                                    <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
+                                    <button class="DeleteButton">Dzēst</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <p class="no-tasks-message">Nav Uzdevumu!</p>
+                <?php } ?>
+            </div>
             <div class="ToDoList-Right">
                 <div class="ToDoList-Form">
                     <div class="ToDoListTitle"><h2>PIEVIENOT DARBU</h2></div>
-                    <textarea></textarea><br>
-                    <button>Pievienot</button>
+                    <form method="POST" action="createTask.php">
+                        <textarea name="task" placeholder="Uzdevums" required></textarea><br>
+                        <label for="timeInput">Pabeigšanas Laiks (Obligāts)</label>
+                        <input type="time" name="completeTime" id="timeInput" required><br>
+                        <button>Pievienot</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -42,9 +75,9 @@
 </body>
 </html>
 <?php
-    } else {
-        // Redirect to index page if user is not logged in
-        header("Location: ../Registration/index.php");
-        exit();
-    }
+    $stmt->close();
+} else {
+    header("Location: ../Registration/index.php");
+    exit();
+}
 ?>
