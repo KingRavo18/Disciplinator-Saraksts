@@ -2,15 +2,16 @@
 session_start();
 require '../Database/database.php'; // Include your database connection
 
-// Initialize an empty message for feedback
+// Initialize an empty message for feedback and an empty array for tasks
 $message = '';
+$tasks = [];
 
+// Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if the delete user form was submitted
-    if (isset($_POST['DeleteUser'])) {
+    // Delete user form submission
+    if (isset($_POST['DeleteUser']) && !isset($_POST['SearchUser'])) {
         $usernameToDelete = trim($_POST['DeleteUser']);
 
-        // Check if the username is empty
         if (empty($usernameToDelete)) {
             $message = "Lietotājvārds nevar būt tukšs.";
         } else {
@@ -18,24 +19,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql = "DELETE FROM users WHERE username = ?";
             $stmt = $mysqli->prepare($sql);
 
-            // Check if the statement was prepared successfully
             if ($stmt) {
                 $stmt->bind_param('s', $usernameToDelete);
-
-                // Execute the query
                 if ($stmt->execute()) {
-                    // Check how many rows were affected
                     if ($stmt->affected_rows > 0) {
                         $message = "Lietotājs '$usernameToDelete' tika dzēsts.";
                     } else {
                         $message = "Lietotājs '$usernameToDelete' netika atrasts.";
                     }
                 } else {
-                    // If execute fails, show the error
                     $message = "Kļūda, dzēšot lietotāju: " . $stmt->error;
                 }
+                $stmt->close();
+            } else {
+                $message = "Kļūda, sagatavojot vaicājumu: " . $mysqli->error;
+            }
+        }
+    }
 
-                $stmt->close(); // Close the statement
+    // Search user tasks form submission
+    if (isset($_POST['SearchUser'])) {
+        $usernameToSearch = trim($_POST['SearchUser']);
+
+        if (empty($usernameToSearch)) {
+            $message = "Lietotājvārds nevar būt tukšs.";
+        } else {
+            // Prepare a statement to fetch the user's tasks
+            $sql = "SELECT t.id, t.task, t.completeTime, t.is_completed, t.is_deleted 
+                    FROM users u 
+                    JOIN tasks t ON u.id = t.user_id 
+                    WHERE u.username = ?";
+            $stmt = $mysqli->prepare($sql);
+
+            if ($stmt) {
+                $stmt->bind_param('s', $usernameToSearch);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while ($task = $result->fetch_assoc()) {
+                        $tasks[] = $task; // Store the user's tasks in an array
+                    }
+                } else {
+                    $message = "Lietotājam '$usernameToSearch' nav uzdevumu vai lietotājs netika atrasts.";
+                }
+
+                $stmt->close();
             } else {
                 $message = "Kļūda, sagatavojot vaicājumu: " . $mysqli->error;
             }
@@ -79,6 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
         </section>
+        <!-- Section to delete user -->
         <section>
             <div class="AdminDiv">
                 <div class="AdminTitle"><h2>DZĒST LIETOTĀJU</h2></div>
@@ -88,9 +118,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <button class="deleteButton">Dzēst</button>
                     </form>
                 </div>
-                <?php if ($message): ?>
+                <?php if ($message && isset($_POST['DeleteUser'])): ?>
                     <div class="feedback-message">
                         <p><?= htmlspecialchars($message); ?></p>
                     </div>
                 <?php endif; ?>
             </div>
+        </section>
+
+        <!-- Section to search for user tasks -->
+        <section>
+            <div class="AdminDiv">
+                <div class="AdminTitle"><h2>LIETOTĀJU UZDEVUMI</h2></div>
+                <div class="AdminForm">
+                    <form method="POST">
+                        <input type="text" name="SearchUser" placeholder="Ievadi Lietotājvārdu" required>
+                        <button class="adminButton">Meklēt</button>
+                    </form>
+                </div>
+            
+
+            <?php if (!empty($tasks)): ?>
+                <div class="TaskList">
+                    <h3>Uzdevumi Lietotājam: <?= htmlspecialchars($usernameToSearch); ?></h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Uzdevums</th>
+                                <th>Pabeigšanas Laiks</th>
+                                <th>Statuss</th>
+                                <th>Dzēsts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($tasks as $task): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($task['task']); ?></td>
+                                    <td><?= htmlspecialchars($task['completeTime']); ?></td>
+                                    <td><?= $task['is_completed'] ? 'Pabeigts' : 'Nepabeigts'; ?></td>
+                                    <td><?= $task['is_deleted'] ? 'Jā' : 'Nē'; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            <?php endif; ?>
+            
+            <?php if ($message && isset($_POST['SearchUser'])): ?>
+                <div class="feedback-message">
+                    <p><?= htmlspecialchars($message); ?></p>
+                </div>
+            <?php endif; ?>
+
+        </section>
+    </main>
+</body>
+</html>

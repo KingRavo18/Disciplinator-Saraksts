@@ -95,6 +95,24 @@
     margin-top: -5px;
     margin-bottom: 5px;
 }
+table {
+    width:100%;
+    margin: 30px 10px 10px 2.5%;
+    height: auto;
+}
+table, th {
+    border-style: solid;
+    background-color: rgb(87, 87, 87);;
+    width: 95%;
+    text-align: center;
+}
+table, td {
+    border-left: solid;
+    border-right: solid;
+}
+.TaskList h3{
+    text-align: center;
+}
 @media only screen and (max-width: 600px) {
     .AdminDiv {
         width: 80%;

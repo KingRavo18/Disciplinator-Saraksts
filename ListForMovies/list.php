@@ -19,7 +19,12 @@
         }
 ?>
         <article id="ListBorderColor" style="border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
-            <img class="ShowListImg" src="<?=$ListArticle["img"]?>" alt="<?=$ListArticle["title"]?> Title Image"/>
+            <div class="ListImageContainer">
+                <img class="ShowListImg" src="<?=$ListArticle["img"]?>" alt="<?=$ListArticle["title"]?> Title Image"/>
+                <div class="DeleteListEntryArea">
+                    <button onclick="deleteEntry(<?=$ListArticle['id']?>)">&#x2715;</button>
+                </div>
+            </div>
             <p class="ShowListTitle">
                 <?=$ListArticle["title"]?>
             </p>
@@ -40,3 +45,26 @@
     $stmt->close();
     $mysqli->close();
 ?>
+<script>
+function deleteEntry(movieId) {
+    if (confirm("Are you sure you want to delete this movie?")) {
+        // Create an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "delete_entry.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Define what happens on successful data submission
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                alert(xhr.responseText); // Show the response message
+                location.reload(); // Reload the page to update the list
+            } else {
+                alert("Error: Could not delete the entry.");
+            }
+        };
+
+        // Send the request with the movie ID
+        xhr.send("movie_id=" + movieId);
+    }
+}
+</script>

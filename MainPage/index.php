@@ -4,9 +4,9 @@ session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     require '../Database/database.php'; 
 
-    // Fetch tasks
+    // Fetch tasks where is_deleted is 0
     $user_id = $_SESSION['id'];
-    $sql = "SELECT id, task, completeTime, is_completed FROM tasks WHERE user_id = ? ORDER BY created_at DESC";
+    $sql = "SELECT id, task, completeTime, is_completed FROM tasks WHERE user_id = ? AND is_deleted = 0 ORDER BY created_at DESC";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
@@ -25,7 +25,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title>Disciplanators - Saraksts</title>
+    <title>Disciplinators - Saraksts</title>
 </head>
 <body>
     <?php
@@ -38,7 +38,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         </div>
         <div class="ToDoList">
             <div class="ToDoList-Left">
-                <?php if ($result->num_rows > 0) { ?>
+                <?php if ($result->num_rows > 0): ?>
                     <?php while ($task = $result->fetch_assoc()) { ?>
                         <div class="task <?= $task['is_completed'] ? 'completed-task' : ''; ?>">
                             <div class="taskArea"><p><?= htmlspecialchars($task['task']); ?></p></div>
@@ -55,9 +55,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             </div>
                         </div>
                     <?php } ?>
-                <?php } else { ?>
-                    <p class="no-tasks-message">Nav Uzdevumu!</p>
-                <?php } ?>
+                <?php else: ?>
+                    <p class="no-tasks-message">Nav uzdevumu!</p>
+                <?php endif; ?>
             </div>
             <div class="ToDoList-Right">
                 <div class="ToDoList-Form">
