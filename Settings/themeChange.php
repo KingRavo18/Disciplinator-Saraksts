@@ -17,7 +17,7 @@ if (empty($_SESSION['csrf_token'])) {
                 <span class="checkmarkRed"></span>
             </label>
             <label class="container">Zaļš
-                <input type="radio" name="page_theme" onclick="greenButton()" value="rgb(1, 102, 18)">
+                <input type="radio" name="page_theme" onclick="greenButton()" value="rgb(0, 128, 0)">
                 <span class="checkmarkGreen"></span>
             </label>
             <label class="container">Violēts

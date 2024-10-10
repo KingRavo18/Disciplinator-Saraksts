@@ -11,13 +11,13 @@
         <form method="post" action="./Footer/sendMovieData.php">
             <div class="UploadWindowWithLongInput">
                 <label>
-                    Image URL
+                    Bildes URL
                     <input type="text" class="LongInput" name="img" required/>
                 </label>
             </div>
             <div class="UploadWindowWithLongInput">
                 <label>
-                    Movie's/Show's Title
+                    Filmas/Šova Nosaukums
                     <input type="text" class="LongInput" name="title" required/>
                 </label>
             </div>
@@ -25,7 +25,7 @@
                 <div class="ReleaseDate">
                     <div class="uploadReleaseDate">
                         <label>
-                            Relase Date
+                            Izlaides Datums
                             <input type="date" class="uploadReleaseDate-input" name="release_date" required/>
                         </label>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="Developer">
                     <div class="uploadDeveloper">
                         <label>
-                            Director
+                            Režisors
                             <input type="text" class="uploadDeveloper-input" name="director" required/>
                         </label>
                     </div>
@@ -43,21 +43,21 @@
                 <div class="GameCompletion">
                     <div class="uploadGameCompletion">
                         <label>
-                            Rating
+                            Reitings
                             <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
                         </label>
                     </div>
                 </div>
             </div>
             <div class="NewEntrySubmit">
-                <button class="NewEntrySubmitButton" type="submit">Add</button>
+                <button class="NewEntrySubmitButton" type="submit">Pievienot</button>
             </div>
         </form>
     </div>
 </div>
 <!--makes the footer, inside of which is located the button for making the popup for new entries appear, appears-->
 <footer>
-    <button onclick="OpenAddContentPopup()" title="Add a new entry to this list">New Entry</button>
+    <button onclick="OpenAddContentPopup()" title="Add a new entry to this list">Jauns Ieraksts</button>
 </footer>
 <script>
 // the function which opens the popup for new entries

@@ -4,8 +4,8 @@
     }
     $user_id = $_SESSION['user_id'];
     require "../Database/database.php"; 
-    $sql = "SELECT id, img, title, release_date, director, rating 
-            FROM movies 
+    $sql = "SELECT id, img, title, release_date, author, rating 
+            FROM books 
             WHERE user_id = ? 
             ORDER BY title";
     $stmt = $mysqli->prepare($sql);
@@ -14,7 +14,7 @@
     $result = $stmt->get_result();
     
     while ($ListArticle = $result->fetch_assoc()) {
-        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["release_date"] || !$ListArticle["director"] || !$ListArticle["rating"]) {
+        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["release_date"] || !$ListArticle["author"] || !$ListArticle["rating"]) {
             die("There is an empty result. Execution has been halted");
         }
 ?>
@@ -32,7 +32,7 @@
                 Izlaides Datums: <?=$ListArticle["release_date"]?> 
             </p>
             <p class="ListArticle">
-                Režisors: <?=$ListArticle["director"]?>
+                Autors: <?=$ListArticle["author"]?>
             </p>
             <p class="ShowListRating">
                 Reitings: <?=$ListArticle["rating"]?>
@@ -46,8 +46,8 @@
     $mysqli->close();
 ?>
 <script>
-function deleteEntry(movieId) {
-    if (confirm("Are you sure you want to delete this movie?")) {
+function deleteEntry(bookId) {
+    if (confirm("Are you sure you want to delete this book?")) {
         // Create an AJAX request
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "delete_entry.php", true);
@@ -63,8 +63,8 @@ function deleteEntry(movieId) {
             }
         };
 
-        // Send the request with the movie ID
-        xhr.send("movie_id=" + movieId);
+        // Send the request with the book ID
+        xhr.send("book_id=" + bookId);
     }
 }
 </script>

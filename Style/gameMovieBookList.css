@@ -48,7 +48,7 @@ article{
     height: 1.3rem;
     background-color: rgba(255, 0, 0, 0.7);
     color: white;
-    border-radius: 50%;
+    border-radius: 10px;
     border-style: none;
     cursor: pointer;
     transition: 0.4s;

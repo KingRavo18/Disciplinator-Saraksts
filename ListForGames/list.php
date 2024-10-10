@@ -29,16 +29,16 @@
                 <?=$ListArticle["title"]?>
             </p>
             <p class="ListArticle">
-                Release Date: <?=$ListArticle["release_date"]?> 
+                Izlaides Datums: <?=$ListArticle["release_date"]?> 
             </p>
             <p class="ListArticle">
-                Developer: <?=$ListArticle["developer"]?>
+                Izstrādātājs: <?=$ListArticle["developer"]?>
             </p>
             <p class="ListArticle">
-                Game Completion: <?=$ListArticle["game_completion"]?>%
+                Spēles Pabeigšana: <?=$ListArticle["game_completion"]?>%
             </p>
             <p class="ListArticle">
-                Rating: <?=$ListArticle["rating"]?>
+                Reitings: <?=$ListArticle["rating"]?>
             </p>
         </article>
 <?php 

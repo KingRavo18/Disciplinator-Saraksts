@@ -103,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <form method="POST" action="features&news.php">
                         <input type="text" name="title" placeholder="Tēma " required><br>
                         <textarea name="info" placeholder="Informācija " required></textarea><br>
+                        <input type="hidden" name="author" value="<?= $_SESSION['username']; ?>">
                         <button class="adminButton">Pievienot</button>
                     </form>
                 </div>

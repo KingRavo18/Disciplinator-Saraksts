@@ -1,5 +1,5 @@
 <!--Style-->
-<link rel="stylesheet" href="../Style/gameListFooter.css">
+<link rel="stylesheet" href="../Style/bookListFooter.css">
 <!--A popup for new entries-->
 <div id="AddContentFullPage" class="AddContentFullPage">
     <div id="AddContentPopup" class="AddContentPopup">
@@ -8,7 +8,7 @@
             <button Onclick="closeAddContentPopup()" class="CloseAddContentButton"></button>
         </div>
     <!--FORM for submitting new list entries to the database-->
-        <form method="post" action="./Footer/sendGameData.php">
+        <form method="post" action="./Footer/sendMovieData.php">
             <div class="UploadWindowWithLongInput">
                 <label>
                     Bildes URL
@@ -17,7 +17,7 @@
             </div>
             <div class="UploadWindowWithLongInput">
                 <label>
-                    Spēles Nosaukums
+                    Grāmatas Nosaukums
                     <input type="text" class="LongInput" name="title" required/>
                 </label>
             </div>
@@ -33,8 +33,8 @@
                 <div class="Developer">
                     <div class="uploadDeveloper">
                         <label>
-                            Izstrādātājs
-                            <input type="text" class="uploadDeveloper-input" name="developer" required/>
+                            Autors
+                            <input type="text" class="uploadDeveloper-input" name="director" required/>
                         </label>
                     </div>
                 </div>
@@ -43,16 +43,8 @@
                 <div class="GameCompletion">
                     <div class="uploadGameCompletion">
                         <label>
-                            Spēles Pabeigšana (%)
-                            <input type="number" max="100" min="0" class="uploadGameCompletion-input" name="game_completion" required/>
-                        </label>
-                    </div>
-                </div>
-                <div class="GameCompletion">
-                    <div class="uploadGameCompletion">
-                        <label>
                             Reitings
-                            <div><input type="number" max="10" min="1" class="uploadGameCompletion-input" name="rating" required/></div>
+                            <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
                         </label>
                     </div>
                 </div>
