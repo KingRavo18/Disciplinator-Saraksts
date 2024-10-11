@@ -48,6 +48,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     $_SESSION['user_role'] = $row['user_role'];
                     $_SESSION['profile_picture'] = $row['profile_picture'];
                     $_SESSION['page_theme'] = $row['page_theme'];
+                    $_SESSION['page_language'] = $row['page_language'];
                     header("Location: ../MainPage/index.php");
                     exit();
                 } else {

@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="lv">
     <head>
-        <title>Disciplinators - Grāmatu Saraksts</title>
+        <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Grāmatu Saraksts' : 'Disciplinators - Book List'; ?></title>
         <meta charset="UTF-8"/>
         <meta name="author" content="Raivo Kingovskis"/>
         <meta name="description" content="The Ultimate List is a webpage for me and me only to 
@@ -28,7 +28,7 @@ session_start();
     <body>
     <main>
             <div class="PageTitle">
-                <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">GRĀMATU SARAKSTS</h1>
+                <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'GRĀMATU SARAKSTS' : 'BOOK LIST'; ?></h1>
             </div>
             <?php
                 require "../Accesories/mainPageTopBar.php";

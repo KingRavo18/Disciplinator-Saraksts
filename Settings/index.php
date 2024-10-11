@@ -113,12 +113,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <link rel="stylesheet" href="../Style/mainPageTopBar.css">
         <link rel="stylesheet" href="../Style/global.css"/>
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-        <title>Disciplinators - Iestatījumi</title>
+        <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Iestatījumi' : 'Disciplinators - Settings'; ?></title>
     </head>
     <body>
         <main>
             <div class="PageTitle">
-                <h1 id="Title" style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">IESTATĪJUMI</h1>
+                <h1 id="Title" style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'IESTATĪJUMI' : 'SETTINGS'; ?></h1>
             </div>
             <?php
                 require "../Accesories/mainPageTopBar.php";
@@ -135,7 +135,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             ?>
             <section class="SettingsPage">
                 <div class="settingsdiv">
-                    <div class="SettingsTitle"><h2>PROFILS</h2></div>
+                    <div class="SettingsTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'PROFILS' : 'PROFILE'; ?></h2></div>
                     <div class="ProfileArea1">
                         <form method="POST" enctype="multipart/form-data">
                             <div class="ProfilePicture">
@@ -146,7 +146,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                     <input type="file" name="profile_picture">
                                 </div>
                                 <div class="FileInput">
-                                    <button type="submit" name="upload_picture">Apstiprināt</button>
+                                    <button type="submit" name="upload_picture"><?= $_SESSION['page_language'] === 'lv' ? 'Apstiprināt' : 'Upload'; ?></button>
                                 </div>
                             </div>
                         </form>
@@ -158,19 +158,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <div class="ProfileArea2">
                         <div class="ChangeArea">
                             <form method="POST">
-                                <input type="text" placeholder="Jauns Lietotājvārds" name="username" required>
-                                <button type="submit">Mainīt lietotājvārdu</button>
+                                <input type="text" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns Lietotājvārds' : 'New Username'; ?>" name="username" required>
+                                <button type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt lietotājvārdu' : 'Change Username'; ?></button>
                             </form>
                         </div>
                         <div class="ChangeArea">
                             <form method="POST">
-                                <input type="email" placeholder="Jauns e-pasts" name="email" required>
-                                <button type="submit">Mainīt e-pastu</button>
+                                <input type="email" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns E-pasts' : 'New E-mail'; ?>" name="email" required>
+                                <button type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt e-pastu' : 'Change E-mail'; ?></button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <?php require "themeChange.php"; ?>
+                <div class="settingsThemediv">
+                    <?php require "themeChange.php"; ?>
+                    <?php require "languageChange.php"; ?>
+                </div>
             </section>
         </main>
     </body>

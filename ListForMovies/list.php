@@ -29,13 +29,13 @@
                 <?=$ListArticle["title"]?>
             </p>
             <p class="ListArticle">
-                Izlaides Datums: <?=$ListArticle["release_date"]?> 
+                <?= $_SESSION['page_language'] === 'lv' ? 'Izlaides Datums:' : 'Release Date:'; ?> <?=$ListArticle["release_date"]?> 
             </p>
             <p class="ListArticle">
-                Režisors: <?=$ListArticle["director"]?>
+                <?= $_SESSION['page_language'] === 'lv' ? 'Režisors:' : 'Director:'; ?> <?=$ListArticle["director"]?>
             </p>
             <p class="ShowListRating">
-                Reitings: <?=$ListArticle["rating"]?>
+                <?= $_SESSION['page_language'] === 'lv' ? 'Reitings:' : 'Rating:'; ?> <?=$ListArticle["rating"]?>
             </p>
         </article>
 <?php 
@@ -47,7 +47,7 @@
 ?>
 <script>
 function deleteEntry(movieId) {
-    if (confirm("Are you sure you want to delete this movie?")) {
+    if (confirm($_SESSION['page_language'] === 'lv' ? 'Vai esat pārliecināts, ka vēlaties dzēst šo filmu?' : 'Are you sure you want to delete this movie?'; )) {
         // Create an AJAX request
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "delete_entry.php", true);

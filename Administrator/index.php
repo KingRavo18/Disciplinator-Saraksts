@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title>Disciplinators - Admin Logs</title>
+    <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Admin Logs' : 'Disciplinators - Admin Window'; ?></title>
 </head>
 <body>
     <?php
@@ -94,17 +94,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ?>
     <main>
         <div class="PageTitle">
-            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">ADMINISTRATORA LOGS</h1>
+            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - ADMINISTRATORA LOGS' : 'ADMINISTRATOR WINDOW'; ?></h1>
         </div>
         <section>
             <div class="AdminDiv">
-                <div class="AdminTitle"><h2>FUNKCIJAS UN JAUNUMI</h2></div>
+                <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'FUNKCIJAS UN JAUNUMI' : 'FUNCTIONS AND NEWS'; ?></h2></div>
                 <div class="AdminForm">
                     <form method="POST" action="features&news.php">
-                        <input type="text" name="title" placeholder="Tēma " required><br>
-                        <textarea name="info" placeholder="Informācija " required></textarea><br>
+                        <input type="text" name="title" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Tēma ' : 'Subject '; ?>" required><br>
+                        <textarea name="info" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Informācija' : 'Information'; ?>" required></textarea><br>
                         <input type="hidden" name="author" value="<?= $_SESSION['username']; ?>">
-                        <button class="adminButton">Pievienot</button>
+                        <button class="adminButton"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
                     </form>
                 </div>
             </div>
@@ -112,11 +112,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Section to delete user -->
         <section>
             <div class="AdminDiv">
-                <div class="AdminTitle"><h2>DZĒST LIETOTĀJU</h2></div>
+                <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'DZĒST LIETOTĀJU' : 'DELETE USER'; ?></h2></div>
                 <div class="AdminForm">
                     <form method="POST">
-                        <input type="text" name="DeleteUser" placeholder="Ievadi Lietotājvārdu" required>
-                        <button class="deleteButton">Dzēst</button>
+                        <input type="text" name="DeleteUser" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
+                        <button class="deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
                     </form>
                 </div>
                 <?php if ($message && isset($_POST['DeleteUser'])): ?>
@@ -130,25 +130,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Section to search for user tasks -->
         <section>
             <div class="AdminDiv">
-                <div class="AdminTitle"><h2>LIETOTĀJU UZDEVUMI</h2></div>
+                <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'LIETOTĀJU UZDEVUMI' : 'USER TASKS'; ?></h2></div>
                 <div class="AdminForm">
                     <form method="POST">
-                        <input type="text" name="SearchUser" placeholder="Ievadi Lietotājvārdu" required>
-                        <button class="adminButton">Meklēt</button>
+                        <input type="text" name="SearchUser" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
+                        <button class="adminButton"><?= $_SESSION['page_language'] === 'lv' ? 'Meklēt' : 'Search'; ?></button>
                     </form>
                 </div>
             
 
             <?php if (!empty($tasks)): ?>
                 <div class="TaskList">
-                    <h3>Uzdevumi Lietotājam: <?= htmlspecialchars($usernameToSearch); ?></h3>
+                    <h3><?= $_SESSION['page_language'] === 'lv' ? 'Uzdevumi Lietotājam' : 'Tasks for the User'; ?><?= htmlspecialchars($usernameToSearch); ?></h3>
                     <table>
                         <thead>
                             <tr>
-                                <th>Uzdevums</th>
-                                <th>Pabeigšanas Laiks</th>
-                                <th>Statuss</th>
-                                <th>Dzēsts</th>
+                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Uzdevumus' : 'Tasks'; ?></th>
+                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigšanas Laiks' : 'Finish Time'; ?></th>
+                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Statuss' : 'Status'; ?></th>
+                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Dzēsts' : 'Deleted'; ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -156,8 +156,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <tr>
                                     <td><?= htmlspecialchars($task['task']); ?></td>
                                     <td><?= htmlspecialchars($task['completeTime']); ?></td>
-                                    <td><?= $task['is_completed'] ? 'Pabeigts' : 'Nepabeigts'; ?></td>
-                                    <td><?= $task['is_deleted'] ? 'Jā' : 'Nē'; ?></td>
+                                    <td><?= $task['is_completed'] ? 'Finished' : 'Not Finished'; ?></td>
+                                    <td><?= $task['is_deleted'] ? 'Yes' : 'No'; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

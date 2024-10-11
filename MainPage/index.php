@@ -25,7 +25,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title>Disciplinators - Saraksts</title>
+    <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Darbu Saraksts' : 'Disciplinators - To Do List'; ?></title>
 </head>
 <body>
     <?php
@@ -34,7 +34,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     ?>
     <main>
         <div class="PageTitle">
-            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">DARĀMO DARBU SARAKSTS</h1>
+            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'DARĀMO DARBU SARAKSTS' : 'TO DO LIST'; ?></h1>
         </div>
         <div class="ToDoList">
             <div class="ToDoList-Left">
@@ -43,30 +43,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <div class="task <?= $task['is_completed'] ? 'completed-task' : ''; ?>">
                             <div class="taskArea"><p><?= htmlspecialchars($task['task']); ?></p></div>
                             <div class="taskBottomArea">
-                                <div class="timeArea"><p>Pabeigt līdz <?= htmlspecialchars($task['completeTime']); ?></p></div>
+                                <div class="timeArea"><p><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigt līdz' : 'Finish By'; ?> <?= htmlspecialchars($task['completeTime']); ?></p></div>
                                 <form method="POST" action="completeTask.php" style="display: inline;">
                                     <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                    <button class="CompleteButton" <?= $task['is_completed'] ? 'disabled' : ''; ?>>Pabeigts</button>
+                                    <button class="CompleteButton" <?= $task['is_completed'] ? 'disabled' : ''; ?>><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigts' : 'Finished'; ?></button>
                                 </form>
                                 <form method="POST" action="deleteTask.php" style="display: inline;">
                                     <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                    <button class="DeleteButton">Dzēst</button>
+                                    <button class="DeleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
                                 </form>
                             </div>
                         </div>
                     <?php } ?>
                 <?php else: ?>
-                    <p class="no-tasks-message">Nav uzdevumu!</p>
+                    <p class="no-tasks-message"><?= $_SESSION['page_language'] === 'lv' ? 'Nav Uzdevumu!' : 'No Tasks'; ?></p>
                 <?php endif; ?>
             </div>
             <div class="ToDoList-Right">
                 <div class="ToDoList-Form">
-                    <div class="ToDoListTitle"><h2>PIEVIENOT DARBU</h2></div>
+                    <div class="ToDoListTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'PIEVIENOT DARBU' : 'ADD TASK'; ?></h2></div>
                     <form method="POST" action="createTask.php">
-                        <textarea name="task" placeholder="Uzdevums" required></textarea><br>
-                        <label for="timeInput">Pabeigšanas Laiks (Obligāts)</label>
+                        <textarea name="task" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Uzdevums' : 'Task'; ?>" required></textarea><br>
+                        <label for="timeInput"><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigšanas Laiks (Obligāts)' : 'Finish Time (Manditory)'; ?></label>
                         <input type="time" name="completeTime" id="timeInput" required><br>
-                        <button>Pievienot</button>
+                        <button><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
                     </form>
                 </div>
             </div>

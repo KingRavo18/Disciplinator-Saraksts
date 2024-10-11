@@ -29,16 +29,16 @@
                 <?=$ListArticle["title"]?>
             </p>
             <p class="ListArticle">
-                Izlaides Datums: <?=$ListArticle["release_date"]?> 
+            <?= $_SESSION['page_language'] === 'lv' ? 'Izlaides Datums:' : 'Release Date:'; ?> <?=$ListArticle["release_date"]?> 
             </p>
             <p class="ListArticle">
-                Izstrādātājs: <?=$ListArticle["developer"]?>
+            <?= $_SESSION['page_language'] === 'lv' ? 'Izstrādātājs:' : 'Producer:'; ?> <?=$ListArticle["developer"]?>
             </p>
             <p class="ListArticle">
-                Spēles Pabeigšana: <?=$ListArticle["game_completion"]?>%
+            <?= $_SESSION['page_language'] === 'lv' ? 'Spēles Pabeigšana: ' : 'Game Completion:'; ?> <?=$ListArticle["game_completion"]?>%
             </p>
             <p class="ListArticle">
-                Reitings: <?=$ListArticle["rating"]?>
+            <?= $_SESSION['page_language'] === 'lv' ? 'Reitings:' : 'Rating:'; ?> <?=$ListArticle["rating"]?>
             </p>
         </article>
 <?php 

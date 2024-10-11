@@ -29,13 +29,13 @@
                 <?=$ListArticle["title"]?>
             </p>
             <p class="ListArticle">
-                Izlaides Datums: <?=$ListArticle["release_date"]?> 
+                <?= $_SESSION['page_language'] === 'lv' ? 'Izlaides Datums:' : 'Release Date:'; ?> <?=$ListArticle["release_date"]?> 
             </p>
             <p class="ListArticle">
-                Autors: <?=$ListArticle["author"]?>
+                <?= $_SESSION['page_language'] === 'lv' ? 'Autors:' : 'Author:'; ?> <?=$ListArticle["author"]?>
             </p>
             <p class="ShowListRating">
-                Reitings: <?=$ListArticle["rating"]?>
+                <?= $_SESSION['page_language'] === 'lv' ? 'Reitings:' : 'Rating:'; ?> <?=$ListArticle["rating"]?>
             </p>
         </article>
 <?php 

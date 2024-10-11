@@ -14,12 +14,12 @@ session_start();
     <link rel="stylesheet" href="../Style/mainPageTopBar.css">
     <link rel="stylesheet" href="../Style/global.css"/>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title>Disciplinators - Līderu Saraksts</title>
+    <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Līderu Saraksts' : 'Disciplinators - Leaderboard'; ?></title>
 </head>
 <body>
     <main>
         <div class="PageTitle">
-            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">LĪDERU SARAKSTS</h1>
+            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'LĪDERU SARAKSTS' : 'LEADERBOARD'; ?></h1>
         </div>
         <?php
             require "../Accesories/mainPageTopBar.php";
@@ -29,9 +29,9 @@ session_start();
             <div class="LeaderTable">
                 <table>
                     <tr>
-                        <th class="TableOne">Place</th>
-                        <th class="TableTwo">Username</th>
-                        <th class="TableThree">Point Count</th>
+                        <th class="TableOne"><?= $_SESSION['page_language'] === 'lv' ? 'Vieta' : 'Place'; ?></th>
+                        <th class="TableTwo"><?= $_SESSION['page_language'] === 'lv' ? 'Lietotājvārds' : 'Username'; ?></th>
+                        <th class="TableThree"><?= $_SESSION['page_language'] === 'lv' ? 'Punktu Skaits' : 'Point Count'; ?></th>
                     </tr>
                 <?php 
                     $place = 1;
