@@ -1,5 +1,6 @@
 <div class="sidebar" id="sidebar" style="background-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
     <ul>
+        <li><a href="../Home/Index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">home</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Māja' : 'Home'; ?></span></a></li>
         <li><a href="../MainPage/Index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">lists</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Darāmo Darbu Saraksts' : 'To Do List'; ?></span></a></li>
         <li><a href="../ListForGames/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">sports_esports</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Vidiospēļu Saraksts' : 'Videogame List'; ?></span></a></li>
         <li><a href="../ListForBooks/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="ToDoList">book_ribbon</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Grāmatu Saraksts' : ' Book List'; ?></span></a></li>

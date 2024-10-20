@@ -1,12 +1,10 @@
 <?php
 session_start();
-
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     require '../Database/database.php'; 
-
     // Fetch tasks where is_deleted is 0
     $user_id = $_SESSION['id'];
-    $sql = "SELECT id, task, completeTime, is_completed FROM tasks WHERE user_id = ? AND is_deleted = 0 ORDER BY created_at DESC";
+    $sql = "SELECT id, task, completeTime, is_completed, is_failed FROM tasks WHERE user_id = ? AND is_deleted = 0 ORDER BY created_at DESC";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
@@ -40,18 +38,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <div class="ToDoList-Left">
                 <?php if ($result->num_rows > 0): ?>
                     <?php while ($task = $result->fetch_assoc()) { ?>
-                        <div class="task <?= $task['is_completed'] ? 'completed-task' : ''; ?>">
+                        <div class="task <?= $task['is_completed'] ? 'completed-task' : ($task['is_failed'] ? 'failed-task' : ''); ?>">
                             <div class="taskArea"><p><?= htmlspecialchars($task['task']); ?></p></div>
                             <div class="taskBottomArea">
-                                <div class="timeArea"><p><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigt līdz' : 'Finish By'; ?> <?= htmlspecialchars($task['completeTime']); ?></p></div>
-                                <form method="POST" action="completeTask.php" style="display: inline;">
-                                    <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                    <button class="CompleteButton" <?= $task['is_completed'] ? 'disabled' : ''; ?>><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigts' : 'Finished'; ?></button>
-                                </form>
-                                <form method="POST" action="deleteTask.php" style="display: inline;">
-                                    <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                    <button class="DeleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
-                                </form>
+                                <div class="timeArea">
+                                    <p><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigt līdz' : 'Finish By'; ?> <?= htmlspecialchars($task['completeTime']); ?></p>
+                                </div>
+                                <!-- If the task is neither completed nor failed, show the Complete and Fail buttons -->
+                                <?php if (!$task['is_completed'] && !$task['is_failed']): ?>
+                                    <form method="POST" action="completeTask.php" style="display: inline;">
+                                        <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
+                                        <button class="CompleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigts' : 'Finished'; ?></button>
+                                    </form>
+                                    <form method="POST" action="failedTask.php" style="display: inline;">
+                                        <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
+                                        <button class="DeleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Nepabeigts' : 'Not Finished'; ?></button>
+                                    </form>
+                                <?php endif; ?>
+                                <!-- If the task is either completed or failed, show the Delete button -->
+                                <?php if ($task['is_completed'] || $task['is_failed']): ?>
+                                    <form method="POST" action="deleteTask.php" style="display: inline;">
+                                        <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
+                                        <button class="DeleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
+                                    </form>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php } ?>

@@ -1,12 +1,13 @@
 article{
     float: left;
-    height: auto;
+    height: 25rem;
     padding-bottom: 20px;
     width: 25%;
     margin: 2.4rem 4.28rem;
     border-radius: 10px;
     border: 0.15rem solid navy;
     background: rgb(68, 68, 68);
+    cursor: pointer;
     color: white;
 }
 .ListImageContainer {
@@ -78,6 +79,56 @@ article{
 }
 .ShowListDescription:hover .ShowListDescription-Content {
     display: block;
+}
+/* POPUP */
+.BookListFullPage{    
+    position: fixed;
+    display: none;
+    top: 0;
+    width:  100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.BookListPopup{
+    position: fixed;
+    display: none;
+    margin-bottom: -10px;
+    height: 90%;
+    width: 30%;
+    bottom: 10%;
+    left: 35%;
+    background: rgb(68, 68, 68);
+    color: white;
+    border: 0.15rem solid rgb(155, 155, 155);  
+    z-index: 7;
+}
+.fileslot {
+    width: 70%;
+    margin-left: 15%;
+    height: 33rem;
+    margin-bottom: 10px;
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bookfileupload{
+    display: block;
+    width: 200px;
+    background-color: #d3d3d3;
+    border: none; 
+    color: black;
+    margin: auto;
+    padding: 0.7rem;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.specListTitle p{
+    border: none;
 }
 @media only screen and (max-width: 1400px) {
     .ListArticle{

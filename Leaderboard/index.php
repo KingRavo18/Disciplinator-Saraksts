@@ -38,14 +38,11 @@ session_start();
                     if (!isset($_SESSION['user_id'])) {
                         die("You must be logged in to view the leaderboard.");
                     }
-
                     require "../Database/database.php"; 
-
                     $sql = "SELECT username, points FROM users ORDER BY points DESC";
                     $stmt = $mysqli->prepare($sql);
                     $stmt->execute();
                     $result = $stmt->get_result();
-
                     while ($leaderboardEntry = $result->fetch_assoc()) {
                         if (!$leaderboardEntry["username"]) {
                             die("There is an empty result. Execution has been halted.");
@@ -72,7 +69,6 @@ session_start();
                 </table>
             </div>
         </div>
-            
         </div>
     </main>
 </body>

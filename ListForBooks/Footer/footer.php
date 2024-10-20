@@ -8,7 +8,7 @@
             <button Onclick="closeAddContentPopup()" class="CloseAddContentButton"></button>
         </div>
     <!--FORM for submitting new list entries to the database-->
-        <form method="post" action="./Footer/sendMovieData.php">
+        <form method="post" action="footer/sendBookData.php">
             <div class="UploadWindowWithLongInput">
                 <label>
                     <?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>
@@ -34,7 +34,7 @@
                     <div class="uploadDeveloper">
                         <label>
                             <?= $_SESSION['page_language'] === 'lv' ? 'Autors' : 'Author'; ?>
-                            <input type="text" class="uploadDeveloper-input" name="director" required/>
+                            <input type="text" class="uploadDeveloper-input" name="author" required/>
                         </label>
                     </div>
                 </div>
@@ -45,6 +45,19 @@
                         <label>
                             <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
                             <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="uploadDeveloperAndGameCompletion">
+                <div class="GameCompletion">
+                    <div class="uploadGameCompletion">
+                        <label>
+                            <?= $_SESSION['page_language'] === 'lv' ? 'Statuss' : 'Status'; ?>
+                            <select name="status" class="LongInput" required>
+                                <option value="solo">Solo</option>
+                                <option value="collection"><?= $_SESSION['page_language'] === 'lv' ? 'Kolekcija' : 'Collection'; ?></option>
+                            </select>
                         </label>
                     </div>
                 </div>

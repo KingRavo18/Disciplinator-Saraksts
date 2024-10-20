@@ -9,12 +9,10 @@ const visibilityBtn1 = document.getElementById("visibilityBtn-1")
 visibilityBtn1.addEventListener("click", function() {
     toggleVisibility("password-1", "icon-1")
 })
-
 const visibilityBtn2 = document.getElementById("visibilityBtn-2")
 visibilityBtn2.addEventListener("click", function() {
     toggleVisibility("password-2", "icon-2")
 })
-
 function toggleVisibility(passwordId, iconId) {
     const passwordInput = document.getElementById(passwordId)
     const icon = document.getElementById(iconId)
@@ -28,13 +26,11 @@ function toggleVisibility(passwordId, iconId) {
 }
 window.addEventListener('load', function() {
     const url = new URL(window.location);
-    
     // Check and remove 'login_error'
     if (url.searchParams.has('login_error')) {
         url.searchParams.delete('login_error');
         window.history.replaceState(null, null, url);
     }
-
     // Check and remove 'signup_error'
     if (url.searchParams.has('signup_error')) {
         url.searchParams.delete('signup_error');

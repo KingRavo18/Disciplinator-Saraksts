@@ -175,6 +175,9 @@ footer button:hover {
 .uploadReleaseDate-input {
     padding: 5px;
 }
+.uploadGameCompletion select {
+    width: 94%;
+}
 /* makes the screen compatible with mobile devices*/
 @media only screen and (max-width: 600px) {
     footer button{

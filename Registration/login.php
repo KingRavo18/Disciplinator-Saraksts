@@ -1,9 +1,7 @@
 <?php
 session_start();
 include "../Database/database.php";
-
 if (isset($_POST['username']) && isset($_POST['password'])) {
-
     // Function to validate input data
     function validate($data) {
         $data = trim($data);
@@ -11,10 +9,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $data = htmlspecialchars($data);
         return $data;
     }
-
     $username = validate($_POST['username']);
     $pass = validate($_POST['password']);
-
     // Check for empty input fields
     if (empty($username)) {
         header("Location: index.php?login_error=Lietotājvārds ir nepieciešams");
@@ -26,17 +22,14 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         // Use a prepared statement to prevent SQL injection
         $sql = "SELECT * FROM users WHERE username=?";
         $stmt = mysqli_prepare($mysqli, $sql);
-
         if ($stmt) {
             // Bind parameters and execute the statement
             mysqli_stmt_bind_param($stmt, "s", $username);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
-
             // Check if a matching user is found
             if (mysqli_num_rows($result) === 1) {
                 $row = mysqli_fetch_assoc($result);
-
                 // Verify the password using password_verify()
                 if (password_verify($pass, $row['password'])) {
                     // Successful login
@@ -49,7 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     $_SESSION['profile_picture'] = $row['profile_picture'];
                     $_SESSION['page_theme'] = $row['page_theme'];
                     $_SESSION['page_language'] = $row['page_language'];
-                    header("Location: ../MainPage/index.php");
+                    header("Location: ../Home/index.php");
                     exit();
                 } else {
                     header("Location: index.php?login_error=Nepareizs lietotājvārds vai parole");

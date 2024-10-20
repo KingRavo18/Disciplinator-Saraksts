@@ -12,7 +12,6 @@
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    
     while ($ListArticle = $result->fetch_assoc()) {
         if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["release_date"] || !$ListArticle["director"] || !$ListArticle["rating"]) {
             die("There is an empty result. Execution has been halted");
@@ -40,7 +39,6 @@
         </article>
 <?php 
     }
-
     // Close the statement and connection
     $stmt->close();
     $mysqli->close();
@@ -52,7 +50,6 @@ function deleteEntry(movieId) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "delete_entry.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
         // Define what happens on successful data submission
         xhr.onload = function () {
             if (xhr.status === 200) {
@@ -62,7 +59,6 @@ function deleteEntry(movieId) {
                 alert("Error: Could not delete the entry.");
             }
         };
-
         // Send the request with the movie ID
         xhr.send("movie_id=" + movieId);
     }

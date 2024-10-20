@@ -1,15 +1,12 @@
 <?php
 session_start();
 require '../Database/database.php'; // Assuming you have a file to connect to the database
-
 // CSRF Token generation and validation
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
-
 // Check if the session has the necessary variables set
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
-
     // Function to update user data
     function updateUserData($mysqli, $column, $value, $userId) {
         $stmt = $mysqli->prepare("UPDATE users SET $column = ? WHERE id = ?");
@@ -19,17 +16,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         }
         return false;
     }
-
     // Handling form submission for changing username, email, and profile picture
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
         // CSRF protection
         if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
             $_SESSION['error'] = "CSRF token validation failed";
             header("Location: settings.php");
             exit();
         }
-
         // Handling username update
         if (isset($_POST['username'])) {
             $new_username = htmlspecialchars(trim($_POST['username']));
@@ -42,7 +36,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 }
             }
         }
-
         // Handling email update
         if (isset($_POST['email'])) {
             $new_email = htmlspecialchars(trim($_POST['email']));
@@ -57,24 +50,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 $_SESSION['error'] = "Lūdzu, ievadiet derīgu e-pasta adresi.";
             }
         }
-
         // Handling profile picture upload
         if (isset($_POST['upload_picture'])) {
             if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === 0) {
                 $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
                 $file_type = $_FILES['profile_picture']['type'];
-
                 if (in_array($file_type, $allowed_types)) {
                     // Define where the image will be saved
                     $uploads_dir = '../ImageUploads/profile_pictures/';
                     if (!is_dir($uploads_dir)) {
                         mkdir($uploads_dir, 0777, true); // Create directory if it doesn't exist
                     }
-
                     // Create a unique filename to prevent overwriting
                     $file_extension = pathinfo($_FILES['profile_picture']['name'], PATHINFO_EXTENSION);
                     $new_filename = $_SESSION['id'] . '_' . time() . '.' . $file_extension;
-
                     // Move the uploaded file to the uploads directory
                     $file_path = $uploads_dir . $new_filename;
                     if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $file_path)) {
@@ -94,11 +83,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 $_SESSION['error'] = "Neizdevās augšupielādēt profila bildi.";
             }
         }
-
         header("Location: settings.php");
         exit();
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -123,7 +110,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <?php
                 require "../Accesories/mainPageTopBar.php";
                 require "../Accesories/sidebar.php";
-
                 if (isset($_SESSION['error'])) {
                     echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
                     unset($_SESSION['error']);

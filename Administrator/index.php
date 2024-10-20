@@ -1,24 +1,20 @@
 <?php
 session_start();
 require '../Database/database.php'; // Include your database connection
-
 // Initialize an empty message for feedback and an empty array for tasks
 $message = '';
 $tasks = [];
-
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Delete user form submission
     if (isset($_POST['DeleteUser']) && !isset($_POST['SearchUser'])) {
         $usernameToDelete = trim($_POST['DeleteUser']);
-
         if (empty($usernameToDelete)) {
             $message = "Lietotājvārds nevar būt tukšs.";
         } else {
             // Prepare a statement to delete the user
             $sql = "DELETE FROM users WHERE username = ?";
             $stmt = $mysqli->prepare($sql);
-
             if ($stmt) {
                 $stmt->bind_param('s', $usernameToDelete);
                 if ($stmt->execute()) {
@@ -36,11 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-
     // Search user tasks form submission
     if (isset($_POST['SearchUser'])) {
         $usernameToSearch = trim($_POST['SearchUser']);
-
         if (empty($usernameToSearch)) {
             $message = "Lietotājvārds nevar būt tukšs.";
         } else {
@@ -50,12 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     JOIN tasks t ON u.id = t.user_id 
                     WHERE u.username = ?";
             $stmt = $mysqli->prepare($sql);
-
             if ($stmt) {
                 $stmt->bind_param('s', $usernameToSearch);
                 $stmt->execute();
                 $result = $stmt->get_result();
-
                 if ($result->num_rows > 0) {
                     while ($task = $result->fetch_assoc()) {
                         $tasks[] = $task; // Store the user's tasks in an array
@@ -63,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     $message = "Lietotājam '$usernameToSearch' nav uzdevumu vai lietotājs netika atrasts.";
                 }
-
                 $stmt->close();
             } else {
                 $message = "Kļūda, sagatavojot vaicājumu: " . $mysqli->error;
@@ -126,7 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
             </div>
         </section>
-
         <!-- Section to search for user tasks -->
         <section>
             <div class="AdminDiv">
@@ -137,8 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <button class="adminButton"><?= $_SESSION['page_language'] === 'lv' ? 'Meklēt' : 'Search'; ?></button>
                     </form>
                 </div>
-            
-
             <?php if (!empty($tasks)): ?>
                 <div class="TaskList">
                     <h3><?= $_SESSION['page_language'] === 'lv' ? 'Uzdevumi Lietotājam' : 'Tasks for the User'; ?><?= htmlspecialchars($usernameToSearch); ?></h3>
@@ -165,13 +153,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 </div>
             <?php endif; ?>
-            
             <?php if ($message && isset($_POST['SearchUser'])): ?>
                 <div class="feedback-message">
                     <p><?= htmlspecialchars($message); ?></p>
                 </div>
             <?php endif; ?>
-
         </section>
     </main>
 </body>
