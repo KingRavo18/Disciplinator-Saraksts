@@ -13,12 +13,17 @@
     $stmt->execute();
     $result = $stmt->get_result();
     while ($ListArticle = $result->fetch_assoc()) {
-        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["release_date"] || !$ListArticle["author"] || !$ListArticle["rating"]) {
-            die("There is an empty result. Execution has been halted");
-        }
+        // Fetch the current PDF file path for this book (if any)
+        $sqlFile = "SELECT file_path FROM bookfile WHERE book_id = ?";
+        $stmtFile = $mysqli->prepare($sqlFile);
+        $stmtFile->bind_param("i", $ListArticle['id']);
+        $stmtFile->execute();
+        $stmtFile->bind_result($file_path);
+        $stmtFile->fetch();
+        $stmtFile->close();
 ?>
         <article id="ListBorderColor" 
-            onclick="OpenBookList('<?=$ListArticle['title']?>', '<?=$ListArticle['id']?>')"  
+            onclick="OpenBookList('<?=$ListArticle['title']?>', '<?=$ListArticle['id']?>', '<?=$file_path?>')"  
             style="border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
             <div class="ListImageContainer">
                 <img class="ShowListImg" src="<?=$ListArticle['img']?>" alt="<?=$ListArticle["title"]?> Title Image"/>
@@ -49,8 +54,10 @@
                 <form action="upload_bookfile.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="book_id" id="book_id"> <!-- Hidden book_id field -->
                     <div class="fileslot">
-                        <input type="file" class="bookfileupload" name="file" accept=".pdf" required>
+                        <canvas id="pdf-canvas"></canvas> <!-- The canvas fills the fileslot -->
                     </div>
+                    <!-- File input is placed below the fileslot -->
+                    <input type="file" class="bookfileupload" name="file" accept=".pdf" required onchange="previewPDF(this)">
                     <button class="NewEntrySubmitButton" type="submit">
                         <?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?>
                     </button>
@@ -59,9 +66,6 @@
         </div> 
 <?php 
     }
-    // Close the statement and connection
-    $stmt->close();
-    $mysqli->close();
 ?>
 <script>
 function deleteEntry(bookId) {
@@ -84,7 +88,52 @@ function deleteEntry(bookId) {
     }
 }
 
-function OpenBookList(title, bookId) {
+// Function to preview the first page of the PDF
+function previewPDF(input) {
+    const file = input.files[0];
+    const canvas = document.getElementById('pdf-canvas');
+    const context = canvas.getContext('2d');
+    
+    // Clear any existing canvas content before rendering a new PDF
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Hide canvas if no valid PDF file is selected
+    if (!file || file.type !== 'application/pdf') {
+        canvas.style.display = 'none';
+        return;
+    }
+    
+    // Show canvas if a valid PDF is selected
+    canvas.style.display = 'block';
+
+    const fileReader = new FileReader();
+    fileReader.onload = function () {
+        const typedArray = new Uint8Array(this.result);
+
+        // Load the PDF file using pdf.js
+        pdfjsLib.getDocument(typedArray).promise.then(function (pdf) {
+            // Get the first page of the PDF
+            pdf.getPage(1).then(function (page) {
+                const viewport = page.getViewport({ scale: 1 });
+
+                // Adjust canvas size to fit the page's dimensions
+                canvas.width = canvas.clientWidth; // Full width of the slot
+                canvas.height = canvas.clientHeight; // Full height of the slot
+
+                // Render the new PDF page onto the canvas
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    };
+
+    fileReader.readAsArrayBuffer(file);
+}
+
+function OpenBookList(title, bookId, filePath) {
     // Get the elements where the information will be updated
     var BookListPopup = document.getElementById("BookListPopup");
     
@@ -95,6 +144,50 @@ function OpenBookList(title, bookId) {
     // Show the popup
     document.getElementById("BookListFullPage").style.display = "block";
     BookListPopup.style.display = "block";
+    
+    // If there's an existing PDF file, load it into the canvas
+    if (filePath) {
+        loadExistingPDF(filePath);
+    } else {
+        clearPDFPreview(); // Clear the canvas if no PDF is present
+    }
+}
+
+function loadExistingPDF(filePath) {
+    const canvas = document.getElementById('pdf-canvas');
+    const context = canvas.getContext('2d');
+    
+    // Clear any existing canvas content before rendering a new PDF
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Hide canvas if no valid PDF file is selected
+    canvas.style.display = 'block';
+
+    // Load the PDF file using pdf.js
+    pdfjsLib.getDocument(filePath).promise.then(function (pdf) {
+        // Get the first page of the PDF
+        pdf.getPage(1).then(function (page) {
+            const viewport = page.getViewport({ scale: 1 });
+
+            // Adjust canvas size to fit the page's dimensions
+            canvas.width = canvas.clientWidth; // Full width of the slot
+            canvas.height = canvas.clientHeight; // Full height of the slot
+
+            // Render the new PDF page onto the canvas
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+            page.render(renderContext);
+        });
+    });
+}
+
+function clearPDFPreview() {
+    const canvas = document.getElementById('pdf-canvas');
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.style.display = 'none'; // Hide the canvas if no PDF to show
 }
 
 function CloseBookList() {

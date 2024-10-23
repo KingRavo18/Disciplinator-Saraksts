@@ -8,6 +8,8 @@
     border-radius: 10px;
     color: white;
     margin-bottom: 10px;
+    border: 3px solid;
+    border-color: rgb(46, 46, 46);
 }
 .LeaderTable {
     width:100%;

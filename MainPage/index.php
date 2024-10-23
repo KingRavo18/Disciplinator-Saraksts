@@ -2,8 +2,19 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     require '../Database/database.php'; 
-    // Fetch tasks where is_deleted is 0
     $user_id = $_SESSION['id'];
+
+    // Step 1: Check and update overdue tasks
+    $currentTime = date('Y-m-d H:i:s'); // Current date and time
+
+    // Mark tasks as failed if their completeTime has passed and they are not yet completed or failed
+    $sql_update_overdue = "UPDATE tasks SET is_failed = 1 WHERE completeTime < ? AND is_completed = 0 AND is_failed = 0 AND user_id = ?";
+    $stmt_update_overdue = $mysqli->prepare($sql_update_overdue);
+    $stmt_update_overdue->bind_param('si', $currentTime, $user_id);
+    $stmt_update_overdue->execute();
+    $stmt_update_overdue->close();
+
+    // Fetch tasks where is_deleted is 0 (after possibly updating some as failed)
     $sql = "SELECT id, task, completeTime, is_completed, is_failed FROM tasks WHERE user_id = ? AND is_deleted = 0 ORDER BY created_at DESC";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $user_id);
@@ -75,7 +86,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <form method="POST" action="createTask.php">
                         <textarea name="task" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Uzdevums' : 'Task'; ?>" required></textarea><br>
                         <label for="timeInput"><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigšanas Laiks (Obligāts)' : 'Finish Time (Manditory)'; ?></label>
-                        <input type="time" name="completeTime" id="timeInput" required><br>
+                        <input type="datetime-local" name="completeTime" id="timeInput" required><br>
                         <button><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
                     </form>
                 </div>

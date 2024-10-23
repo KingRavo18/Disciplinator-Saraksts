@@ -20,7 +20,7 @@
             <div class="OpenFeatures"><button onclick="FeatureSidebar()">Lapas Funkcijas</button></div>
             <div class="PageTitle"><h1>DISCIPLINATORS</h1></div>
             <div class="InputWindows">
-                <div class="Explanation"><p>Pieslēdzaties un brīvi izmantojiet dažādus sarakstus.</p></div>  
+                <div class="Explanation"><p>Šī mājaslapa piedāvā lietotājam ērtu pieju dažādiem sarakstiem vienā mājaslapā.</p></div>  
                 <div class="Registration">
                     <div class="RegistrationTitle"><h2>PIESLĒGTIES</h2></div>
                     <form action="login.php" method="POST">
