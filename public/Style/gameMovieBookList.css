@@ -1,0 +1,257 @@
+article{
+    float: left;
+    height: 25rem;
+    padding-bottom: 20px;
+    width: 24%;
+    margin: 2.4rem 4.28rem;
+    border-radius: 10px;
+    border: 3px solid navy;
+    background: rgb(68, 68, 68);
+    cursor: pointer;
+    color: white;
+}
+.ListImageContainer {
+    position: relative;
+}
+.ShowListImg{
+    height: 17rem;
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.ShowListTitle{
+    height: 5%;
+    width: 90%;
+    margin-top: 3px;
+    margin-left: 5%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 130%;
+    border-bottom: 2px solid rgb(24, 24, 24);
+}
+.ListArticle,
+.ShowListRating{
+    float: left;
+    height: 6.3%;
+    width: 47%;
+    margin: 1% 0 0 2%;
+    padding-top: 1.2%;
+    font-size: 90%;
+    text-align: center;
+}
+.DeleteListEntryArea {
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+}
+.DeleteListEntryArea button{
+    height: 1.3rem;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.DeleteListEntryArea button:hover{
+    background: red
+}
+.ShowListRating{
+    width: 96%;
+    margin-bottom: 5px;
+}
+.ShowListDescription{
+    position: relative;
+    display: inline-block;
+}
+.ShowListDescription-Content{
+    position: absolute;
+    display: none;
+    background: rgb(68, 68, 68);
+    min-height: 4rem;
+    min-width: 12rem;
+    max-width: 20rem;
+    padding: 7%; 
+    box-shadow: 0rem 0.8rem 1.6rem 0rem rgba(0,0,0,0.2);
+    word-wrap: break-word;
+    z-index: 1;
+}
+.ShowListDescription:hover .ShowListDescription-Content {
+    display: block;
+}
+/* POPUP */
+.BookListFullPage{    
+    position: fixed;
+    display: none;
+    top: 0;
+    width:  100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.BookListPopup{
+    position: fixed;
+    display: none;
+    height: 95%;
+    width: 30%;
+    bottom: 2%;
+    left: 35%;
+    background: rgb(68, 68, 68);
+    color: white;
+    border: 0.15rem solid rgb(155, 155, 155);  
+    z-index: 7;
+}
+.fileslot {
+    width: 70%;
+    margin-left: 15%;
+    height: 33rem;
+    margin-bottom: 5px;
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pdf-canvas {
+    display: block; /* Ensure the canvas is visible */
+    width: 100%; /* Make sure it takes up full width */
+    height: auto; /* Maintain aspect ratio */
+    margin: auto; /* Center the canvas */
+    border: 1px solid black; 
+    cursor: pointer;
+}
+.bookfileupload{
+    display: block;
+    width: 200px;
+    background-color: #d3d3d3;
+    border: none; 
+    color: black;
+    margin: auto;
+    margin-bottom: 5px;
+    padding: 0.7rem;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.specListTitle p{
+    border: none;
+}
+#pdf-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    z-index: 9999;
+    display: none; /* Initially hidden */
+}
+
+canvas {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+.pdf-controls {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.close-pdf-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent red background */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 10000; /* Ensure it stays on top */
+}
+
+.close-pdf-button:hover {
+    background-color: rgba(255, 0, 0, 1); /* Solid red on hover */
+}
+#pdf-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#pdf-fullscreen {
+    position: relative;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+#pdf-fullscreen-canvas {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+#fullscreen-prev-page-btn,
+#fullscreen-next-page-btn,
+#close-fullscreen-btn {
+    position: absolute;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#BookListFullPage { display: block; }
+
+#fullscreen-prev-page-btn { left: 10px; bottom: 10px; }
+#fullscreen-next-page-btn { right: 10px; bottom: 10px; }
+#close-fullscreen-btn { top: 10px; right: 10px; }
+@media only screen and (max-width: 1400px) {
+    .ListArticle{
+        margin-left: 84px;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .ListArticle{
+        margin-left: 74px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    main{
+        margin-bottom: 70px;
+    }
+    article{
+        float: center;
+        height: auto;
+        margin: 0.6rem 0 0 2.3rem;
+        width: 80%;
+    }
+    .ShowListTitle{
+        height: auto;
+    }
+    .ShowListDescription-Content{
+        min-width: 110px;
+        max-width: 110px;
+    }
+    .ListArticle{
+        width: 40%;
+        margin: 4% 0 0 7%;
+    }
+    .ShowListRating{
+        margin: 5% 0 0 2%;
+    }
+}
