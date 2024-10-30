@@ -1,10 +1,8 @@
-// Function to change colors based on the passed color value
 function changeColor(color) {
     document.getElementById("TopBar").style.background = color;
     document.getElementById("sidebar").style.background = color;
     document.getElementById("Title").style.color = color;
 }
-// Example color change functions
 function blueButton() {
     changeColor("navy");
 }
