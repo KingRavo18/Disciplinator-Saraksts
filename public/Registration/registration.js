@@ -4,7 +4,6 @@ function FeatureSidebar(){
 function closeFeatureSidebar() {
     var closeFeatureSidebar = document.getElementById("FeatureSidebar").style.left= "-400rem";
 }
-// Toggle visibility
 const visibilityBtn1 = document.getElementById("visibilityBtn-1")
 visibilityBtn1.addEventListener("click", function() {
     toggleVisibility("password-1", "icon-1")
@@ -26,18 +25,15 @@ function toggleVisibility(passwordId, iconId) {
 }
 window.addEventListener('load', function() {
     const url = new URL(window.location);
-    // Check and remove 'login_error'
     if (url.searchParams.has('login_error')) {
         url.searchParams.delete('login_error');
         window.history.replaceState(null, null, url);
     }
-    // Check and remove 'signup_error'
     if (url.searchParams.has('signup_error')) {
         url.searchParams.delete('signup_error');
         window.history.replaceState(null, null, url);
     }
 });
-//Forgot Password Window
 function ShowForgotPasswordArea(){
     var ShowForgotPassword = document.getElementById("forgotPasswordArea").style.display = "block";
     var ShowForgotPasswordArea = document.getElementById("forgotPasswordFullArea").style.display = "block";

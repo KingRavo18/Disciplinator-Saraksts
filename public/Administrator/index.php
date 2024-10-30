@@ -1,18 +1,14 @@
 <?php
 session_start();
-require '../../Database/database.php'; // Include your database connection
-// Initialize an empty message for feedback and an empty array for tasks
+require '../../Database/database.php'; 
 $message = '';
 $tasks = [];
-// Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Delete user form submission
     if (isset($_POST['DeleteUser']) && !isset($_POST['SearchUser'])) {
         $usernameToDelete = trim($_POST['DeleteUser']);
         if (empty($usernameToDelete)) {
             $message = "Lietotājvārds nevar būt tukšs.";
         } else {
-            // Prepare a statement to delete the user
             $sql = "DELETE FROM users WHERE username = ?";
             $stmt = $mysqli->prepare($sql);
             if ($stmt) {
@@ -32,13 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-    // Search user tasks form submission
     if (isset($_POST['SearchUser'])) {
         $usernameToSearch = trim($_POST['SearchUser']);
         if (empty($usernameToSearch)) {
             $message = "Lietotājvārds nevar būt tukšs.";
         } else {
-            // Prepare a statement to fetch the user's tasks
             $sql = "SELECT t.id, t.task, t.completeTime, t.is_completed, t.is_deleted 
                     FROM users u 
                     JOIN tasks t ON u.id = t.user_id 
@@ -50,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $result = $stmt->get_result();
                 if ($result->num_rows > 0) {
                     while ($task = $result->fetch_assoc()) {
-                        $tasks[] = $task; // Store the user's tasks in an array
+                        $tasks[] = $task; 
                     }
                 } else {
                     $message = "Lietotājam '$usernameToSearch' nav uzdevumu vai lietotājs netika atrasts.";
@@ -100,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
         </section>
-        <!-- Section to delete user -->
         <section>
             <div class="AdminDiv">
                 <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'DZĒST LIETOTĀJU' : 'DELETE USER'; ?></h2></div>
@@ -117,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
             </div>
         </section>
-        <!-- Section to search for user tasks -->
         <section>
             <div class="AdminDiv">
                 <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'LIETOTĀJU UZDEVUMI' : 'USER TASKS'; ?></h2></div>

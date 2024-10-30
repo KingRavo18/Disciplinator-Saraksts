@@ -41,9 +41,9 @@ footer button:hover {
     position: fixed;
     display: none;
     margin-bottom: -10px;
-    height: 70%;
+    height: 50%;
     width: 40%;
-    bottom: 10%;
+    bottom: 25%;
     left: 30%;
     background: rgb(68, 68, 68);
     color: white;
@@ -147,6 +147,22 @@ footer button:hover {
     margin-top: 5rem;
     width: 99.5%;
     height: auto;
+}
+.NewEntrySubmitButton2{
+    background-color: #d3d3d3;
+    border: none; 
+    color: black;
+    display: block;
+    font-weight: bold;
+    width: 200px;
+    padding: 10px 0; 
+    font-size: 16px;           
+    border-radius: 5px; 
+    margin: auto;
+    margin-top: -30px;
+    margin-left: 220px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
 }
 .NewEntrySubmitButton{
     background-color: #d3d3d3;

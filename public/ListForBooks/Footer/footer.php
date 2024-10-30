@@ -1,13 +1,9 @@
-<!--Style-->
 <link rel="stylesheet" href="../Style/bookListFooter.css">
-<!--A popup for new entries-->
 <div id="AddContentFullPage" class="AddContentFullPage">
     <div id="AddContentPopup" class="AddContentPopup">
-    <!--the button which closes the popup for new entries-->
         <div class="CloseAddContent">
             <button Onclick="closeAddContentPopup()" class="CloseAddContentButton"></button>
         </div>
-    <!--FORM for submitting new list entries to the database-->
         <form method="post" action="footer/sendBookData.php">
             <div class="UploadWindowWithLongInput">
                 <label>
@@ -25,8 +21,8 @@
                 <div class="ReleaseDate">
                     <div class="uploadReleaseDate">
                         <label>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Izlaides Datums' : 'Release Date'; ?>
-                            <input type="date" class="uploadReleaseDate-input" name="release_date" required/>
+                            <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
+                            <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
                         </label>
                     </div>
                 </div>
@@ -39,46 +35,20 @@
                     </div>
                 </div>
             </div>
-            <div class="uploadDeveloperAndGameCompletion">
-                <div class="GameCompletion">
-                    <div class="uploadGameCompletion">
-                        <label>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
-                            <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="uploadDeveloperAndGameCompletion">
-                <div class="GameCompletion">
-                    <div class="uploadGameCompletion">
-                        <label>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Statuss' : 'Status'; ?>
-                            <select name="status" class="LongInput" required>
-                                <option value="solo">Solo</option>
-                                <option value="collection"><?= $_SESSION['page_language'] === 'lv' ? 'Kolekcija' : 'Collection'; ?></option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
             <div class="NewEntrySubmit">
-                <button class="NewEntrySubmitButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
+                <button class="NewEntrySubmitButton2" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
             </div>
         </form>
     </div>
 </div>
-<!--makes the footer, inside of which is located the button for making the popup for new entries appear, appears-->
 <footer>
     <button onclick="OpenAddContentPopup()" title="Add a new entry to this list"><?= $_SESSION['page_language'] === 'lv' ? 'Jauns Ieraksts' : 'New Entry'; ?></button>
 </footer>
 <script>
-// the function which opens the popup for new entries
     function OpenAddContentPopup() {
         var OpenAddContentPopup = document.getElementById("AddContentPopup").style.display = "block";
         var OpenAddContentFullPagePopup = document.getElementById("AddContentFullPage").style.display = "block";
     }
-// the function which closes the popup for new entries
     function closeAddContentPopup() {
         var AddContentPopup = document.getElementById("AddContentPopup").style.display = "none";
         var AddContentFullPagePopup = document.getElementById("AddContentFullPage").style.display = "none";

@@ -93,9 +93,8 @@ article{
 .BookListPopup{
     position: fixed;
     display: none;
-    height: 95%;
+    height: 99%;
     width: 30%;
-    bottom: 2%;
     left: 35%;
     background: rgb(68, 68, 68);
     color: white;
@@ -152,8 +151,8 @@ article{
 canvas {
     display: block;
     margin: auto;
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 80%;
+    max-height: 80%;
 }
 .pdf-controls {
     position: fixed;

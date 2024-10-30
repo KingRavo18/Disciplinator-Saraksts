@@ -16,7 +16,6 @@
             if (empty($row["title"]) || empty($row["message"]) || empty($row["date"])) {
                 die("There is an empty result. Execution has been halted");
             }
-            // Escape output to prevent XSS attacks
             $safeTitle = htmlspecialchars($row["title"], ENT_QUOTES, 'UTF-8');
             $safeMessage = htmlspecialchars($row["message"], ENT_QUOTES, 'UTF-8');
             $safeDate = htmlspecialchars($row["date"], ENT_QUOTES, 'UTF-8');
@@ -37,7 +36,6 @@
     } else {
         echo "No features or news found.";
     }
-    // Close the statement and connection
     $stmt->close();
     $mysqli->close();
 ?>

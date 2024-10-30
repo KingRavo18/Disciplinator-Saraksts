@@ -29,7 +29,7 @@
                                 <input type="password" id="password-1" placeholder=" Parole" name="password" required>
                                 <i id="visibilityBtn-1" title="parādīt/paslēpt paroli"><span id="icon-1" class="material-symbols-outlined">visibility</span></i>
                             </div>
-                            <div class="RegistrationLink"><a onclick="ShowForgotPasswordArea()">Aizmirstāt Paroli?</a></div>
+                            
                         </div>
                         <div id="ErrorArea1">
                             <?php
@@ -70,7 +70,7 @@
             <script src="registration.js"></script>
         </main>
         <div class="footer">
-            <p>Suggested &copy; 2024 Disciplinators | Versija 1.0.0</p>
+           
         </div>
     </body>
 </html>

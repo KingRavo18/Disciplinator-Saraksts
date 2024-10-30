@@ -42,27 +42,23 @@
         </article>
 <?php 
     }
-    // Close the statement and connection
     $stmt->close();
     $mysqli->close();
 ?>
 <script>
 function deleteEntry(gameId) {
-    if (confirm("Are you sure you want to delete this movie?")) {
-        // Create an AJAX request
+    if (confirm("Are you sure you want to delete this game?")) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "delete_entry.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        // Define what happens on successful data submission
         xhr.onload = function () {
             if (xhr.status === 200) {
-                alert(xhr.responseText); // Show the response message
-                location.reload(); // Reload the page to update the list
+                alert(xhr.responseText); 
+                location.reload(); 
             } else {
                 alert("Error: Could not delete the entry.");
             }
         };
-        // Send the request with the movie ID
         xhr.send("game_id=" + gameId);
     }
 }

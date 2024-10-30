@@ -38,13 +38,11 @@ session_start();
             ?>
             <section>
                 <?php 
-                    //Creates articles that contain list data
                     require "./list.php"; 
                 ?>
             </section>
         </main>
         <?php
-            //Creates the footer
             require "./Footer/footer.php";
         ?>
     </body>

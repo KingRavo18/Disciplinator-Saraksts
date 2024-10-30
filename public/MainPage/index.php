@@ -4,17 +4,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     require '../../Database/database.php'; 
     $user_id = $_SESSION['id'];
 
-    // Step 1: Check and update overdue tasks
-    $currentTime = date('Y-m-d H:i:s'); // Current date and time
+    $currentTime = date('Y-m-d H:i:s'); 
 
-    // Mark tasks as failed if their completeTime has passed and they are not yet completed or failed
     $sql_update_overdue = "UPDATE tasks SET is_failed = 1 WHERE completeTime < ? AND is_completed = 0 AND is_failed = 0 AND user_id = ?";
     $stmt_update_overdue = $mysqli->prepare($sql_update_overdue);
     $stmt_update_overdue->bind_param('si', $currentTime, $user_id);
     $stmt_update_overdue->execute();
     $stmt_update_overdue->close();
 
-    // Fetch tasks where is_deleted is 0 (after possibly updating some as failed)
     $sql = "SELECT id, task, completeTime, is_completed, is_failed FROM tasks WHERE user_id = ? AND is_deleted = 0 ORDER BY created_at DESC";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $user_id);
@@ -55,7 +52,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                 <div class="timeArea">
                                     <p><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigt līdz' : 'Finish By'; ?> <?= htmlspecialchars($task['completeTime']); ?></p>
                                 </div>
-                                <!-- If the task is neither completed nor failed, show the Complete and Fail buttons -->
                                 <?php if (!$task['is_completed'] && !$task['is_failed']): ?>
                                     <form method="POST" action="completeTask.php" style="display: inline;">
                                         <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
@@ -66,7 +62,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         <button class="DeleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Nepabeigts' : 'Not Finished'; ?></button>
                                     </form>
                                 <?php endif; ?>
-                                <!-- If the task is either completed or failed, show the Delete button -->
                                 <?php if ($task['is_completed'] || $task['is_failed']): ?>
                                     <form method="POST" action="deleteTask.php" style="display: inline;">
                                         <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
