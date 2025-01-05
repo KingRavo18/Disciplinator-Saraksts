@@ -46,56 +46,51 @@ $result = $stmt->get_result();
     </div>
 
     <div id="BookListFullPage" class="BookListFullPage" style="display: none;">
-    <div id="BookListPopup" class="BookListPopup">
-        <button onclick="CloseBookList()" class="CloseAddContentButton"></button>
-        <div class="ShowListTitle"></div>
-        <form action="upload_bookfile.php" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="book_id" id="book_id">
-    <canvas id="pdf-canvas"></canvas>
-    <input type="file" class="bookfileupload" name="file" accept=".pdf" required onchange="previewPDF(this)">
-    <button type="submit" class="NewEntrySubmitButton">Add</button>
-</form>
+        <div id="BookListPopup" class="BookListPopup">
+            <button onclick="CloseBookList()" class="CloseAddContentButton"></button>
+            <div class="ShowListTitle"></div>
+            <form action="upload_bookfile.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="book_id" id="book_id">
+                <canvas id="pdf-canvas"></canvas>
+                <input type="file" class="bookfileupload" name="file" accept=".pdf" required onchange="previewPDF(this)">
+                <button type="submit" class="NewEntrySubmitButton">Add</button>
+            </form>
+        </div>
     </div>
-</div>
 
     <div id="pdf-viewer" style="display: none;">
-    <a id="close-pdf-btn" class="close-pdf-button" href="index.php">✖</a>
-    <embed id="pdf-embed" type="application/pdf" width="100%" height="100%">
+        <a id="close-pdf-btn" class="close-pdf-button" href="index.php">✖</a>
+        <embed id="pdf-embed" type="application/pdf" width="100%" height="100%">
     </div>
-    <script src="pdfViewer.js"></script>
-    <script>
-     
-function deleteEntry(bookId) {
-    if (confirm("Are you sure you want to delete this book?")) {
+<script src="pdfViewer.js"></script>
+<script>  
+    function deleteEntry(bookId) {
+        if (confirm("Are you sure you want to delete this book?")) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "delete_entry.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert(xhr.responseText); 
+                    location.reload(); 
+                } else {
+                    alert("Error: Could not delete the entry.");
+                }
+            };
+            xhr.send("book_id=" + bookId);
+        }
+    }
+    function saveLastViewedPage(fileId, page) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "delete_entry.php", true);
+        xhr.open("POST", "save_last_page.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function () {
             if (xhr.status === 200) {
-                alert(xhr.responseText); 
-                location.reload(); 
+                console.log("Last viewed page saved:", page);
             } else {
-                alert("Error: Could not delete the entry.");
+                console.log("Error saving last viewed page");
             }
         };
-        xhr.send("book_id=" + bookId);
+        xhr.send("file_id=" + fileId + "&last_page=" + page);
     }
-}
-
-function saveLastViewedPage(fileId, page) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "save_last_page.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            console.log("Last viewed page saved:", page);
-        } else {
-            console.log("Error saving last viewed page");
-        }
-    };
-    xhr.send("file_id=" + fileId + "&last_page=" + page);
-}
-
-    </script>
-</body>
-</html>
+</script>

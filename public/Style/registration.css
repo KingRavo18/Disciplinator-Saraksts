@@ -1,13 +1,13 @@
 html, body{
-    background: navy;
+    background: rgb(240, 240, 240);
     margin: 0;
     overflow-x: hidden;
     font-family: 'Inter'
 }
 h1{
-    color: white;
+    color: rgb(51, 51, 51);
     font-size: 500%;
-    text-shadow: 6px 6px #000000;
+    margin-top: 77px;
 }
 i {
     position: fixed;
@@ -30,7 +30,7 @@ i {
     justify-content: center;
     align-items: center;   
     text-align: center;
-    color: white;
+    color: rgb(51, 51, 51);
 }
 .Registration{
     width: 25%;
@@ -52,7 +52,7 @@ i {
     height: 2rem;
     margin-top: 2rem;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(51, 51, 51);
     font-size: 120%;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -63,16 +63,12 @@ i {
 .RegistrationInputPassword{
     display: flex;
     width: 101%;
+    height: 130px;
 }
-.RegistrationLink{
-    width: 105%;
-    text-align: right;
-    color: blue;              
-    text-decoration: underline; 
-    cursor: pointer;       
-}
-.RegistrationLink a:hover{
-    color: rgb(2, 2, 197);                   
+.RegistrationInputPassword2{
+    display: flex;
+    width: 101%;
+    height: 66px;
 }
 .RegistrationButton{
     display: flex;
@@ -101,9 +97,9 @@ i {
     left: 1rem;
     border-radius: 10px;
     width: 10rem;
-    color:white;
+    color:rgb(51, 51, 51);
     height: 2rem;
-    background: rgb(68, 68, 68);
+    background: white;
     cursor: pointer; 
     transition: background-color 0.3s ease;
 }
@@ -129,7 +125,6 @@ i {
     width: 80%;
     margin-left: 9%;
     height: 3rem;
-    padding: 1.9rem;
 }
 #ErrorArea1 p{
     color: red;
@@ -139,7 +134,6 @@ i {
     width: 80%;
     margin-left: 9%;
     height: 3rem;
-    padding: 7px;
 }
 #ErrorArea2 p{
     color: red;
@@ -150,7 +144,7 @@ i {
     position: fixed;
     top: 0;
     left: -400rem;
-    background: rgb(68, 68, 68);
+    background: white;
     width: 40%;
     height: 100vh;
     z-index: 1000;
@@ -170,8 +164,8 @@ i {
 #CloseButton{
     height: 1.3rem;
     margin-left: 95%;
-    background: rgb(68, 68, 68);
-    color: white;
+    background: white;
+    color: rgb(51, 51, 51);
     border-radius: 0.2rem;
     border-style: none;
     cursor: pointer;
@@ -184,18 +178,18 @@ i {
     text-align: center;
     width: 100%;
     height: 5rem;
-    color: white;
+    color: rgb(51, 51, 51);
 }
 .FeatureSidebarMessage{
     width: 95%;
     margin-left: 2.5%;
     min-height: 5rem;
     margin-top: 10px;
-    background: rgb(58, 58, 58);
+    background: white;
     max-height: auto;
     border-style: solid;
-    color: white;
-    border-color: rgb(24, 24, 24);
+    color: rgb(51, 51, 51);
+    border-color: rgb(209, 209, 209);
     box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
 }
 .FeatureSidebarMessageDate{
@@ -210,7 +204,7 @@ i {
 .FeatureSidebarMessageTitle{
     display: flex;
     width: 95%;
-    background-color: rgb(46, 46, 46);
+    background-color: rgb(209, 209, 209);
     margin-left: 2.5%;
     height: 2rem;
     align-items: center;
@@ -227,7 +221,7 @@ i {
 }
 .FeatureSidebarMessageText{
     width: 95%;
-    background-color: rgb(46, 46, 46);
+    background-color: rgb(209, 209, 209);
     margin-left: 2.5%;
     border-radius: 10px;
     min-height: 3rem;
@@ -288,67 +282,62 @@ i {
 #CloseForgotPasswordButton:hover{
     background: rgb(140, 140, 140);
 }
-#ForgotPasswordTitle{
+/*Terms & Conditions*/
+#TermsFullArea{
+    position: fixed;
+    top: 0;
+    width:  100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+#TermsArea{
+    width: 35rem;
+    height: 42rem;
+    background-color: white;
+    z-index: 88888;  
+    position: fixed;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+}
+#TermsTitle{
     text-align: center;
     width: 100%;
+    margin-top: 4px;
     height: 3rem;
-    color: white;
+    color: rgb(51, 51, 51);
 }
-.ForgotPasswordInfo{
-    width: 80%;
-    color: white;
-    margin-left: 10%;
-    height: auto;
+#Terms{
+    width: 80%; 
+    height: 60vh;
+    margin: 10px auto; 
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-.ForgotPasswordInfo p{
-    font-size: 100%;
-}
-.ForgotPasswordInput{
-    width: 80%;
-    height: 40%;
-    margin-left: 10%;
-}
-.ForgotPasswordInput input{
-    width: 100%;
-    height: 2rem;
-    border: none;
-    border-bottom: 2px solid black;
-    font-family: 'Inter';
-    font-size: 120%;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-.ForgotPasswordInput input:hover {
-    background-color: rgb(211, 211, 211);
-}
-#ForgotPassowrdConfirmationButton{
-    width: 80%;
-    height: 20%;
-    margin-left: 10%;
-    margin-top: 10%;
+#TermsButtons{
     display: flex;
-    justify-content: center;
-    align-items: center; 
+    width: 80%; 
+    margin: 10px auto; 
 }
-#ForgotPassowrdConfirmationButton button{
-    background-color: #d3d3d3; 
-    border: none;            
-    color: #000;              
-    padding: 10px 20px;      
-    text-align: center;      
-    text-decoration: none;    
-    display: inline-block;     
-    font-size: 16px;           
-    border-radius: 5px;        
-    cursor: pointer;           
-    transition: background-color 0.3s ease; 
+#TermsButtons button,
+#TermsButtons a{
+    background:white;
+    padding: 18px 50px;
+    font-size: 16px;  
+    border: 1px solid rgb(51, 51, 51);
+    margin:auto;
+    text-decoration: none;  
+    color: rgb(51, 51, 51);
+    cursor: pointer;
 }
-#ForgotPassowrdConfirmationButton button:hover{
-    background-color: #c0c0c0;
-}
-#ForgotPassowrdConfirmationButton button:active{
-    background-color: #a9a9a9;
-}
+
+
 @media only screen and (max-width: 600px) {
     h1{
         font-size: 200%;
@@ -369,12 +358,6 @@ i {
         width: 80%;
         padding-top: 20px;
         margin: 4rem auto;
-    }
-    #forgotPasswordArea{
-        width: 20rem;
-    }
-    #ForgotPasswordCloseButtonArea{
-        width: 96%;
     }
     .footer {
         font-size: 70%;

@@ -34,11 +34,8 @@ window.addEventListener('load', function() {
         window.history.replaceState(null, null, url);
     }
 });
-function ShowForgotPasswordArea(){
-    var ShowForgotPassword = document.getElementById("forgotPasswordArea").style.display = "block";
-    var ShowForgotPasswordArea = document.getElementById("forgotPasswordFullArea").style.display = "block";
-}
-function HideForgotPasswordArea(){
-    var HideForgotPassword = document.getElementById("forgotPasswordArea").style.display = "none";
-    var HideForgotPasswordArea = document.getElementById("forgotPasswordFullArea").style.display = "none";
+
+function HideTermsArea(){
+    var HideLogout = document.getElementById("TermsFullArea").style.display = "none";
+    var HideLogoutArea = document.getElementById("TermsArea").style.display = "none";
 }

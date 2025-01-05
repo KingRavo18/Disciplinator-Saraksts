@@ -4,8 +4,8 @@
     left: 0;
     width: 50px; 
     height: 100%;
-    background-color: navy;
-    margin-top: 4.5%;
+    background-color: white;
+    margin-top: 4.55%;
     overflow-x: hidden;
     z-index: 5;
     transition: width 0.3s ease;
@@ -27,7 +27,7 @@
 }
 .sidebar ul li a {
     text-decoration: none;
-    color: white;
+    color: rgb(51, 51, 51);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,7 +67,7 @@
     display: none;
     width: 20rem;
     height: 10rem;
-    background-color: rgb(68, 68, 68); 
+    background-color: white; 
     border-radius: 10px;
     z-index: 88888;  
     position: fixed;
@@ -80,7 +80,10 @@
     text-align: center;
     width: 100%;
     height: 3rem;
-    color: white;
+}
+
+#LogoutTitle h2{
+    color:rgb(51, 51, 51);  
 }
 .LogoutYesNoButtons{
     width: 80%;
@@ -95,7 +98,7 @@
 .LogoutYesNoButtons a{
     background-color: #d3d3d3; 
     border: none;            
-    color: #000;              
+    color:rgb(51, 51, 51);              
     padding: 10px 20px;      
     text-align: center;      
     text-decoration: none;    

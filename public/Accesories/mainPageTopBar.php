@@ -1,6 +1,6 @@
-<header id="TopBar" style="background-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">   
+<header id="TopBar" style="border-bottom: 2px solid <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">   
     <div id="PageTitle">
-        <a href="../MainPage/Index.php">DISCIPLINATORS</a>
+        <a href="../Home/Index.php">DISCIPLINATORS</a>
     </div>
     <div id="PointArea">
         <div><p><?= $_SESSION['page_language'] === 'lv' ? 'PUNKTI:' : 'POINTS:'; ?> <?= $_SESSION['points']; ?></p></div>

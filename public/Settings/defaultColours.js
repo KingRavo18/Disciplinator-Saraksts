@@ -1,6 +1,6 @@
 function changeColor(color) {
-    document.getElementById("TopBar").style.background = color;
-    document.getElementById("sidebar").style.background = color;
+    document.getElementById("TopBar").style.borderBottomColor = color;
+    document.getElementById("sidebar").style.borderRightColor = color;
     document.getElementById("Title").style.color = color;
 }
 function blueButton() {

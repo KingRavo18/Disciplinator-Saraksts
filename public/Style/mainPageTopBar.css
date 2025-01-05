@@ -1,8 +1,9 @@
 #TopBar{
     width: 100%;
     position: fixed;
-    color: white;
+    color: rgb(51, 51, 51);
     height: 10%;
+    background: white;
     top: 0;                  
     left: 0;
     z-index: 1;
@@ -19,7 +20,7 @@
     cursor: pointer;        
 }
 #PageTitle a{
-    color: white;         
+    color: rgb(51, 51, 51);        
     text-decoration: none;
     font-family: 'Inter';
 }
