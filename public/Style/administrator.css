@@ -9,6 +9,9 @@
     color: rgb(51, 51, 51);
     margin-bottom: 10px;
     padding-bottom: 5px;
+    opacity: 0; 
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards; 
 }
 .AdminTitle{
     margin-top: 2rem;

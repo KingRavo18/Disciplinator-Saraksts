@@ -34,7 +34,7 @@ session_start();
                 require "../Accesories/mainPageTopBar.php";
                 require "../Accesories/sidebar.php";
             ?>
-            <section>
+            <section class="list">
                 <?php 
                     require "./list.php"; 
                 ?>

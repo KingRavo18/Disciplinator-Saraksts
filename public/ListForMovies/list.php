@@ -4,7 +4,7 @@
     }
     $user_id = $_SESSION['user_id'];
     require "../../Database/database.php"; 
-    $sql = "SELECT id, img, title, release_date, director, rating 
+    $sql = "SELECT id, img, title, rating 
             FROM movies 
             WHERE user_id = ? 
             ORDER BY title";
@@ -13,11 +13,11 @@
     $stmt->execute();
     $result = $stmt->get_result();
     while ($ListArticle = $result->fetch_assoc()) {
-        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["release_date"] || !$ListArticle["director"] || !$ListArticle["rating"]) {
+        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["rating"]) {
             die("There is an empty result. Execution has been halted");
         }
 ?>
-        <article id="ListBorderColor" style="border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
+        <article id="ListBorderColor" style=" cursor:auto; border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
             <div class="ListImageContainer">
                 <img class="ShowListImg" src="<?=$ListArticle["img"]?>" alt="<?=$ListArticle["title"]?> Title Image"/>
                 <div class="DeleteListEntryArea">
@@ -27,14 +27,8 @@
             <p class="ShowListTitle">
                 <?=$ListArticle["title"]?>
             </p>
-            <p class="ListArticle">
-                <?= $_SESSION['page_language'] === 'lv' ? 'Izlaides Datums:' : 'Release Date:'; ?> <?=$ListArticle["release_date"]?> 
-            </p>
-            <p class="ListArticle">
-                <?= $_SESSION['page_language'] === 'lv' ? 'Režisors:' : 'Director:'; ?> <?=$ListArticle["director"]?>
-            </p>
             <p class="ShowListRating">
-                <?= $_SESSION['page_language'] === 'lv' ? 'Reitings:' : 'Rating:'; ?> <?=$ListArticle["rating"]?>
+                <?=$ListArticle["rating"]?>/10
             </p>
         </article>
 <?php 

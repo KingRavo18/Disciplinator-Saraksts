@@ -7,10 +7,9 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $img = $_POST["img"];
 $title = $_POST["title"];
-$author = $_POST["author"];
 $rating = filter_input(INPUT_POST, "rating", FILTER_VALIDATE_INT);
 
-if (!$img || !$title || !$author || !$rating) {
+if (!$img || !$title || !$rating) {
     die("All entries must be filled");
 }
 
@@ -24,12 +23,12 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$sql = "INSERT INTO books (user_id, img, title, author, rating) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO books (user_id, img, title, rating) VALUES (?, ?, ?, ?)";
 $stmt = $mysqli->stmt_init();
 if (!$stmt->prepare($sql)) {
     die("SQL Error: " . $mysqli->error);
 }
-$stmt->bind_param("isssi", $user_id, $img, $title, $author, $rating);
+$stmt->bind_param("issi", $user_id, $img, $title, $rating);
 
 if ($stmt->execute()) {
     $book_id = $stmt->insert_id; 

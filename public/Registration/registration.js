@@ -35,7 +35,22 @@ window.addEventListener('load', function() {
     }
 });
 
-function HideTermsArea(){
-    var HideLogout = document.getElementById("TermsFullArea").style.display = "none";
-    var HideLogoutArea = document.getElementById("TermsArea").style.display = "none";
+function HideTermsArea() {
+    const termsArea = document.getElementById("TermsArea");
+    const termsFullArea = document.getElementById("TermsFullArea");
+
+    // Trigger the fade-out animation by adding the 'hide' class
+    termsArea.classList.add("hide");
+
+    // Listen for the end of the animation
+    termsArea.addEventListener('animationend', function() {
+        termsArea.style.display = "none"; // Hide the Terms Area after animation
+        termsFullArea.style.display = "none"; // Hide the background
+    });
+
+    // Ensure the popup and background are still visible while the animation plays
+    termsFullArea.style.display = "block";
+    termsArea.style.visibility = "visible";
 }
+
+

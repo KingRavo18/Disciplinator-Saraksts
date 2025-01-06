@@ -6,10 +6,8 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $img = $_POST["img"];
 $title = $_POST["title"];
-$release_date = $_POST["release_date"];
-$director = $_POST["director"];
 $rating = filter_input(INPUT_POST, "rating", FILTER_VALIDATE_INT);
-if (!$img || !$title || !$release_date || !$director || !$rating) {
+if (!$img || !$title || !$rating) {
     die("All entries must be filled");
 }
 $host = 'localhost';
@@ -20,12 +18,12 @@ $mysqli = new mysqli($host, $user, $pass, $db);
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
-$sql = "INSERT INTO movies (user_id, img, title, release_date, director, rating) VALUES (?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO movies (user_id, img, title, rating) VALUES (?, ?, ?, ?)";
 $stmt = $mysqli->stmt_init();
 if (!$stmt->prepare($sql)) {
     die("SQL Error: " . $mysqli->error);
 }
-$stmt->bind_param("issssi", $user_id, $img, $title, $release_date, $director, $rating);
+$stmt->bind_param("issi", $user_id, $img, $title, $rating);
 if ($stmt->execute()) {
     header("Location: ../index.php");
 } else {

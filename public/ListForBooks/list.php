@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 require "../../Database/database.php";
 
-$sql = "SELECT id, img, title, author, rating 
+$sql = "SELECT id, img, title, rating 
         FROM books 
         WHERE user_id = ? 
         ORDER BY title";
@@ -35,11 +35,8 @@ $result = $stmt->get_result();
                 </div>
             </div>
             <p class="ShowListTitle"><?=htmlspecialchars($ListArticle["title"])?></p>
-            <p class="ListArticle">
-                <?= $_SESSION['page_language'] === 'lv' ? 'Autors:' : 'Author:'; ?> <?=htmlspecialchars($ListArticle["author"])?>
-            </p>
-            <p class="ListArticle">
-                <?= $_SESSION['page_language'] === 'lv' ? 'Reitings:' : 'Rating:'; ?> <?=htmlspecialchars($ListArticle["rating"])?>
+            <p class="ShowListRating">
+                <?=$ListArticle["rating"]?>/10
             </p>
         </article>
         <?php endwhile; ?>

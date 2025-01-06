@@ -17,33 +17,11 @@
                     <input type="text" class="LongInput" name="title" required/>
                 </label>
             </div>
-            <div class="uploadReleaseDateAndDescription">
-                <div class="ReleaseDate">
-                    <div class="uploadReleaseDate">
-                        <label>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Izlaides Datums' : 'Release Date'; ?>
-                            <input type="date" class="uploadReleaseDate-input" name="release_date" required/>
-                        </label>
-                    </div>
-                </div>
-                <div class="Developer">
-                    <div class="uploadDeveloper">
-                        <label>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Režisors' : 'Director'; ?>
-                            <input type="text" class="uploadDeveloper-input" name="director" required/>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="uploadDeveloperAndGameCompletion">
-                <div class="GameCompletion">
-                    <div class="uploadGameCompletion">
-                        <label>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
-                            <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
-                        </label>
-                    </div>
-                </div>
+            <div class="UploadWindowWithLongInput">
+                <label>
+                    <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
+                    <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
+                </label>
             </div>
             <div class="NewEntrySubmit">
                 <button class="NewEntrySubmitButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
@@ -55,12 +33,25 @@
     <button onclick="OpenAddContentPopup()" title="Add a new entry to this list"><?= $_SESSION['page_language'] === 'lv' ? 'Jauns Ieraksts' : 'New Entry'; ?></button>
 </footer>
 <script>
-    function OpenAddContentPopup() {
-        var OpenAddContentPopup = document.getElementById("AddContentPopup").style.display = "block";
-        var OpenAddContentFullPagePopup = document.getElementById("AddContentFullPage").style.display = "block";
-    }
-    function closeAddContentPopup() {
-        var AddContentPopup = document.getElementById("AddContentPopup").style.display = "none";
-        var AddContentFullPagePopup = document.getElementById("AddContentFullPage").style.display = "none";
-    }
+            function OpenAddContentPopup() {
+    const popup = document.getElementById("AddContentPopup");
+    const overlay = document.getElementById("AddContentFullPage");
+    
+    overlay.style.display = "block";
+    popup.classList.remove("hide"); // Remove the hide class if it exists
+    popup.classList.add("show");   // Add the show class
+    popup.style.display = "block"; // Ensure it is displayed
+}
+
+function closeAddContentPopup() {
+    const popup = document.getElementById("AddContentPopup");
+    const overlay = document.getElementById("AddContentFullPage");
+    
+    popup.classList.remove("show"); // Remove the show class if it exists
+    popup.classList.add("hide");    // Add the hide class
+    setTimeout(() => {
+        popup.style.display = "none"; // Hide the popup after animation
+        overlay.style.display = "none";
+    }, 300); // Match the duration of the fadeOutDown animation
+}
 </script>

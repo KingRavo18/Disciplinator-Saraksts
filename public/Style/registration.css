@@ -4,10 +4,23 @@ html, body{
     overflow-x: hidden;
     font-family: 'Inter'
 }
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
 h1{
     color: rgb(51, 51, 51);
     font-size: 500%;
     margin-top: 77px;
+    opacity: 0; 
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards; 
 }
 i {
     position: fixed;
@@ -20,6 +33,9 @@ i {
 }
 .InputWindows{
     display: flex;
+    opacity: 0; 
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards; 
 }
 .Explanation{
     width: 25%;
@@ -90,6 +106,11 @@ i {
 }
 .RegistrationButton button:active{
     background-color: #a9a9a9;
+}
+.OpenFeatures{
+    opacity: 0; 
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards; 
 }
 .OpenFeatures button{
     position: fixed;
@@ -283,25 +304,48 @@ i {
     background: rgb(140, 140, 140);
 }
 /*Terms & Conditions*/
-#TermsFullArea{
+
+#TermsFullArea {
     position: fixed;
     top: 0;
-    width:  100%;
+    left: 0;
+    width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
+    display: block; /* Keep the background visible on load */
 }
-#TermsArea{
+
+#TermsArea {
     width: 35rem;
     height: 42rem;
     background-color: white;
-    z-index: 88888;  
+    z-index: 88888;
     position: fixed;
     top: 50%;
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ensure it stays centered */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease; /* Only transition opacity */
 }
+
+#TermsArea.hide {
+    animation: fadeOutDown 0.3s ease forwards;
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+
 #TermsTitle{
     text-align: center;
     width: 100%;

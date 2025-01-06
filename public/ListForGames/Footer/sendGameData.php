@@ -6,11 +6,9 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $img = $_POST["img"];
 $title = $_POST["title"];
-$release_date = $_POST["release_date"];
-$developer = $_POST["developer"];
 $game_completion = filter_input(INPUT_POST, "game_completion", FILTER_VALIDATE_INT);
 $rating = filter_input(INPUT_POST, "rating", FILTER_VALIDATE_INT);
-if (!$img || !$title || !$release_date || !$developer || !$game_completion || !$rating) {
+if (!$img || !$title || !$release_date || !$rating) {
     die("All entries must be filled");
 }
 $host = 'localhost';
@@ -21,12 +19,12 @@ $mysqli = new mysqli($host, $user, $pass, $db);
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
-$sql = "INSERT INTO games (user_id, img, title, release_date, developer, game_completion, rating) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO games (user_id, img, title, rating) VALUES (?, ?, ?, ?)";
 $stmt = $mysqli->stmt_init();
 if (!$stmt->prepare($sql)) {
     die("SQL Error: " . $mysqli->error);
 }
-$stmt->bind_param("issssii", $user_id, $img, $title, $release_date, $developer, $game_completion, $rating);
+$stmt->bind_param("issi", $user_id, $img, $title, $rating);
 if ($stmt->execute()) {
     header("Location: ../index.php");
 } else {

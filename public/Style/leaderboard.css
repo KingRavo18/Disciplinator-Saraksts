@@ -1,15 +1,18 @@
 .leaderboardDiv {
-    background: rgb(68, 68, 68);
+    background: white;
     width: 40%;
     padding-top: 5px;
     height: auto;
     margin-top: 2rem;
     margin-left: 30%;
     border-radius: 10px;
-    color: white;
+    color: rgb(51, 51, 51);
     margin-bottom: 10px;
     border: 3px solid;
-    border-color: rgb(46, 46, 46);
+    border-color: rgb(209, 209, 209);
+    opacity: 0; 
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards; 
 }
 .LeaderTable {
     width:100%;
@@ -18,7 +21,7 @@
 }
 .LeaderTable table, th {
     border-style: solid;
-    background-color: rgb(87, 87, 87);;
+    background-color: white;
     width: 95%;
     text-align: center;
 }
@@ -52,7 +55,7 @@ td {
     display: none;
     width: 20rem;
     height: 10rem;
-    background-color: rgb(68, 68, 68); 
+    background-color: white; 
     border-radius: 10px;
     z-index: 88888;  
     position: fixed;
@@ -65,5 +68,5 @@ td {
     text-align: center;
     width: 100%;
     height: 3rem;
-    color: white;
+    color: rgb(51, 51, 51);
 }

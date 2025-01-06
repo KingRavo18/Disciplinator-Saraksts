@@ -58,13 +58,21 @@ function toggleFullScreen() {
 
 function OpenBookList(title, bookId, filePath) {
     const BookListPopup = document.getElementById("BookListPopup");
+    const BookListFullPage = document.getElementById("BookListFullPage");
+
+    // Set title and book ID
     BookListPopup.querySelector(".ShowListTitle").textContent = title;
     BookListPopup.querySelector("#book_id").value = bookId;
-    document.getElementById("BookListFullPage").style.display = "block";
+
+    // Show overlay and popup with fade-in animation
+    BookListFullPage.style.display = "block";
+    BookListPopup.classList.remove("hide"); // Remove the fade-out class if it exists
+    BookListPopup.classList.add("show");   // Add the fade-in class
     BookListPopup.style.display = "block";
-    
+
+    // Load existing PDF if filePath is provided
     if (filePath) {
-        loadExistingPDF(filePath); 
+        loadExistingPDF(filePath);
     }
 }
 
@@ -155,9 +163,23 @@ function loadExistingPDF(filePath) {
 
 
 function CloseBookList() {
-    document.getElementById("BookListPopup").style.display = "none";
-    document.getElementById("BookListFullPage").style.display = "none";
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    const BookListPopup = document.getElementById("BookListPopup");
+    const BookListFullPage = document.getElementById("BookListFullPage");
+    const canvas = document.getElementById("pdf-canvas");
+    const context = canvas.getContext("2d");
+
+    // Trigger fade-out animation
+    BookListPopup.classList.remove("show"); // Remove the fade-in class
+    BookListPopup.classList.add("hide");    // Add the fade-out class
+
+    // Hide elements after the animation completes
+    setTimeout(() => {
+        BookListPopup.style.display = "none";
+        BookListFullPage.style.display = "none";
+
+        // Clear the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }, 300); // Match the animation duration
 }
 
 document.getElementById("pdf-canvas").onclick = function () {

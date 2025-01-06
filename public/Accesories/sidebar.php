@@ -26,11 +26,23 @@
 </div>
 <script>
     function ShowLogoutArea(){
-        var ShowLogout = document.getElementById("LogoutArea").style.display = "block";
-        var ShowLogoutArea = document.getElementById("LogoutFullArea").style.display = "block";
+        const popup = document.getElementById("LogoutArea");
+        const overlay = document.getElementById("LogoutFullArea");
+    
+        overlay.style.display = "block";
+        popup.classList.remove("hide"); // Remove the hide class if it exists
+        popup.classList.add("show");   // Add the show class
+        popup.style.display = "block"; // Ensure it is displayed
     }
     function HideLogoutArea(){
-        var HideLogout = document.getElementById("LogoutArea").style.display = "none";
-        var HideLogoutArea = document.getElementById("LogoutFullArea").style.display = "none";
+        const popup = document.getElementById("LogoutArea");
+    const overlay = document.getElementById("LogoutFullArea");
+    
+    popup.classList.remove("show"); // Remove the show class if it exists
+    popup.classList.add("hide");    // Add the hide class
+    setTimeout(() => {
+        popup.style.display = "none"; // Hide the popup after animation
+        overlay.style.display = "none";
+    }, 300); // Match the duration of the fadeOutDown animation
     }
 </script>
