@@ -34,7 +34,7 @@ if ($stmt->execute()) {
     $book_id = $stmt->insert_id; 
 
    
-    $default_file_path = "../ImageUploads/defaultFile.pdf"; 
+$default_file_path = "../ImageUploads/defaultFile.pdf"; 
 $sqlFile = "INSERT INTO bookfile (book_id, user_id, file_path) VALUES (?, ?, ?)";
 $stmtFile = $mysqli->prepare($sqlFile);
 

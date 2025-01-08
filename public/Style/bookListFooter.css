@@ -54,13 +54,13 @@ footer button:hover {
 }
 .AddContentPopup.show {
     display: block; /* Ensure it is visible */
-    animation: fadeIn 0.3s ease forwards;
+    animation: fadeIn4 0.3s ease forwards;
 }
 
 .AddContentPopup.hide {
-    animation: fadeOut 0.3s ease forwards;
+    animation: fadeOut4 0.3s ease forwards;
 }
-@keyframes fadeIn {
+@keyframes fadeIn4 {
     from {
         opacity: 0;
     }
@@ -69,7 +69,7 @@ footer button:hover {
     }
 }
 
-@keyframes fadeOut {
+@keyframes fadeOut4 {
     from {
         opacity: 1;
     }

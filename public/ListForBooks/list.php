@@ -31,7 +31,7 @@ $result = $stmt->get_result();
             <div class="ListImageContainer">
                 <img class="ShowListImg" src="<?=htmlspecialchars($ListArticle['img'])?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
                 <div class="DeleteListEntryArea">
-                    <button onclick="deleteEntry(<?=htmlspecialchars($ListArticle['id'])?>)">&#x2715;</button>
+                    <button onclick="deleteEntry(<?=htmlspecialchars($ListArticle['id'])?>, event)">&#x2715;</button>
                 </div>
             </div>
             <p class="ShowListTitle"><?=htmlspecialchars($ListArticle["title"])?></p>
@@ -61,22 +61,24 @@ $result = $stmt->get_result();
     </div>
 <script src="pdfViewer.js"></script>
 <script>  
-    function deleteEntry(bookId) {
+    function deleteEntry(bookId, event) {
+        event.stopPropagation(); 
+
         if (confirm("Are you sure you want to delete this book?")) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "delete_entry.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    alert(xhr.responseText); 
-                    location.reload(); 
-                } else {
-                    alert("Error: Could not delete the entry.");
-                }
-            };
-            xhr.send("book_id=" + bookId);
-        }
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "delete_entry.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                alert(xhr.responseText);
+                location.reload();
+            } else {
+                alert("Error: Could not delete the entry.");
+            }
+        };
+        xhr.send("book_id=" + bookId);
     }
+}
     function saveLastViewedPage(fileId, page) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "save_last_page.php", true);

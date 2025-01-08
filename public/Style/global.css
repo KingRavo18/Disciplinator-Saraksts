@@ -12,18 +12,7 @@ h1{
 p{
     font-size: 150%;
 }
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: white; 
-}
-::-webkit-scrollbar-thumb {
-    background: #d3d3d3; 
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #8f8e8e; 
-}
+
 main{
     display: grid;
     height: auto;

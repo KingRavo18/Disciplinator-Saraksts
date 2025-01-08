@@ -128,26 +128,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <div class="ProfileNames">
                             <p><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Unknown User'; ?></p>
                             <p><?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : 'Unknown Email'; ?></p>
-                        </div>
-                    </div>
-                    <div class="ProfileArea2">
-                        <div class="ChangeArea">
                             <form method="POST">
-                                <input type="text" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns Lietotājvārds' : 'New Username'; ?>" name="username" required>
-                                <button type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt lietotājvārdu' : 'Change Username'; ?></button>
+                                <input class="changeInput" style="margin-top:90px" type="text" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns Lietotājvārds' : 'New Username'; ?>" name="username" required>
+                                <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt lietotājvārdu' : 'Change Username'; ?></button>
                             </form>
-                        </div>
-                        <div class="ChangeArea">
                             <form method="POST">
-                                <input type="email" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns E-pasts' : 'New E-mail'; ?>" name="email" required>
-                                <button type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt e-pastu' : 'Change E-mail'; ?></button>
+                                <input class="changeInput" type="email" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns E-pasts' : 'New E-mail'; ?>" name="email" required>
+                                <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt e-pastu' : 'Change E-mail'; ?></button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="settingsThemediv">
-                    <?php require "themeChange.php"; ?>
-                    <?php require "languageChange.php"; ?>
+                <div style="display:flex">
+                    <div class="settingsThemediv">
+                        <?php require "themeChange.php"; ?>
+                    </div>
+                    <div class="settingsThemediv">
+                        <?php require "languageChange.php"; ?>
+                    </div>
                 </div>
             </section>
         </main>

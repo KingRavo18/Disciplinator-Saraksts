@@ -3,45 +3,67 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     die("You must be logged in to delete a book.");
 }
+
 $user_id = $_SESSION['user_id'];
 $book_id = $_POST['book_id'];
 if (!$book_id) {
     die("Invalid book ID.");
 }
+
 $host = 'localhost';
 $db = 'Disciplinators';
 $user = 'root';
 $pass = '';
 $mysqli = new mysqli($host, $user, $pass, $db);
+
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$sqlDelete = "DELETE FROM bookfile WHERE book_id = ?";
-$stmtDelete = $mysqli->prepare($sqlDelete);
-if (!$stmtDelete) {
+$sqlSelectFile = "SELECT file_path FROM bookfile WHERE book_id = ?";
+$stmtSelectFile = $mysqli->prepare($sqlSelectFile);
+if (!$stmtSelectFile) {
     die("SQL Error: " . $mysqli->error);
 }
-$stmtDelete->bind_param("i", $book_id);
+$stmtSelectFile->bind_param("i", $book_id);
+$stmtSelectFile->execute();
+$stmtSelectFile->bind_result($file_path);
 
-if ($stmtDelete->execute()) {
-    $sql = "DELETE FROM books WHERE id = ? AND user_id = ?";
-    $stmt = $mysqli->prepare($sql);
-    if (!$stmt) {
+if ($stmtSelectFile->fetch()) {
+    $default_file = '../ImageUploads/defaultFile.pdf';
+
+    if ($file_path !== $default_file && file_exists($file_path)) {
+        unlink($file_path);
+    }
+}
+
+$stmtSelectFile->close();
+
+$sqlDeleteFile = "DELETE FROM bookfile WHERE book_id = ?";
+$stmtDeleteFile = $mysqli->prepare($sqlDeleteFile);
+if (!$stmtDeleteFile) {
+    die("SQL Error: " . $mysqli->error);
+}
+$stmtDeleteFile->bind_param("i", $book_id);
+
+if ($stmtDeleteFile->execute()) {
+    $sqlDeleteBook = "DELETE FROM books WHERE id = ? AND user_id = ?";
+    $stmtDeleteBook = $mysqli->prepare($sqlDeleteBook);
+    if (!$stmtDeleteBook) {
         die("SQL Error: " . $mysqli->error);
     }
 
-    $stmt->bind_param("ii", $book_id, $user_id);
-    if ($stmt->execute()) {
+    $stmtDeleteBook->bind_param("ii", $book_id, $user_id);
+    if ($stmtDeleteBook->execute()) {
         echo "Book and associated files deleted successfully.";
     } else {
-        echo "Error deleting book: " . $stmt->error;
+        echo "Error deleting book: " . $stmtDeleteBook->error;
     }
-    $stmt->close();
+
+    $stmtDeleteBook->close();
 } else {
-    echo "Error deleting associated files: " . $stmtDelete->error;
+    echo "Error deleting associated files: " . $stmtDeleteFile->error;
 }
 
-$stmtDelete->close();
+$stmtDeleteFile->close();
 $mysqli->close();
-

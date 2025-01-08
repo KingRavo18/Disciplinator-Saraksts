@@ -6,9 +6,8 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $img = $_POST["img"];
 $title = $_POST["title"];
-$game_completion = filter_input(INPUT_POST, "game_completion", FILTER_VALIDATE_INT);
 $rating = filter_input(INPUT_POST, "rating", FILTER_VALIDATE_INT);
-if (!$img || !$title || !$release_date || !$rating) {
+if (!$img || !$title || !$rating) {
     die("All entries must be filled");
 }
 $host = 'localhost';

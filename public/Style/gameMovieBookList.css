@@ -1,19 +1,21 @@
 section{
     margin-left: 80px;
+    height: auto;
+    padding-bottom: 20px;
 }
 article{
     float: left;
     height: 27rem;
     padding-bottom: 20px;
     width: 15%;
-    margin: 2.4rem 4.28rem;
+    margin: 2rem 4.28rem;
     border-radius: 10px;
     border: 3px solid navy;
     background: white;
     cursor: pointer;
     color: rgb(51, 51, 51);
     opacity: 0; 
-    transform: translateY(50px);
+    transform: translateY(20px);
     animation: fadeInUp 1s ease-out forwards; 
 }
 .ListImageContainer {
@@ -107,18 +109,18 @@ article{
     color: rgb(51, 51, 51);
     border: 0.15rem solid rgb(155, 155, 155);  
     z-index: 7;
-    opacity: 0;
+    
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .BookListPopup.show {
     display: block;
-    animation: fadeIn0.3s ease forwards;
+    animation: fadeIn3 0.3s ease forwards;
 }
 
 .BookListPopup.hide {
-    animation: fadeOut 0.3s ease forwards;
+    animation: fadeOut3 0.3s ease forwards;
 }
-@keyframes fadeIn {
+@keyframes fadeIn3 {
     from {
         opacity: 0;
     }
@@ -127,7 +129,7 @@ article{
     }
 }
 
-@keyframes fadeOut {
+@keyframes fadeOut3 {
     from {
         opacity: 1;
     }
@@ -233,10 +235,6 @@ canvas {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 }
 
-#pdf-fullscreen-canvas {
-    max-width: 90vw;
-    max-height: 90vh;
-}
 
 #fullscreen-prev-page-btn,
 #fullscreen-next-page-btn,

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Only PDF files are allowed."; 
             exit; 
         }
-        
+
         $uploadDir = '../ImageUploads/';
         $fileName = uniqid() . '_' . basename($_FILES['file']['name']);
         $uploadFilePath = $uploadDir . $fileName;
@@ -22,20 +22,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user_id = $_SESSION['user_id'];
         $book_id = $_POST['book_id'];
 
-        echo "Received Book ID: $book_id"; 
-
         if (!empty($book_id)) {
+            $default_file = '../ImageUploads/defaultFile.pdf';
+
             $sqlSelect = "SELECT file_path FROM bookfile WHERE book_id = ?";
             $stmtSelect = $mysqli->prepare($sqlSelect);
+            if (!$stmtSelect) {
+                echo "SQL Error: " . $mysqli->error;
+                exit;
+            }
+
             $stmtSelect->bind_param("i", $book_id);
             $stmtSelect->execute();
-            $stmtSelect->store_result();
+            $stmtSelect->bind_result($existingFilePath);
 
-            if ($stmtSelect->num_rows > 0) {
-                $stmtSelect->bind_result($existingFilePath);
-                $stmtSelect->fetch();
+            if ($stmtSelect->fetch()) {
+                $stmtSelect->free_result();
 
-                if (file_exists($existingFilePath)) {
+                if ($existingFilePath !== $default_file && file_exists($existingFilePath)) {
                     unlink($existingFilePath);
                 }
 
@@ -76,4 +80,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $mysqli->close();
-
