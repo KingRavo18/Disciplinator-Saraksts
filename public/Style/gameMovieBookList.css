@@ -38,6 +38,16 @@ article{
     font-weight: bold;
     font-size: 130%;
 }
+.Separator {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.UploadWindowWithFileInput {
+    margin-bottom: 15px;
+}
 .ListArticle,
 .ShowListRating{
     float: left;
@@ -199,12 +209,14 @@ canvas {
 }
 .close-pdf-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
     background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent red background */
     color: white;
     border: none;
     border-radius: 50%;
+    padding-top: 2px;
+    padding-right: 2px;
     width: 30px;
     height: 30px;
     text-align: center;

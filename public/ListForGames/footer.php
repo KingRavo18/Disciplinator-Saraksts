@@ -2,13 +2,20 @@
 <div id="AddContentFullPage" class="AddContentFullPage">
     <div id="AddContentPopup" class="AddContentPopup">
         <div class="CloseAddContent">
-            <button Onclick="closeAddContentPopup()" class="CloseAddContentButton"></button>
+            <button onclick="closeAddContentPopup()" class="CloseAddContentButton"></button>
         </div>
-        <form method="post" action="./Footer/sendGameData.php">
+        <form method="post" action="./sendGameData.php" enctype="multipart/form-data">
             <div class="UploadWindowWithLongInput">
                 <label>
                     <?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>
-                    <input type="text" class="LongInput" name="img" required/>
+                    <input type="text" class="LongInput" name="img_url"/>
+                </label>
+            </div>
+            <p style="text-align: center; font-size: 14px;"><?= $_SESSION['page_language'] === 'lv' ? 'vai' : 'or'; ?></p>
+            <div class="UploadWindowWithLongInput">
+                <label>
+                    <?= $_SESSION['page_language'] === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>
+                    <input type="file" class="LongInput" name="img_file" accept="image/*"/>
                 </label>
             </div>
             <div class="UploadWindowWithLongInput">
@@ -20,7 +27,7 @@
             <div class="UploadWindowWithLongInput">
                 <label>
                     <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
-                    <div><input type="number" max="10" min="1" class="LongInput" name="rating" required/></div>
+                    <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
                 </label>
             </div>
             <div class="NewEntrySubmit">
@@ -38,20 +45,20 @@
     const overlay = document.getElementById("AddContentFullPage");
     
     overlay.style.display = "block";
-    popup.classList.remove("hide"); // Remove the hide class if it exists
-    popup.classList.add("show");   // Add the show class
-    popup.style.display = "block"; // Ensure it is displayed
+    popup.classList.remove("hide"); 
+    popup.classList.add("show");   
+    popup.style.display = "block"; 
 }
 
 function closeAddContentPopup() {
     const popup = document.getElementById("AddContentPopup");
     const overlay = document.getElementById("AddContentFullPage");
     
-    popup.classList.remove("show"); // Remove the show class if it exists
-    popup.classList.add("hide");    // Add the hide class
+    popup.classList.remove("show"); 
+    popup.classList.add("hide");    
     setTimeout(() => {
-        popup.style.display = "none"; // Hide the popup after animation
+        popup.style.display = "none"; 
         overlay.style.display = "none";
-    }, 300); // Match the duration of the fadeOutDown animation
+    }, 300); 
 }
 </script>

@@ -26,7 +26,7 @@ $result = $stmt->get_result();
             $stmtFile->close();
         ?>
         <article id="ListBorderColor" 
-            onclick="OpenBookList('<?=htmlspecialchars($ListArticle['title'])?>', '<?=htmlspecialchars($ListArticle['id'])?>', '<?=htmlspecialchars($file_path)?>')"  
+            onclick="OpenBookList(`<?=htmlspecialchars(addslashes($ListArticle['title']))?>`, `<?=htmlspecialchars($ListArticle['id'])?>`, `<?=htmlspecialchars($file_path)?>`)"  
             style="border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
             <div class="ListImageContainer">
                 <img class="ShowListImg" src="<?=htmlspecialchars($ListArticle['img'])?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>

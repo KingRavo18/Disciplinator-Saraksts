@@ -41,7 +41,7 @@ footer button:hover {
     position: fixed;
     display: none;
     margin-bottom: -10px;
-    height: 50%;
+    height: 55%;
     width: 20%;
     bottom: 25%;
     left: 40%;
@@ -53,7 +53,7 @@ footer button:hover {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .AddContentPopup.show {
-    display: block; /* Ensure it is visible */
+    display: block; 
     animation: fadeInUp 0.3s ease forwards;
 }
 
@@ -128,54 +128,8 @@ footer button:hover {
 .LongInput:hover{
     background-color: rgb(211, 211, 211);
 }
-.uploadReleaseDateAndDescription,
-.uploadDeveloperAndGameCompletion{
-    display: flex;
-    height: auto;
-    width: 99.5%;
-    margin: 0 0 2.3rem 1.8rem;
-}
-.ReleaseDate,
-.Description,
-.Developer,
-.GameCompletion{
-    width: 45%;
-    margin-right: 5%;
-    font-size: 110%;
-}
-.uploadReleaseDate,
-.uploadDescription,
-.uploadDeveloper,
-.uploadGameCompletion{
-    width:80%;
-    font-size: 110%;
-}
-.uploadReleaseDate-input,
-.uploadDeveloper-input,
-.uploadGameCompletion-input{
-    width: 111%;
-    padding: 0.4rem;
-    border-style: none;
-    cursor: pointer;
-}
-.uploadReleaseDate-input:hover,
-.uploadDeveloper-input:hover,
-.uploadGameCompletion-input:hover{
-    background-color: rgb(211, 211, 211);
-}
-.uploadDescription-input{
-    width: 114%;
-    resize: none;
-    height: 1.4rem;
-    padding: 0.4rem 0 0 0.4rem;
-    border-style: none;
-    cursor: pointer;
-}
-.uploadDescription-input:hover{
-    background-color: rgb(211, 211, 211);
-}
 .NewEntrySubmit{
-    margin-top: 5rem;
+    margin-top: 2rem;
     width: 99.5%;
     height: auto;
 }
@@ -199,9 +153,6 @@ footer button:hover {
 .NewEntrySubmitButton:active {
     background-color: #a9a9a9;
 }
-.uploadReleaseDate-input {
-    padding: 5.1px 6.2px;
-}
 /* makes the screen compatible with mobile devices*/
 @media only screen and (max-width: 600px) {
     footer button{
@@ -218,26 +169,6 @@ footer button:hover {
     }
     .LongInput{
         width: 80%;
-    }
-    .uploadReleaseDateAndDescription,
-    .uploadDeveloperAndGameCompletion{
-        width: 99.5%;
-        margin: 0 0 1rem 1.5rem;
-    }
-    .uploadReleaseDate,
-    .uploadDescription,
-    .uploadDeveloper,
-    .uploadGameCompletion{
-        width:80%;
-        font-size: 80%;
-    }
-    .uploadReleaseDate-input,
-    .uploadDeveloper-input,
-    .uploadGameCompletion-input{
-        width: 84%;
-    }
-    .uploadDescription-input{
-        width: 90%;
     }
     .NewEntrySubmitButton{
         width: 30%;

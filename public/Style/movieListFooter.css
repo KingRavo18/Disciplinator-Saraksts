@@ -41,7 +41,8 @@ footer button:hover {
     position: fixed;
     display: none;
     margin-bottom: -10px;
-    height: 50%;
+    min-height: 53%;
+    height: auto;
     width: 20%;
     bottom: 25%;
     left: 40%;
@@ -51,6 +52,7 @@ footer button:hover {
     z-index: 7;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    box-sizing: border-box;
 }
 .AddContentPopup.show {
     display: block; /* Ensure it is visible */
@@ -174,7 +176,7 @@ footer button:hover {
     background-color: rgb(211, 211, 211);
 }
 .NewEntrySubmit{
-    margin-top: 5rem;
+    margin-top: 3rem;
     width: 99.5%;
     height: auto;
 }
@@ -189,6 +191,7 @@ footer button:hover {
     font-size: 16px;           
     border-radius: 5px; 
     margin: auto;
+    margin-bottom: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease; 
 }

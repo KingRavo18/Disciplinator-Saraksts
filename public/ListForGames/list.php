@@ -1,41 +1,45 @@
 <?php
-    if (!isset($_SESSION['user_id'])) {
-        die("You must be logged in to view your game list.");
+if (!isset($_SESSION['user_id'])) {
+    die("You must be logged in to view your game list.");
+}
+$user_id = $_SESSION['user_id'];
+require "../../Database/database.php"; 
+$sql = "SELECT id, img_url, img_file_path, title, rating 
+        FROM games 
+        WHERE user_id = ? 
+        ORDER BY title";
+$stmt = $mysqli->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($ListArticle = $result->fetch_assoc()) {
+    if (!$ListArticle["id"] || (!$ListArticle["img_url"] && !$ListArticle["img_file_path"]) || !$ListArticle["title"] || !$ListArticle["rating"]) {
+        die("There is an empty result. Execution has been halted.");
     }
-    $user_id = $_SESSION['user_id'];
-    require "../../Database/database.php"; 
-    $sql = "SELECT id, img, title, rating 
-            FROM games 
-            WHERE user_id = ? 
-            ORDER BY title";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($ListArticle = $result->fetch_assoc()) {
-        if (!$ListArticle["id"] || !$ListArticle["img"] || !$ListArticle["title"] || !$ListArticle["rating"]) {
-            die("There is an empty result. Execution has been halted");
-        }
+
+    $imageSource = $ListArticle["img_file_path"] ? $ListArticle["img_file_path"] : $ListArticle["img_url"];
 ?>
-        <article id="ListBorderColor" style="cursor:auto; border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
-            <div class="ListImageContainer">
-                <img class="ShowListImg" src="<?=$ListArticle["img"]?>" alt="<?=$ListArticle["title"]?> Title Image"/>
-                <div class="DeleteListEntryArea">
-                    <button onclick="deleteEntry(<?=$ListArticle['id']?>)">&#x2715;</button>
-                </div>
+    <article id="ListBorderColor" data-id="<?=$ListArticle['id']?>" style="cursor:auto; border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
+        <div class="ListImageContainer">
+            <img class="ShowListImg" src="<?=$imageSource?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
+            <div class="DeleteListEntryArea">
+                <button onclick="deleteEntry(<?=$ListArticle['id']?>)">&#x2715;</button>
             </div>
-            <p class="ShowListTitle">
-                <?=$ListArticle["title"]?>
-            </p>
-            <p class="ShowListRating">
-                <?=$ListArticle["rating"]?>/10
-            </p>
-        </article>
+        </div>
+        <p class="ShowListTitle">
+            <?=htmlspecialchars($ListArticle["title"])?>
+        </p>
+        <p class="ShowListRating">
+            <?=htmlspecialchars($ListArticle["rating"])?>/10
+        </p>
+    </article>
 <?php 
-    }
-    $stmt->close();
-    $mysqli->close();
+}
+$stmt->close();
+$mysqli->close();
 ?>
+
 <script>
 function deleteEntry(gameId) {
     if (confirm("Are you sure you want to delete this game?")) {
@@ -44,8 +48,12 @@ function deleteEntry(gameId) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function () {
             if (xhr.status === 200) {
-                alert(xhr.responseText); 
-                location.reload(); 
+                alert(xhr.responseText);
+
+                var article = document.querySelector(`article[data-id="${gameId}"]`);
+                if (article) {
+                    article.remove();
+                }
             } else {
                 alert("Error: Could not delete the entry.");
             }

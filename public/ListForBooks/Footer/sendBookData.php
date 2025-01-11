@@ -23,28 +23,31 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
+// Set the character set to ensure proper encoding
+$mysqli->set_charset("utf8mb4");
+
 $sql = "INSERT INTO books (user_id, img, title, rating) VALUES (?, ?, ?, ?)";
 $stmt = $mysqli->stmt_init();
 if (!$stmt->prepare($sql)) {
     die("SQL Error: " . $mysqli->error);
 }
+
 $stmt->bind_param("issi", $user_id, $img, $title, $rating);
 
 if ($stmt->execute()) {
-    $book_id = $stmt->insert_id; 
+    $book_id = $stmt->insert_id;
 
-   
-$default_file_path = "../ImageUploads/defaultFile.pdf"; 
-$sqlFile = "INSERT INTO bookfile (book_id, user_id, file_path) VALUES (?, ?, ?)";
-$stmtFile = $mysqli->prepare($sqlFile);
+    $default_file_path = "../ImageUploads/defaultFile.pdf"; 
+    $sqlFile = "INSERT INTO bookfile (book_id, user_id, file_path) VALUES (?, ?, ?)";
+    $stmtFile = $mysqli->prepare($sqlFile);
 
-if ($stmtFile) {
-    $stmtFile->bind_param("iis", $book_id, $user_id, $default_file_path);
-    $stmtFile->execute();
-    $stmtFile->close();
-} else {
-    echo "Error preparing statement for bookfile: " . $mysqli->error;
-}
+    if ($stmtFile) {
+        $stmtFile->bind_param("iis", $book_id, $user_id, $default_file_path);
+        $stmtFile->execute();
+        $stmtFile->close();
+    } else {
+        echo "Error preparing statement for bookfile: " . $mysqli->error;
+    }
 
     header("Location: ../index.php");
 } else {
@@ -53,4 +56,7 @@ if ($stmtFile) {
 
 $stmt->close();
 $mysqli->close();
+?>
+
+
 
