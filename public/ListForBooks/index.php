@@ -19,8 +19,8 @@ session_start();
         <link rel="stylesheet" href="../Style/sidebar.css">
     </head>
     <body>
-    <main>
-            <div class="PageTitle">
+        <main>
+            <div class="pageTitle">
                 <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'GRĀMATU SARAKSTS' : 'BOOK LIST'; ?></h1>
             </div>
             <?php

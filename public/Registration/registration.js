@@ -1,8 +1,8 @@
 function FeatureSidebar(){
-    var FeatureSidebar = document.getElementById("FeatureSidebar").style.left = 0;
+    var FeatureSidebar = document.getElementById("featureSidebar").style.left = 0;
 }
 function closeFeatureSidebar() {
-    var closeFeatureSidebar = document.getElementById("FeatureSidebar").style.left= "-400rem";
+    var closeFeatureSidebar = document.getElementById("featureSidebar").style.left= "-400rem";
 }
 const visibilityBtn1 = document.getElementById("visibilityBtn-1")
 visibilityBtn1.addEventListener("click", function() {
@@ -36,19 +36,16 @@ window.addEventListener('load', function() {
 });
 
 function HideTermsArea() {
-    const termsArea = document.getElementById("TermsArea");
-    const termsFullArea = document.getElementById("TermsFullArea");
+    const termsArea = document.getElementById("termsArea");
+    const termsFullArea = document.getElementById("termsFullArea");
 
-    // Trigger the fade-out animation by adding the 'hide' class
     termsArea.classList.add("hide");
 
-    // Listen for the end of the animation
     termsArea.addEventListener('animationend', function() {
-        termsArea.style.display = "none"; // Hide the Terms Area after animation
-        termsFullArea.style.display = "none"; // Hide the background
+        termsArea.style.display = "none"; 
+        termsFullArea.style.display = "none"; 
     });
 
-    // Ensure the popup and background are still visible while the animation plays
     termsFullArea.style.display = "block";
     termsArea.style.visibility = "visible";
 }

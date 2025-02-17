@@ -1,36 +1,36 @@
-<div id="AddContentFullPage" class="AddContentFullPage">
-    <div id="AddContentPopup" class="AddContentPopup">
-        <div class="CloseAddContent">
-            <button onclick="closeAddContentPopup()" class="CloseAddContentButton"></button>
+<div id="addContentFullPage">
+    <div id="addContentPopup">
+        <div class="closeAddContent">
+            <button onclick="closeAddContentPopup()" class="closeAddContentButton"></button>
         </div>
         <form method="post" action="./sendGameData.php" enctype="multipart/form-data">
-            <div class="UploadWindowWithLongInput">
+            <div class="uploadWindowWithLongInput">
                 <label>
                     <?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>
-                    <input type="text" class="LongInput" name="img_url"/>
+                    <input type="text" class="longInput" name="img_url"/>
                 </label>
             </div>
             <p style="text-align: center; font-size: 14px;"><?= $_SESSION['page_language'] === 'lv' ? 'vai' : 'or'; ?></p>
-            <div class="UploadWindowWithLongInput">
+            <div class="uploadWindowWithLongInput">
                 <label>
                     <?= $_SESSION['page_language'] === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>
-                    <input type="file" class="LongInput" name="img_file" accept="image/*"/>
+                    <input type="file" class="longInput" name="img_file" accept="image/*"/>
                 </label>
             </div>
-            <div class="UploadWindowWithLongInput">
+            <div class="uploadWindowWithLongInput">
                 <label>
                     <?= $_SESSION['page_language'] === 'lv' ? 'Spēles Nosaukums' : 'Videogame Title'; ?>
-                    <input type="text" class="LongInput" name="title" required/>
+                    <input type="text" class="longInput" name="title" required/>
                 </label>
             </div>
-            <div class="UploadWindowWithLongInput">
+            <div class="uploadWindowWithLongInput">
                 <label>
                     <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
-                    <input type="number" max="10" min="1" class="LongInput" name="rating" required/>
+                    <input type="number" max="10" min="1" class="longInput" name="rating" required/>
                 </label>
             </div>
-            <div class="NewEntrySubmit">
-                <button class="NewEntrySubmitButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
+            <div class="newEntrySubmit">
+                <button class="newEntrySubmitButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
             </div>
         </form>
     </div>
@@ -40,8 +40,8 @@
 </footer>
 <script>
         function OpenAddContentPopup() {
-    const popup = document.getElementById("AddContentPopup");
-    const overlay = document.getElementById("AddContentFullPage");
+    const popup = document.getElementById("addContentPopup");
+    const overlay = document.getElementById("addContentFullPage");
     
     overlay.style.display = "block";
     popup.classList.remove("hide"); 
@@ -50,8 +50,8 @@
 }
 
 function closeAddContentPopup() {
-    const popup = document.getElementById("AddContentPopup");
-    const overlay = document.getElementById("AddContentFullPage");
+    const popup = document.getElementById("addContentPopup");
+    const overlay = document.getElementById("addContentFullPage");
     
     popup.classList.remove("show"); 
     popup.classList.add("hide");    

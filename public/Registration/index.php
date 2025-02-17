@@ -19,20 +19,20 @@
                 require "featureSidebar.php"; 
                 require "terms&conditions.php"; 
             ?> 
-            <div class="OpenFeatures"><button onclick="FeatureSidebar()">Lapas Funkcijas</button></div>
-            <div class="PageTitle"><h1>DISCIPLINATORS</h1></div>
-            <div class="InputWindows">
-                <div class="Explanation"><p>Šī mājaslapa piedāvā lietotājam ērtu pieju dažādiem sarakstiem vienā mājaslapā.</p></div>  
-                <div class="Registration">
-                    <div class="RegistrationTitle"><h2>PIESLĒGTIES</h2></div>
+            <div class="openFeatures"><button onclick="FeatureSidebar()">Lapas Funkcijas</button></div>
+            <div class="pageTitle"><h1>DISCIPLINATORS</h1></div>
+            <div class="inputWindows">
+                <div class="explanation"><p>Šī mājaslapa piedāvā lietotājam ērtu pieju dažādiem sarakstiem vienā mājaslapā.</p></div>  
+                <div class="registration">
+                    <div class="registrationTitle"><h2>PIESLĒGTIES</h2></div>
                     <form action="login.php" method="POST">
-                        <div class="RegistrationInput">
+                        <div class="registrationInput">
                             <input type="text" placeholder=" Lietotājvārds" name="username" required>
-                            <div class="RegistrationInputPassword">
+                            <div class="registrationInputPassword">
                                 <input type="password" id="password-1" placeholder=" Parole" name="password" required>
                                 <i id="visibilityBtn-1" title="parādīt/paslēpt paroli"><span id="icon-1" class="material-symbols-outlined">visibility</span></i>
                             </div>
-                            <div id="ErrorArea1">
+                            <div id="errorArea">
                                 <?php
                                     if (isset($_GET['login_error'])) {
                                         echo '<p>' . htmlspecialchars($_GET['login_error']) . '</p>';
@@ -40,31 +40,30 @@
                                 ?>
                             </div>  
                         </div>
-                        
-                        <div class="RegistrationButton">
+                        <div class="registrationButton">
                             <button>Pieslēgties</button>
                         </div>
                     </form>
                 </div>
-                <div class="Registration">
-                    <div class="RegistrationTitle"><h2>REĢISTRĒTIES</h2></div>
+                <div class="registration">
+                    <div class="registrationTitle"><h2>REĢISTRĒTIES</h2></div>
                         <form action="signup.php" method="POST">
-                        <div class="RegistrationInput">
+                        <div class="registrationInput">
                             <input type="text" placeholder=" Lietotājvārds" name="username" title="Ievadiet lietotājvārdu" required>
                             <input type="email" placeholder=" E-pasts" name="email" title="Ievadiet e-pastu" required>
-                            <div class="RegistrationInputPassword2">
+                            <div class="registrationInputPassword2">
                                 <input type="password" id="password-2" placeholder=" Parole" name="password" title="Ievadiet paroli" required>
                                 <i id="visibilityBtn-2" title="parādīt/paslēpt paroli"><span id="icon-2" class="material-symbols-outlined">visibility</span></i>
                             </div>
                         </div>
-                        <div id="ErrorArea2">
+                        <div id="errorArea">
                             <?php 
                                 if (isset($_GET['signup_error'])) {
                                     echo '<p>' . htmlspecialchars($_GET['signup_error']) . '</p>';
                                 }
                             ?>
                         </div>
-                        <div class="RegistrationButton">
+                        <div class="registrationButton">
                             <button>Reģistrēties</button>
                         </div>
                     </form>

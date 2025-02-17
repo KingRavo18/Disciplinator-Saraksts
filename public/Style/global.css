@@ -18,7 +18,7 @@ main {
     width: 100%;
     margin-top: 4rem;
 }
-.PageTitle h1 {
+.pageTitle h1 {
     color: navy;
     margin-top: 70px;
     font-size: 300%;
@@ -29,13 +29,13 @@ main {
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out forwards; 
 }
-#BookListPopup.show,
-.AddContentPopup.show {
+#bookListPopup.show,
+#addContentPopup.show {
     display: block; 
     animation: fadeInUp 0.5s ease forwards;
 }
-#BookListPopup.hide,
-.AddContentPopup.hide {
+#bookListPopup.hide,
+#addContentPopup.hide {
     animation: fadeOutDown 0.5s ease forwards;
 }
 @keyframes fadeInUp {
@@ -59,7 +59,7 @@ main {
     }
 }
 @media only screen and (max-width: 600px) {
-    .PageTitle h1{
+    .pageTitle h1 {
         font-size: 180%;
         margin-top: 80px;
     }

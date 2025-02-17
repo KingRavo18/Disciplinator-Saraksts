@@ -1,12 +1,10 @@
 .option {
     background-color: white;
     width: 40%;
-    margin-left: 30%;
+    margin: 0 0 10px 30%;
     border-radius: 10px;
-    border: 3px solid;
-    border-color: rgb(209, 209, 209);
+    border: 3px solid rgb(209, 209, 209);
     cursor: pointer;
-    margin-bottom: 10px;
     transition: 0.3s ease;
     opacity: 0; 
     transform: translateY(50px);

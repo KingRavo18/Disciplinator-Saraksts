@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <link rel="stylesheet" href="../Style/mainPageTopBar.css">
     <link rel="stylesheet" href="../Style/sidebar.css">
     <link rel="stylesheet" href="../Style/mainPage.css">
-    <link rel="stylesheet" href="../Style/global.css"/>
+    <link rel="stylesheet" href="../Style/global.css">
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
@@ -39,33 +39,33 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         require "../Accesories/sidebar.php";
     ?>
     <main>
-        <div class="PageTitle">
+        <div class="pageTitle">
             <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'DARĀMO DARBU SARAKSTS' : 'TO DO LIST'; ?></h1>
         </div>
-        <div class="ToDoList">
-            <div class="ToDoList-Left">
+        <div class="toDoList">
+            <div class="toDoList-Left">
                 <?php if ($result->num_rows > 0): ?>
                     <?php while ($task = $result->fetch_assoc()) { ?>
                         <div class="task <?= $task['is_completed'] ? 'completed-task' : ($task['is_failed'] ? 'failed-task' : ''); ?>">
                             <div class="taskArea"><p><?= htmlspecialchars($task['task']); ?></p></div>
-                            <div class="taskBottomArea">
+                            <div style="display: flex;">
                                 <div class="timeArea">
                                     <p><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigt līdz' : 'Finish By'; ?> <?= htmlspecialchars($task['completeTime']); ?></p>
                                 </div>
                                 <?php if (!$task['is_completed'] && !$task['is_failed']): ?>
                                     <form method="POST" action="completeTask.php" style="display: inline;">
                                         <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                        <button class="CompleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigts' : 'Finished'; ?></button>
+                                        <button class="completeButton"><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigts' : 'Finished'; ?></button>
                                     </form>
                                     <form method="POST" action="failedTask.php" style="display: inline;">
                                         <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                        <button class="DeleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Nepabeigts' : 'Not Finished'; ?></button>
+                                        <button class="completeButton deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Nepabeigts' : 'Not Finished'; ?></button>
                                     </form>
                                 <?php endif; ?>
                                 <?php if ($task['is_completed'] || $task['is_failed']): ?>
                                     <form method="POST" action="deleteTask.php" style="display: inline;">
                                         <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                        <button class="DeleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
+                                        <button class="completeButton deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
                                     </form>
                                 <?php endif; ?>
                             </div>
@@ -75,9 +75,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <p class="no-tasks-message"><?= $_SESSION['page_language'] === 'lv' ? 'Nav Uzdevumu!' : 'No Tasks'; ?></p>
                 <?php endif; ?>
             </div>
-            <div class="ToDoList-Right">
-                <div class="ToDoList-Form">
-                    <div class="ToDoListTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'PIEVIENOT DARBU' : 'ADD TASK'; ?></h2></div>
+            <div class="toDoList-Right">
+                <div class="toDoList-Form">
+                    <div class="toDoListTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'PIEVIENOT DARBU' : 'ADD TASK'; ?></h2></div>
                     <form method="POST" action="createTask.php">
                         <textarea name="task" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Uzdevums' : 'Task'; ?>" required></textarea><br>
                         <label for="timeInput"><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigšanas Laiks (Obligāts)' : 'Finish Time (Manditory)'; ?></label>

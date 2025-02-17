@@ -1,70 +1,63 @@
-#TopBar{
+header {
     width: 100%;
     position: fixed;
     color: rgb(51, 51, 51);
     height: 10%;
-    background: white;
+    background-color: white;
     top: 0;                  
     left: 0;
     z-index: 6;
     box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
 }
-#PageTitle{
+#pageTitle {
     height: 80%;
     display: flex;
-    padding-left: 2rem;
-    padding-top: 1.5rem;
+    padding: 1.5rem 0 0 2rem;
     font-weight: bold;
     width: 10%;
     font-size: 150%;
     cursor: pointer;        
 }
-#PageTitle a{
+#pageTitle a { 
     color: rgb(51, 51, 51);        
     text-decoration: none;
     font-family: 'Inter';
 }
-#PointArea{
-    margin-left: 92rem;
-    margin-top: -5.4rem;
+#pointArea {
+    margin: -5.4rem 0 0 92rem;
     display: flex;
-}
-#PointArea p{
     font-family: 'Inter';
 }
-.TopBarProfilePicture{
-    background:red;
+#pointArea img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin-top: 14px;
-    margin-left: 10px;
     object-fit: cover;
 }
-#PointArea img{
+.topBarProfilePicture {
+    background-color: rgb(184, 184, 184);
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin: 14px 0 0 10px;
     object-fit: cover;
 }
 @media only screen and (max-width: 600px) {
-    #PageTitle{
+    #pageTitle {
         font-size: 120%;       
     }
-    #PointArea{
-        margin-left: 13.5rem;
-        margin-top: -4rem;
+    #pointArea {
+        margin: -4rem 0 0 13.5rem;
         font-size: 60%;
     }
-    .TopBarProfilePicture{
-        background:red;
+    .topBarProfilePicture {
+        background-color: rgb(184, 184, 184);
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        margin-top: 0;
-        margin-left: 10px;
+        margin: 0 0 0 10rem;
     }
-    #PointArea img{
+    #pointArea img {
         width: 40px;
         height: 40px;
     }

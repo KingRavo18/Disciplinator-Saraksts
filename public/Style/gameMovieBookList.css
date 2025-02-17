@@ -1,9 +1,9 @@
-section{
+section {
     margin-left: 80px;
     height: auto;
     padding-bottom: 20px;
 }
-article{
+article {
     float: left;
     height: 27rem;
     padding-bottom: 20px;
@@ -11,25 +11,25 @@ article{
     margin: 2rem 4.28rem;
     border-radius: 10px;
     border: 3px solid navy;
-    background: white;
+    background-color: white;
     cursor: pointer;
     color: rgb(51, 51, 51);
     opacity: 0; 
     transform: translateY(20px);
     animation: fadeInUp 1s ease-out forwards; 
 }
-.ListImageContainer {
+.listImageContainer {
     position: relative;
 }
-.ShowListImg{
+.showListImg {
     height: 23rem;
     width: 100%;
     display: block;
     border-radius: 10px;
-    background:black;
+    background-color:black;
     object-fit: contain;
 }
-.ShowListTitle{
+.showListTitle {
     height: 6%;
     width: 90%;
     margin-top: 3px;
@@ -38,7 +38,7 @@ article{
     font-weight: bold;
     font-size: 130%;
 }
-.ShowListRating{
+.showListRating {
     float: left;
     height: 6.3%;
     margin: 1% 0 5px 2%;
@@ -47,12 +47,12 @@ article{
     text-align: center;
     width: 96%;
 }
-.DeleteListEntryArea {
+.deleteListEntryArea {
     position: absolute;
     top: 10px;
     right: 10px; 
 }
-.DeleteListEntryArea button{
+.deleteListEntryArea button {
     height: 1.3rem;
     background-color: rgba(255, 0, 0, 0.7);
     color: white;
@@ -61,14 +61,16 @@ article{
     cursor: pointer;
     transition: 0.4s;
 }
-.DeleteListEntryArea button:hover{
+.deleteListEntryArea button:hover {
     background: red
 }
-.DeleteListEntryArea button:active{
+.deleteListEntryArea button:active {
     background: rgb(174, 1, 1)
 }
+
 /* POPUP */
-#BookListFullPage{    
+
+#bookListFullPage {    
     position: fixed;
     top: 0;
     left: 0;
@@ -77,13 +79,13 @@ article{
     z-index: 85;
     background-color: rgba(0, 0, 0, 0.5);
 }
-#BookListPopup{
+#bookListPopup {
     position: fixed;
     display: none;
     height: 99%;
     width: 30%;
     left: 35%;
-    background: white;
+    background-color: white;
     color: rgb(51, 51, 51);
     border: 0.15rem solid rgb(155, 155, 155);  
     z-index: 87;
@@ -105,8 +107,7 @@ article{
     background-color: #d3d3d3;
     border: none; 
     color: black;
-    margin: auto;
-    margin-bottom: 5px;
+    margin: auto auto 5px auto;
     padding: 0.7rem;
     border-style: none;
     font-weight: bold;
@@ -132,8 +133,7 @@ article{
     color: white;
     border: none;
     border-radius: 50%;
-    padding-top: 2px;
-    padding-right: 2px;
+    padding: 2px 2px 0 0;
     width: 30px;
     height: 30px;
     text-align: center;
@@ -145,6 +145,9 @@ article{
 }
 .close-pdf-button:hover {
     background-color: rgba(255, 0, 0, 1); 
+}
+.close-pdf-button:active {
+    background-color: rgba(179, 0, 0, 1); 
 }
 
 /* Footer */
@@ -178,7 +181,7 @@ footer button:hover {
 footer button:active {
     background-color: #a9a9a9;
 }
-.AddContentFullPage {    
+#addContentFullPage {    
     position: fixed;
     display: none;
     top: 0;
@@ -187,7 +190,7 @@ footer button:active {
     z-index: 85;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.AddContentPopup {
+#addContentPopup {
     position: fixed;
     display: none;
     margin-bottom: -10px;
@@ -196,7 +199,7 @@ footer button:active {
     width: 20%;
     bottom: 25%;
     left: 40%;
-    background: white;
+    background-color: white;
     color: rgb(51, 51, 51);
     border: 0.15rem solid rgb(209, 209, 209);  
     z-index: 7;
@@ -204,7 +207,7 @@ footer button:active {
     transition: opacity 0.5s ease, transform 0.5s ease;
     box-sizing: border-box;
 }
-.NewEntrySubmitButton {
+.newEntrySubmitButton {
     background-color: #d3d3d3;
     border: none; 
     color: black;
@@ -214,49 +217,47 @@ footer button:active {
     padding: 10px 0; 
     font-size: 16px;           
     border-radius: 5px; 
-    margin: auto;
-    margin-bottom: 10px;
+    margin: auto auto 10px auto;
     cursor: pointer;
     transition: background-color 0.3s ease; 
 }
-.NewEntrySubmitButton:hover {
+.newEntrySubmitButton:hover {
     background-color: #c0c0c0;
 }
-.NewEntrySubmitButton:active {
+.newEntrySubmitButton:active {
     background-color: #a9a9a9;
 }
-.CloseAddContent {
+.closeAddContent {
     float: right;
     height: auto;
     width: 99%;
     margin-bottom: 2.3rem;
 }
-.CloseAddContentButton {
+.closeAddContentButton {
     float: right;
     height: 1.4rem;
     border-style: none;
-    background: white;
+    background-color: white;
     color: rgb(51, 51, 51);
     cursor: pointer;
     transition-duration: 0.4s;
 }
-.CloseAddContentButton:hover {
+.closeAddContentButton:hover {
     background:red;
 }
-.CloseAddContentButton:after {
+.closeAddContentButton:after {
     display: inline-block;
     content: "\00d7";
     font-size: 150%;
     font-weight: lighter;
 }
-.UploadWindowWithLongInput {
+.uploadWindowWithLongInput {
     height: auto;
     width: 99.5%;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin: 10px 0 0 10px;
     font-size: 110%;
 }
-.LongInput {
+.longInput {
     width: 90%;
     border-style: none;
     border-bottom: 2px solid rgb(51, 51, 51);
@@ -265,60 +266,46 @@ footer button:active {
     cursor: pointer;
     transition-duration: 0.4s;
 }
-.LongInput:hover {
+.longInput:hover {
     background-color: rgb(211, 211, 211);
 }
-.NewEntrySubmit {
+.newEntrySubmit {
     margin-top: 2rem;
     width: 99.5%;
     height: auto;
 }
-@media only screen and (max-width: 1400px) {
-    .ListArticle{
-        margin-left: 84px;
-    }
-}
-@media only screen and (max-width: 1200px) {
-    .ListArticle{
-        margin-left: 74px;
-    }
-}
 @media only screen and (max-width: 600px) {
-    main{
+    main {
         margin-bottom: 70px;
     }
-    article{
+    article {
         float: center;
         height: auto;
         margin: 0.6rem 0 0 2.3rem;
         width: 80%;
     }
-    .ShowListTitle{
+    .showListTitle {
         height: auto;
     }
-    .ListArticle{
-        width: 40%;
-        margin: 4% 0 0 7%;
-    }
-    .ShowListRating{
+    .showListRating {
         margin: 5% 0 0 2%;
     }
-    footer button{
+    footer button {
         width: 30%;
     }
-    .AddContentPopup{
+    #addContentPopup {
         bottom: 10%;
         left: 5%;
         width: 90%;
     }
-    .UploadWindowWithLongInput{
+    .uploadWindowWithLongInput {
         margin: 0 0 1rem 1.5rem;
         font-size: 90%;
     }
-    .LongInput{
+    .longInput {
         width: 80%;
     }
-    .NewEntrySubmitButton{
+    .newEntrySubmitButton {
         width: 30%;
     }
 }

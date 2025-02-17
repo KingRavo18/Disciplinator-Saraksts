@@ -33,18 +33,18 @@ foreach ($movieList as $ListArticle) {
     $imageSource = $ListArticle["img_file_path"] ? $ListArticle["img_file_path"] : $ListArticle["img_url"];
 ?>
     <article id="ListBorderColor" data-id="<?=$ListArticle['id']?>" style="cursor:auto; border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
-        <div class="ListImageContainer">
-            <img class="ShowListImg" src="<?=$imageSource?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
-            <div class="DeleteListEntryArea">
+        <div class="listImageContainer">
+            <img class="showListImg" src="<?=$imageSource?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
+            <div class="deleteListEntryArea">
                 <button onclick="deleteEntry(<?=$ListArticle['id']?>)">&#x2715;</button>
             </div>
         </div>
-        <p class="ShowListTitle">
+        <p class="showListTitle">
             <?=htmlspecialchars($ListArticle["title"])?>
         </p>
         <div style="display: flex; gap: 10px;">
             <?php if ($ListArticle["type"] === "tv_show"): ?>
-                <p class="ShowListRating">
+                <p class="showListRating">
                     <?= $_SESSION['page_language'] === 'lv' ? 'Sērijas: ' : 'Episodes: '; ?>
                     <span 
                         contenteditable="true" 
@@ -54,11 +54,11 @@ foreach ($movieList as $ListArticle) {
                     </span>
                 </p>
             <?php else: ?>
-                <p class="ShowListRating">
+                <p class="showListRating">
                     <?= $_SESSION['page_language'] === 'lv' ? 'Filma' : 'Movie'; ?>
                 </p>
             <?php endif; ?>
-            <p class="ShowListRating">
+            <p class="showListRating">
                 <?=htmlspecialchars($ListArticle["rating"])?>/10
             </p>
         </div>

@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require "../Accesories/sidebar.php";
     ?>
     <main>
-        <div class="PageTitle">
+        <div class="pageTitle">
             <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'ADMINISTRATORA LOGS' : 'ADMINISTRATOR WINDOW'; ?></h1>
         </div>
         <section>

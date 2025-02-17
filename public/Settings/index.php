@@ -93,7 +93,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     </head>
     <body>
         <main>
-            <div class="PageTitle">
+            <div class="pageTitle">
                 <h1 id="Title" style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'IESTATĪJUMI' : 'SETTINGS'; ?></h1>
             </div>
             <?php

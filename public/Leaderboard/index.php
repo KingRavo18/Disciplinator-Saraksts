@@ -18,7 +18,7 @@ session_start();
 </head>
 <body>
     <main>
-        <div class="PageTitle">
+        <div class="pageTitle">
             <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'LĪDERU SARAKSTS' : 'LEADERBOARD'; ?></h1>
         </div>
         <?php
@@ -26,7 +26,7 @@ session_start();
             require "../Accesories/sidebar.php";
         ?>
         <div class="leaderboardDiv">
-            <div class="LeaderTable">
+            <div class="leaderTable">
                 <table>
                     <tr>
                         <th style="width: 10%"><?= $_SESSION['page_language'] === 'lv' ? 'Vieta' : 'Place'; ?></th>

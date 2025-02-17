@@ -1,9 +1,9 @@
-<div id="TermsFullArea">
-    <div id="TermsArea">
-        <div id="TermsTitle">
+<div id="termsFullArea">
+    <div id="termsArea">
+        <div id="termsTitle">
             <h2>NOTEIKUMI UN NOSACĪJUMI</h2>
         </div>
-        <div id="Terms">
+        <div id="terms">
         <ol>
           <li>
             <h3>Terms of use</h3>
@@ -27,8 +27,8 @@
           </li>
         </ol>
         </div>
-        <div id="TermsButtons">
-            <a href="needterms.php">Decline</a>
+        <div id="termsButtons">
+            <a href="./needterms.php">Decline</a>
             <button onclick="HideTermsArea()">Accept</button>
         </div>
     </div>

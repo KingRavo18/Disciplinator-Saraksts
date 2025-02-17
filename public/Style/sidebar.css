@@ -54,16 +54,16 @@
 .sidebar:hover .label {
     display: inline-block;
 }
-#LogoutFullArea{
+#logoutFullArea {
     position: fixed;
     display: none;
     top: 0;
-    width:  100%;
+    width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
 }
-#LogoutArea{
+#logoutArea {
     display: none;
     width: 20rem;
     height: 10rem;
@@ -78,12 +78,11 @@
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-#LogoutArea.show {
+#logoutArea.show {
     display: block; 
     animation: fadeIn 0.3s ease forwards;
 }
-
-#LogoutArea.hide {
+#logoutArea.hide {
     animation: fadeOut 0.3s ease forwards;
 }
 @keyframes fadeIn {
@@ -95,7 +94,6 @@
         opacity: 1;
     }
 }
-
 @keyframes fadeOut {
     from {
         opacity: 1;
@@ -104,50 +102,45 @@
         opacity: 0;
     }
 }
-#LogoutTitle{
+#logoutTitle {
     text-align: center;
     width: 100%;
     height: 3rem;
+    color:rgb(51, 51, 51);
 }
-
-#LogoutTitle h2{
-    color:rgb(51, 51, 51);  
-}
-.LogoutYesNoButtons{
+.logoutYesNoButtons {
     width: 80%;
     height: 20%;
-    margin-left: 10%;
-    margin-top: 8%;
+    margin: 8% 0 0 10%;
     display: flex;
     justify-content: center;
     align-items: center; 
 }
-.LogoutYesNoButtons button,
-.LogoutYesNoButtons a{
+.logoutYesNoButtons button,
+.logoutYesNoButtons a {
     background-color: #d3d3d3; 
     border: none;            
-    color:rgb(51, 51, 51);              
+    color: rgb(51, 51, 51);              
     padding: 10px 20px;      
     text-align: center;      
     text-decoration: none;    
     display: inline-block;     
     font-size: 16px;
     font-family: 'Inter';           
-    border-radius: 5px;     
-    margin-left: 5%;
-    margin-right: 5%;   
+    border-radius: 5px;   
+    margin: 0 5%;  
     cursor: pointer;           
     transition: background-color 0.3s ease; 
 }
-.LogoutYesNoButtons button:hover,
-.LogoutYesNoButtons a:hover{
+.logoutYesNoButtons button:hover,
+.logoutYesNoButtons a:hover {
     background-color: #c0c0c0;
 }
-.LogoutYesNoButtons button:active,
-.LogoutYesNoButtons a:active{
+.logoutYesNoButtons button:active,
+.logoutYesNoButtons a:active {
     background-color: #a9a9a9;
 }
-#ToDoList{
+#toDoList{
     margin-left: -0.01rem;
 }
 @media only screen and (max-width: 600px) {

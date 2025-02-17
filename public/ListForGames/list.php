@@ -34,16 +34,16 @@ foreach ($gameList as $ListArticle) {
     $imageSource = $ListArticle["img_file_path"] ? $ListArticle["img_file_path"] : $ListArticle["img_url"];
 ?>
     <article id="ListBorderColor" data-id="<?=$ListArticle['id']?>" style="cursor:auto; border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
-        <div class="ListImageContainer">
-            <img class="ShowListImg" src="<?=$imageSource?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
-            <div class="DeleteListEntryArea">
+        <div class="listImageContainer">
+            <img class="showListImg" src="<?=$imageSource?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
+            <div class="deleteListEntryArea">
                 <button onclick="deleteEntry(<?=$ListArticle['id']?>)">&#x2715;</button>
             </div>
         </div>
-        <p class="ShowListTitle">
+        <p class="showListTitle">
             <?=htmlspecialchars($ListArticle["title"])?>
         </p>
-        <p class="ShowListRating">
+        <p class="showListRating">
             <?=htmlspecialchars($ListArticle["rating"])?>/10
         </p>
     </article>

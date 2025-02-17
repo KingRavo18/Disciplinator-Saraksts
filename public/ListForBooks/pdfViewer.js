@@ -57,10 +57,10 @@ function toggleFullScreen() {
 }
 
 function OpenBookList(title, bookId, filePath) {
-    const BookListPopup = document.getElementById("BookListPopup");
-    const BookListFullPage = document.getElementById("BookListFullPage");
+    const BookListPopup = document.getElementById("bookListPopup");
+    const BookListFullPage = document.getElementById("bookListFullPage");
 
-    BookListPopup.querySelector(".ShowListTitle").textContent = title;
+    BookListPopup.querySelector(".showListTitle").textContent = title;
     BookListPopup.querySelector("#book_id").value = bookId;
 
     BookListFullPage.style.display = "block";
@@ -160,8 +160,8 @@ function loadExistingPDF(filePath) {
 
 
 function CloseBookList() {
-    const BookListPopup = document.getElementById("BookListPopup");
-    const BookListFullPage = document.getElementById("BookListFullPage");
+    const BookListPopup = document.getElementById("bookListPopup");
+    const BookListFullPage = document.getElementById("bookListFullPage");
     const canvas = document.getElementById("pdf-canvas");
     const context = canvas.getContext("2d");
 

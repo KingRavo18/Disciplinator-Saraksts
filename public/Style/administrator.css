@@ -1,13 +1,11 @@
 .adminDiv {
-    background: white;
+    background-color: white;
     width: 40%;
     min-height: 13rem;
     height: auto;
-    margin-top: 2rem;
-    margin-left: 30%;
+    margin: 2rem 0 10px 30%;
     border-radius: 10px;
     color: rgb(51, 51, 51);
-    margin-bottom: 10px;
     padding-bottom: 5px;
     opacity: 0; 
     transform: translateY(50px);
@@ -27,8 +25,7 @@
 .adminForm input {
     width: 80%;
     padding: 10px;
-    margin-top: 10px;
-    margin-left: 7.5%;
+    margin: 10px 0 0 7.5%;
     border-radius: 5px;
     font-family: 'Inter';
     transition: background-color 0.3s ease;
@@ -39,8 +36,7 @@
     max-width: 80%;
     min-width: 80%;
     padding: 10px;
-    margin-top: 10px;
-    margin-left: 7.6%;
+    margin: 10px 0 0 7.6%;
     border-radius: 5px;
     font-family: 'Inter';
     transition: background-color 0.3s ease;
@@ -83,8 +79,7 @@
 .feedback-message p {
     font-size: 100%;
     text-align: center;
-    margin-top: -5px;
-    margin-bottom: 5px;
+    margin: -5px 0 5px 0;
 }
 table {
     width: 100%;

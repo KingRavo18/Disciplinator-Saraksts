@@ -1,9 +1,9 @@
-<div id="FeatureSidebar">
-    <div id="FeatureSidebar-Content">
-        <div id="FeatureSidebarCloseButtonArea">
-            <button id="CloseButton" onclick="closeFeatureSidebar()">&#x2715;</button>
+<div id="featureSidebar">
+    <div id="featureSidebar-Content">
+        <div id="featureSidebarCloseButtonArea">
+            <button id="closeButton" onclick="closeFeatureSidebar()">&#x2715;</button>
         </div>
-        <div id="FeatureSidebarTitle">
+        <div id="featureSidebarTitle">
             <h2>FUNKCIJAS UN JAUNUMI</h2>
         </div>
 <?php
@@ -20,14 +20,14 @@
             $safeMessage = htmlspecialchars($row["message"], ENT_QUOTES, 'UTF-8');
             $safeDate = htmlspecialchars($row["date"], ENT_QUOTES, 'UTF-8');
 ?>
-        <div class="FeatureSidebarMessage">
-            <div class="FeatureSidebarMessageDate">
+        <div class="featureSidebarMessage">
+            <div class="featureSidebarMessageDate">
                 <p><?= $safeDate ?></p>
             </div>
-            <div class="FeatureSidebarMessageTitle">
+            <div class="featureSidebarMessageTitle">
                 <p><?= $safeTitle ?></p>
             </div>
-            <div class="FeatureSidebarMessageText">
+            <div class="featureSidebarMessageText">
                 <p><?= $safeMessage ?></p>
             </div>
         </div>

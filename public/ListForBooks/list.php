@@ -41,31 +41,31 @@ usort($bookList, function ($a, $b) {
         data-id="<?=htmlspecialchars($ListArticle['id'])?>"
         onclick="OpenBookList(`<?=htmlspecialchars(addslashes($ListArticle['title']))?>`, `<?=htmlspecialchars($ListArticle['id'])?>`, `<?=htmlspecialchars($ListArticle['file_path'])?>`)"  
         style="border-color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
-        <div class="ListImageContainer">
-            <img class="ShowListImg" src="<?=htmlspecialchars($imageSource)?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
-            <div class="DeleteListEntryArea">
+        <div class="listImageContainer">
+            <img class="showListImg" src="<?=htmlspecialchars($imageSource)?>" alt="<?=htmlspecialchars($ListArticle["title"])?> Title Image"/>
+            <div class="deleteListEntryArea">
                 <button onclick="deleteEntry(<?=htmlspecialchars($ListArticle['id'])?>, event)">&#x2715;</button>
             </div>
         </div>
-        <p class="ShowListTitle">
+        <p class="showListTitle">
             <?=htmlspecialchars($ListArticle["title"])?>
         </p>
-        <p class="ShowListRating">
+        <p class="showListRating">
             <?=htmlspecialchars($ListArticle["rating"])?>/10
         </p>
     </article>
     <?php endforeach; ?>
 </div>
 
-<div id="BookListFullPage" style="display: none;">
-    <div id="BookListPopup">
-        <button onclick="CloseBookList()" class="CloseAddContentButton"></button>
-        <div class="ShowListTitle"></div>
+<div id="bookListFullPage" style="display: none;">
+    <div id="bookListPopup">
+        <button onclick="CloseBookList()" class="closeAddContentButton"></button>
+        <div class="showListTitle"></div>
         <form action="upload_bookfile.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="book_id" id="book_id">
             <canvas id="pdf-canvas"></canvas>
             <input type="file" class="bookfileupload" name="file" accept=".pdf" required onchange="previewPDF(this)">
-            <button type="submit" class="NewEntrySubmitButton">Add</button>
+            <button type="submit" class="newEntrySubmitButton">Add</button>
         </form>
     </div>
 </div>
