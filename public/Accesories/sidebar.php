@@ -19,7 +19,7 @@
             <h2><?= $_SESSION['page_language'] === 'lv' ? 'Vai esat pārliecināti?' : 'Are you sure?'; ?></h2>
         </div>
         <div class="logoutYesNoButtons">
-                <a href="../MainPage/logout.php"><?= $_SESSION['page_language'] === 'lv' ? 'Jā' : 'Yes'; ?></a>
+                <a href="./logout.php"><?= $_SESSION['page_language'] === 'lv' ? 'Jā' : 'Yes'; ?></a>
                 <button onclick="HideLogoutArea()"><?= $_SESSION['page_language'] === 'lv' ? 'Nē' : 'No'; ?></button>
         </div>
     </div>
