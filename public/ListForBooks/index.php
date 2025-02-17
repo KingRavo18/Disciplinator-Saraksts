@@ -43,7 +43,7 @@ session_start();
             </section>
         </main>
         <?php
-            require "./Footer/footer.php";
+            require "./footer.php";
         ?>
     </body>
 </html>

@@ -6,7 +6,7 @@
     background: white;
     top: 0;                  
     left: 0;
-    z-index: 1;
+    z-index: 6;
     box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
 }
 #PageTitle{

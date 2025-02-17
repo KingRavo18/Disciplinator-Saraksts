@@ -2,18 +2,31 @@
 if (!isset($_SESSION['user_id'])) {
     die("You must be logged in to view your game list.");
 }
+
 $user_id = $_SESSION['user_id'];
-require "../../Database/database.php"; 
+require "../../Database/database.php";
+
 $sql = "SELECT id, img_url, img_file_path, title, rating 
         FROM games 
-        WHERE user_id = ? 
-        ORDER BY title";
+        WHERE user_id = ?";
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-while ($ListArticle = $result->fetch_assoc()) {
+$gameList = [];
+while ($row = $result->fetch_assoc()) {
+    $gameList[] = $row;
+}
+
+$stmt->close();
+$mysqli->close();
+
+usort($gameList, function ($a, $b) {
+    return strnatcmp($a['title'], $b['title']);
+});
+
+foreach ($gameList as $ListArticle) {
     if (!$ListArticle["id"] || (!$ListArticle["img_url"] && !$ListArticle["img_file_path"]) || !$ListArticle["title"] || !$ListArticle["rating"]) {
         die("There is an empty result. Execution has been halted.");
     }
@@ -36,8 +49,6 @@ while ($ListArticle = $result->fetch_assoc()) {
     </article>
 <?php 
 }
-$stmt->close();
-$mysqli->close();
 ?>
 
 <script>

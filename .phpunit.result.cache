@@ -1,1 +1,0 @@
-{"version":1,"defects":{"UploadHandlerTest::testUploadFileSuccess":8,"UploadHandlerTest::testUploadFileNotPdf":8,"FileUploadTest::testFileUploadOnlyAllowsPdf":7,"FileUploadTest::testSuccessfulPdfUpload":7},"times":{"FileUploadTest::testFileUploadOnlyAllowsPdf":0.055,"FileUploadTest::testSuccessfulPdfUpload":0.004}}
