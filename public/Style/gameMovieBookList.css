@@ -38,25 +38,14 @@ article{
     font-weight: bold;
     font-size: 130%;
 }
-.Separator {
-    text-align: center;
-    margin: 10px 0;
-    font-size: 14px;
-    color: #555;
-}
-
-.UploadWindowWithFileInput {
-    margin-bottom: 15px;
-}
-.ListArticle,
 .ShowListRating{
     float: left;
     height: 6.3%;
-    width: 47%;
-    margin: 1% 0 0 2%;
+    margin: 1% 0 5px 2%;
     padding-top: 1.2%;
     font-size: 90%;
     text-align: center;
+    width: 96%;
 }
 .DeleteListEntryArea {
     position: absolute;
@@ -75,41 +64,20 @@ article{
 .DeleteListEntryArea button:hover{
     background: red
 }
-.ShowListRating{
-    width: 96%;
-    margin-bottom: 5px;
-}
-.ShowListDescription{
-    position: relative;
-    display: inline-block;
-}
-.ShowListDescription-Content{
-    position: absolute;
-    display: none;
-    background: rgb(68, 68, 68);
-    min-height: 4rem;
-    min-width: 12rem;
-    max-width: 20rem;
-    padding: 7%; 
-    box-shadow: 0rem 0.8rem 1.6rem 0rem rgba(0,0,0,0.2);
-    word-wrap: break-word;
-    z-index: 1;
-}
-.ShowListDescription:hover .ShowListDescription-Content {
-    display: block;
+.DeleteListEntryArea button:active{
+    background: rgb(174, 1, 1)
 }
 /* POPUP */
-.BookListFullPage{    
+#BookListFullPage{    
     position: fixed;
-    display: none;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 5;
+    z-index: 85;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.BookListPopup{
+#BookListPopup{
     position: fixed;
     display: none;
     height: 99%;
@@ -118,54 +86,20 @@ article{
     background: white;
     color: rgb(51, 51, 51);
     border: 0.15rem solid rgb(155, 155, 155);  
-    z-index: 7;
-    
+    z-index: 87;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.BookListPopup.show {
-    display: block;
-    animation: fadeIn3 0.3s ease forwards;
-}
-
-.BookListPopup.hide {
-    animation: fadeOut3 0.3s ease forwards;
-}
-@keyframes fadeIn3 {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut3 {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-.fileslot {
-    width: 70%;
-    margin-left: 15%;
-    height: 33rem;
-    margin-bottom: 5px;
-    background-color: rgb(46, 46, 46);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 #pdf-canvas {
-    display: block; /* Ensure the canvas is visible */
-    width: 100%; /* Make sure it takes up full width */
-    height: auto; /* Maintain aspect ratio */
-    margin: auto; /* Center the canvas */
+    display: block;
+    width: 100%; 
+    height: auto;
+    margin: auto; 
     border: 1px solid black; 
     cursor: pointer;
+    max-width: 80%;
+    max-height: 80%;
 }
-.bookfileupload{
+.bookfileupload {
     display: block;
     width: 200px;
     background-color: #d3d3d3;
@@ -180,38 +114,21 @@ article{
     cursor: pointer;
     transition-duration: 0.4s;
 }
-.specListTitle p{
-    border: none;
-}
 #pdf-viewer {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    background-color: rgba(0, 0, 0, 0.9); 
     z-index: 9999;
-    display: none; /* Initially hidden */
-}
-
-canvas {
-    display: block;
-    margin: auto;
-    max-width: 80%;
-    max-height: 80%;
-}
-.pdf-controls {
-    position: fixed;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    color: white;
+    display: none; 
 }
 .close-pdf-button {
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: rgba(255, 0, 0, 0.8); /* Semi-transparent red background */
+    background-color: rgba(255, 0, 0, 0.8); 
     color: white;
     border: none;
     border-radius: 50%;
@@ -223,46 +140,139 @@ canvas {
     font-size: 20px;
     text-decoration: none;
     cursor: pointer;
-    z-index: 10000; /* Ensure it stays on top */
+    z-index: 10000; 
+    transition-duration: 0.4s;
 }
-
 .close-pdf-button:hover {
-    background-color: rgba(255, 0, 0, 1); /* Solid red on hover */
+    background-color: rgba(255, 0, 0, 1); 
 }
-#pdf-overlay {
+
+/* Footer */
+
+footer {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    z-index: 4;
 }
-
-#pdf-fullscreen {
-    position: relative;
-    background: #fff;
-    padding: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-}
-
-
-#fullscreen-prev-page-btn,
-#fullscreen-next-page-btn,
-#close-fullscreen-btn {
-    position: absolute;
-    background: #333;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
+footer button {
+    display: block;
+    width: 200px;
+    background-color: #d3d3d3;
+    border: none; 
+    color: rgb(51, 51, 51);
+    margin: auto;
+    padding: 0.7rem;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 0.3rem;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
-#BookListFullPage { display: block; }
-
-#fullscreen-prev-page-btn { left: 10px; bottom: 10px; }
-#fullscreen-next-page-btn { right: 10px; bottom: 10px; }
-#close-fullscreen-btn { top: 10px; right: 10px; }
+footer button:hover {
+    background-color: #c0c0c0;
+}
+footer button:active {
+    background-color: #a9a9a9;
+}
+.AddContentFullPage {    
+    position: fixed;
+    display: none;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 85;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.AddContentPopup {
+    position: fixed;
+    display: none;
+    margin-bottom: -10px;
+    min-height: 55%;
+    height: auto;
+    width: 20%;
+    bottom: 25%;
+    left: 40%;
+    background: white;
+    color: rgb(51, 51, 51);
+    border: 0.15rem solid rgb(209, 209, 209);  
+    z-index: 7;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-sizing: border-box;
+}
+.NewEntrySubmitButton {
+    background-color: #d3d3d3;
+    border: none; 
+    color: black;
+    display: block;
+    font-weight: bold;
+    width: 200px;
+    padding: 10px 0; 
+    font-size: 16px;           
+    border-radius: 5px; 
+    margin: auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+.NewEntrySubmitButton:hover {
+    background-color: #c0c0c0;
+}
+.NewEntrySubmitButton:active {
+    background-color: #a9a9a9;
+}
+.CloseAddContent {
+    float: right;
+    height: auto;
+    width: 99%;
+    margin-bottom: 2.3rem;
+}
+.CloseAddContentButton {
+    float: right;
+    height: 1.4rem;
+    border-style: none;
+    background: white;
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.CloseAddContentButton:hover {
+    background:red;
+}
+.CloseAddContentButton:after {
+    display: inline-block;
+    content: "\00d7";
+    font-size: 150%;
+    font-weight: lighter;
+}
+.UploadWindowWithLongInput {
+    height: auto;
+    width: 99.5%;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 110%;
+}
+.LongInput {
+    width: 90%;
+    border-style: none;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    border-radius: 5px;
+    padding: 0.4rem;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+.LongInput:hover {
+    background-color: rgb(211, 211, 211);
+}
+.NewEntrySubmit {
+    margin-top: 2rem;
+    width: 99.5%;
+    height: auto;
+}
 @media only screen and (max-width: 1400px) {
     .ListArticle{
         margin-left: 84px;
@@ -286,15 +296,29 @@ canvas {
     .ShowListTitle{
         height: auto;
     }
-    .ShowListDescription-Content{
-        min-width: 110px;
-        max-width: 110px;
-    }
     .ListArticle{
         width: 40%;
         margin: 4% 0 0 7%;
     }
     .ShowListRating{
         margin: 5% 0 0 2%;
+    }
+    footer button{
+        width: 30%;
+    }
+    .AddContentPopup{
+        bottom: 10%;
+        left: 5%;
+        width: 90%;
+    }
+    .UploadWindowWithLongInput{
+        margin: 0 0 1rem 1.5rem;
+        font-size: 90%;
+    }
+    .LongInput{
+        width: 80%;
+    }
+    .NewEntrySubmitButton{
+        width: 30%;
     }
 }

@@ -82,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'ADMINISTRATORA LOGS' : 'ADMINISTRATOR WINDOW'; ?></h1>
         </div>
         <section>
-            <div class="AdminDiv">
-                <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'FUNKCIJAS UN JAUNUMI' : 'FUNCTIONS AND NEWS'; ?></h2></div>
-                <div class="AdminForm">
+            <div class="adminDiv">
+                <div class="adminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'FUNKCIJAS UN JAUNUMI' : 'FUNCTIONS AND NEWS'; ?></h2></div>
+                <div class="adminForm">
                     <form method="POST" action="features&news.php">
                         <input type="text" name="title" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Tēma ' : 'Subject '; ?>" required><br>
                         <textarea name="info" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Informācija' : 'Information'; ?>" required></textarea><br>
@@ -95,12 +95,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </section>
         <section>
-            <div class="AdminDiv">
-                <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'DZĒST LIETOTĀJU' : 'DELETE USER'; ?></h2></div>
-                <div class="AdminForm">
+            <div class="adminDiv">
+                <div class="adminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'DZĒST LIETOTĀJU' : 'DELETE USER'; ?></h2></div>
+                <div class="adminForm">
                     <form method="POST">
                         <input type="text" name="DeleteUser" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
-                        <button class="deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
+                        <button class="adminButton deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
                     </form>
                 </div>
                 <?php if ($message && isset($_POST['DeleteUser'])): ?>
@@ -111,17 +111,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </section>
         <section>
-            <div class="AdminDiv">
-                <div class="AdminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'LIETOTĀJU UZDEVUMI' : 'USER TASKS'; ?></h2></div>
-                <div class="AdminForm">
+            <div class="adminDiv">
+                <div class="adminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'LIETOTĀJU UZDEVUMI' : 'USER TASKS'; ?></h2></div>
+                <div class="adminForm">
                     <form method="POST">
                         <input type="text" name="SearchUser" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
                         <button class="adminButton"><?= $_SESSION['page_language'] === 'lv' ? 'Meklēt' : 'Search'; ?></button>
                     </form>
                 </div>
             <?php if (!empty($tasks)): ?>
-                <div class="TaskList">
-                    <h3><?= $_SESSION['page_language'] === 'lv' ? 'Uzdevumi Lietotājam' : 'Tasks for the User'; ?><?= htmlspecialchars($usernameToSearch); ?></h3>
+                <div>
+                    <h3><?= $_SESSION['page_language'] === 'lv' ? 'Uzdevumi Lietotājam ' : 'Tasks for the User '; ?><?= htmlspecialchars($usernameToSearch); ?></h3>
                     <table>
                         <thead>
                             <tr>

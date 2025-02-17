@@ -6,16 +6,7 @@ session_start();
     <head>
         <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Grāmatu Saraksts' : 'Disciplinators - Book List'; ?></title>
         <meta charset="UTF-8"/>
-        <meta name="author" content="Raivo Kingovskis"/>
-        <meta name="description" content="The Ultimate List is a webpage for me and me only to 
-        make a list of games, I've played, anime I've watched and books I've read. If someone else comes 
-        across this page, please kindly go away."/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta property="og:image" content="../Style/index.css"/>
-        <meta property="og:description" content="The Ultimate List is a webpage for me and me only to 
-        make a list of games, I've played, anime I've watched and books I've read. If someone else comes 
-        across this page, please kindly go away."/>
-        <meta property="og:title" content="Game List"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />

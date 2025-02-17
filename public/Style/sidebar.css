@@ -79,7 +79,7 @@
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 #LogoutArea.show {
-    display: block; /* Ensure it is visible */
+    display: block; 
     animation: fadeIn 0.3s ease forwards;
 }
 

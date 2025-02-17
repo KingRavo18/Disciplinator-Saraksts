@@ -1,25 +1,24 @@
-html, body{
+html, body {
     background: rgb(240, 240, 240);
     margin: 0;
     overflow-x: hidden;
     font-family: 'Inter';
 }
-h1{
+h1 {
     color: white;
     font-size: 500%;
     text-shadow: 6px 6px #000000;
 }
-p{
+p {
     font-size: 150%;
 }
-
-main{
+main {
     display: grid;
     height: auto;
     width: 100%;
     margin-top: 4rem;
 }
-.PageTitle h1{
+.PageTitle h1 {
     color: navy;
     margin-top: 70px;
     font-size: 300%;
@@ -30,14 +29,33 @@ main{
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out forwards; 
 }
+#BookListPopup.show,
+.AddContentPopup.show {
+    display: block; 
+    animation: fadeInUp 0.5s ease forwards;
+}
+#BookListPopup.hide,
+.AddContentPopup.hide {
+    animation: fadeOutDown 0.5s ease forwards;
+}
 @keyframes fadeInUp {
-    0% {
+    from {
         opacity: 0;
-        transform: translateY(50px); 
+        transform: translateY(20px);
     }
-    100% {
+    to {
         opacity: 1;
-        transform: translateY(0); 
+        transform: translateY(0);
+    }
+}
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
     }
 }
 @media only screen and (max-width: 600px) {
@@ -46,3 +64,4 @@ main{
         margin-top: 80px;
     }
 }
+

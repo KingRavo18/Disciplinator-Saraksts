@@ -29,9 +29,9 @@ session_start();
             <div class="LeaderTable">
                 <table>
                     <tr>
-                        <th class="TableOne"><?= $_SESSION['page_language'] === 'lv' ? 'Vieta' : 'Place'; ?></th>
-                        <th class="TableTwo"><?= $_SESSION['page_language'] === 'lv' ? 'Lietotājvārds' : 'Username'; ?></th>
-                        <th class="TableThree"><?= $_SESSION['page_language'] === 'lv' ? 'Punktu Skaits' : 'Point Count'; ?></th>
+                        <th style="width: 10%"><?= $_SESSION['page_language'] === 'lv' ? 'Vieta' : 'Place'; ?></th>
+                        <th style="width: 60%"><?= $_SESSION['page_language'] === 'lv' ? 'Lietotājvārds' : 'Username'; ?></th>
+                        <th style="width: 30%"><?= $_SESSION['page_language'] === 'lv' ? 'Punktu Skaits' : 'Point Count'; ?></th>
                     </tr>
                 <?php 
                     $place = 1;
@@ -53,13 +53,6 @@ session_start();
                         <td onclick="ShowUserArea()"><?= $leaderboardEntry["username"] ?></td>
                         <td onclick="ShowUserArea()"><?= $leaderboardEntry["points"] ?></td>
                     </tr>
-                    <div id="UserFullArea">
-                        <div id="UserArea">
-                            <div id="UserTitle">
-                                <h2>Vai esat pārliecināti?</h2>
-                            </div>
-                        </div>
-                    </div>
                 <?php 
                     $place++; 
                     }

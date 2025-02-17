@@ -1,4 +1,4 @@
-.AdminDiv {
+.adminDiv {
     background: white;
     width: 40%;
     min-height: 13rem;
@@ -13,18 +13,43 @@
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out forwards; 
 }
-.AdminTitle{
+.adminTitle {
     margin-top: 2rem;
     padding: 10px;
     text-align: center;
 }
-.AdminForm {
+.adminForm {
     width: 100%;
     height: 50%;
     display: block;
     margin-left: auto;
 }
-.adminButton{
+.adminForm input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 7.5%;
+    border-radius: 5px;
+    font-family: 'Inter';
+    transition: background-color 0.3s ease;
+}
+.adminForm textarea {
+    width: 80%;
+    min-height: 20px;
+    max-width: 80%;
+    min-width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 7.6%;
+    border-radius: 5px;
+    font-family: 'Inter';
+    transition: background-color 0.3s ease;
+}
+.adminForm input:hover,
+.adminForm textarea:hover {
+    background-color: rgb(211, 211, 211);
+}
+.adminButton {
     width: 200px;
     margin-left: 34%;
     background-color: #d3d3d3; 
@@ -39,88 +64,45 @@
     cursor: pointer;           
     transition: background-color 0.3s ease; 
 }
-.adminButton:hover{
+.adminButton:hover {
     background-color: #c0c0c0;
 }
-.adminButton:active{
+.adminButton:active {
     background-color: #a9a9a9;
 }
-.AdminForm input{
-    width: 80%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 7.5%;
-    border-radius: 5px;
-    font-family: 'Inter';
-    transition: background-color 0.3s ease;
-}
-.AdminForm input:hover{
-    background-color: rgb(211, 211, 211);
-}
-.AdminForm textarea{
-    width: 80%;
-    min-height: 20px;
-    max-width: 80%;
-    min-width: 80%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 7.6%;
-    border-radius: 5px;
-    font-family: 'Inter';
-    transition: background-color 0.3s ease;
-}
-.AdminForm textarea:hover{
-    background-color: rgb(211, 211, 211);
-}
 .deleteButton {
-    width: 200px;
-    margin-left: 34%;
     background-color: white; 
     color: red;
-    border: none;                       
-    padding: 10px 0;      
-    margin-top: 10px;
-    margin-bottom: 20px;
-    text-align: center;        
-    display: inline-block;     
-    font-size: 16px;           
-    border-radius: 5px;        
-    cursor: pointer;           
-    transition: background-color 0.3s ease; 
 }
 .deleteButton:hover {
     background-color: rgb(80, 80, 80);
 }
-.feedback-message p{
+.deleteButton:active {
+    background-color: rgb(69, 69, 69);
+}
+.feedback-message p {
     font-size: 100%;
     text-align: center;
     margin-top: -5px;
     margin-bottom: 5px;
 }
 table {
-    width:100%;
+    width: 100%;
     margin: 30px 10px 10px 2.5%;
     height: auto;
-}
-table, th {
     border-style: solid;
-    background-color: rgb(87, 87, 87);;
     width: 95%;
     text-align: center;
 }
-table, td {
-    border-left: solid;
-    border-right: solid;
-}
-.TaskList h3{
+h3 {
     text-align: center;
 }
 @media only screen and (max-width: 600px) {
-    .AdminDiv {
+    .adminDiv {
         width: 80%;
         margin-left: 10%;
     }
-    .adminButton{
+    .adminButton {
         margin-left: 18%;
     }
 }

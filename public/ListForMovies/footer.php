@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../Style/movieListFooter.css">
 <div id="AddContentFullPage" class="AddContentFullPage">
     <div id="AddContentPopup" class="AddContentPopup">
         <div class="CloseAddContent">

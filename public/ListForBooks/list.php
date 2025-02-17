@@ -5,17 +5,14 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 require "../../Database/database.php";
 
-// Fetch books from the database
 $sql = "SELECT id, img_url, img_file_path, title, rating FROM books WHERE user_id = ?";
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Fetch all results into an array
 $bookList = [];
 while ($row = $result->fetch_assoc()) {
-    // Fetch associated file path
     $sqlFile = "SELECT file_path FROM bookfile WHERE book_id = ?";
     $stmtFile = $mysqli->prepare($sqlFile);
     $stmtFile->bind_param("i", $row['id']);
@@ -28,11 +25,9 @@ while ($row = $result->fetch_assoc()) {
     $bookList[] = $row;
 }
 
-// Close database connection
 $stmt->close();
 $mysqli->close();
 
-// Sort the book list using natural order sorting
 usort($bookList, function ($a, $b) {
     return strnatcmp($a['title'], $b['title']);
 });
@@ -52,16 +47,18 @@ usort($bookList, function ($a, $b) {
                 <button onclick="deleteEntry(<?=htmlspecialchars($ListArticle['id'])?>, event)">&#x2715;</button>
             </div>
         </div>
-        <p class="ShowListTitle"><?=htmlspecialchars($ListArticle["title"])?></p>
+        <p class="ShowListTitle">
+            <?=htmlspecialchars($ListArticle["title"])?>
+        </p>
         <p class="ShowListRating">
-            <?=$ListArticle["rating"]?>/10
+            <?=htmlspecialchars($ListArticle["rating"])?>/10
         </p>
     </article>
     <?php endforeach; ?>
 </div>
 
-<div id="BookListFullPage" class="BookListFullPage" style="display: none;">
-    <div id="BookListPopup" class="BookListPopup">
+<div id="BookListFullPage" style="display: none;">
+    <div id="BookListPopup">
         <button onclick="CloseBookList()" class="CloseAddContentButton"></button>
         <div class="ShowListTitle"></div>
         <form action="upload_bookfile.php" method="POST" enctype="multipart/form-data">
@@ -73,7 +70,7 @@ usort($bookList, function ($a, $b) {
     </div>
 </div>
 
-<div id="pdf-viewer" style="display: none;">
+<div id="pdf-viewer">
     <a id="close-pdf-btn" class="close-pdf-button" href="index.php">✖</a>
     <embed id="pdf-embed" type="application/pdf" width="100%" height="100%">
 </div>
