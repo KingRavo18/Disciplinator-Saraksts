@@ -69,7 +69,7 @@ foreach ($movieList as $ListArticle) {
 
 <script>
 function deleteEntry(movieId) {
-    if (confirm("Are you sure you want to delete this movie?")) {
+    if (confirm("Are you sure you want to delete this movie entry?")) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "delete_entry.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -79,7 +79,7 @@ usort($bookList, function ($a, $b) {
 <script src="pdfViewer.js"></script>
 <script>  
 function deleteEntry(bookId) {
-    if (confirm("Are you sure you want to delete this book?")) {
+    if (confirm("Are you sure you want to delete this book entry?")) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "delete_entry.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
