@@ -1,32 +1,21 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    die("You must be logged in to delete a movie.");
+if (!isset($_POST['movie_id'])) {
+    die("movie ID is required");
 }
-$user_id = $_SESSION['user_id'];
+
 $movie_id = $_POST['movie_id'];
-if (!$movie_id) {
-    die("Invalid movie ID.");
-}
-$host = 'localhost';
-$db = 'Disciplinators';
-$user = 'root';
-$pass = '';
-$mysqli = new mysqli($host, $user, $pass, $db);
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
-$sql = "DELETE FROM movies WHERE id = ? AND user_id = ?";
+require "../../Database/database.php";
+
+$sql = "DELETE FROM movies WHERE id = ?";
 $stmt = $mysqli->prepare($sql);
-if (!$stmt) {
-    die("SQL Error: " . $mysqli->error);
-}
-$stmt->bind_param("ii", $movie_id, $user_id);
+$stmt->bind_param("i", $movie_id);
+
 if ($stmt->execute()) {
-    echo "Movie deleted successfully.";
+    echo "Success"; 
 } else {
-    echo "Error deleting movie: " . $stmt->error;
+    echo "Error: " . $stmt->error; 
 }
+
 $stmt->close();
 $mysqli->close();
-

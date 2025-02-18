@@ -75,10 +75,14 @@ function deleteEntry(movieId) {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onload = function () {
             if (xhr.status === 200) {
-                alert(xhr.responseText); 
-                const articleElement = document.querySelector(`#ListBorderColor[data-id='${movieId}']`);
-                if (articleElement) {
-                    articleElement.remove();
+                var responseText = xhr.responseText.trim(); 
+                if (responseText === "Success") { 
+                    var article = document.querySelector(`article[data-id="${movieId}"]`);
+                    if (article) {
+                        article.remove(); 
+                    }
+                } else {
+                    alert(responseText); 
                 }
             } else {
                 alert("Error: Could not delete the entry.");
@@ -87,7 +91,6 @@ function deleteEntry(movieId) {
         xhr.send("movie_id=" + movieId);
     }
 }
-
 function updateEpisodeCount(movieId, newCount) {
     if (!newCount || isNaN(newCount) || parseInt(newCount) < 1) {
         alert("Invalid episode count. Please enter a valid number.");

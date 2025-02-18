@@ -22,10 +22,11 @@ article {
     position: relative;
 }
 .showListImg {
-    height: 23rem;
+    height: 23.2rem;
     width: 100%;
     display: block;
-    border-radius: 10px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
     background-color:black;
     object-fit: contain;
 }
@@ -36,6 +37,7 @@ article {
     margin-left: 5%;
     text-align: center;
     font-weight: bold;
+    cursor: pointer;
     font-size: 130%;
 }
 .showListRating {
@@ -45,6 +47,7 @@ article {
     padding-top: 1.2%;
     font-size: 90%;
     text-align: center;
+    cursor: pointer;
     width: 96%;
 }
 .deleteListEntryArea {
@@ -67,7 +70,17 @@ article {
 .deleteListEntryArea button:active {
     background: rgb(174, 1, 1)
 }
-
+.editTitleInput, .editRatingInput {
+    width: auto;
+    min-width: 60px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    transition-duration: 0.4s;
+}
 /* POPUP */
 
 #bookListFullPage {    

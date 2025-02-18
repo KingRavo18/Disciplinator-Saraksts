@@ -59,5 +59,5 @@ function closeAddContentPopup() {
         popup.style.display = "none"; 
         overlay.style.display = "none";
     }, 300); 
-}
+} 
 </script>

@@ -55,9 +55,9 @@ if ($stmtDeleteFile->execute()) {
 
     $stmtDeleteBook->bind_param("ii", $book_id, $user_id);
     if ($stmtDeleteBook->execute()) {
-        echo "Book and associated files deleted successfully.";
+        echo "Success"; 
     } else {
-        echo "Error deleting book: " . $stmtDeleteBook->error;
+        echo "Error: " . $stmt->error; 
     }
 
     $stmtDeleteBook->close();
