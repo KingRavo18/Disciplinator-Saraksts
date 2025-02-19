@@ -14,7 +14,6 @@
     </head>
     <body>
         <main>
-            
             <?php 
                 require "featureSidebar.php"; 
                 require "terms&conditions.php"; 
@@ -27,10 +26,10 @@
                     <div class="registrationTitle"><h2>PIESLĒGTIES</h2></div>
                     <form action="login.php" method="POST">
                         <div class="registrationInput">
-                            <input type="text" placeholder=" Lietotājvārds" name="username" required>
+                            <input type="text" placeholder=" Lietotājvārds" name="username" title="Ievadiet lietotājvārdu" required>
                             <div class="registrationInputPassword">
-                                <input type="password" id="password-1" placeholder=" Parole" name="password" required>
-                                <i id="visibilityBtn-1" title="parādīt/paslēpt paroli"><span id="icon-1" class="material-symbols-outlined">visibility</span></i>
+                                <input type="password" id="password-1" placeholder=" Parole" name="password" title="Ievadiet paroli" required>
+                                <i id="visibilityBtn-1" title="Parādīt/paslēpt paroli"><span id="icon-1" class="material-symbols-outlined">visibility</span></i>
                             </div>
                             <div id="errorArea">
                                 <?php
@@ -53,7 +52,7 @@
                             <input type="email" placeholder=" E-pasts" name="email" title="Ievadiet e-pastu" required>
                             <div class="registrationInputPassword2">
                                 <input type="password" id="password-2" placeholder=" Parole" name="password" title="Ievadiet paroli" required>
-                                <i id="visibilityBtn-2" title="parādīt/paslēpt paroli"><span id="icon-2" class="material-symbols-outlined">visibility</span></i>
+                                <i id="visibilityBtn-2" title="Parādīt/paslēpt paroli"><span id="icon-2" class="material-symbols-outlined">visibility</span></i>
                             </div>
                         </div>
                         <div id="errorArea">
@@ -71,8 +70,5 @@
             </div>
             <script src="registration.js"></script>
         </main>
-        <div class="footer">
-           
-        </div>
     </body>
 </html>

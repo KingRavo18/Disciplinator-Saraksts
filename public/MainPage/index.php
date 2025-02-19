@@ -31,7 +31,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Darbu Saraksts' : 'Disciplinators - To Do List'; ?></title>
+    <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Darbu Saraksts' : 'Disciplinators - To-Do List'; ?></title>
 </head>
 <body>
     <?php

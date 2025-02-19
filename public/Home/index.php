@@ -26,7 +26,7 @@ session_start();
             require "../Accesories/sidebar.php";
         ?>
         <div class="option" onclick="window.location.href='../MainPage/Index.php';">
-            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Darāmo Darbu Saraksts' : 'To Do List'; ?></h2>
+            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Darāmo Darbu Saraksts' : 'To-Do List'; ?></h2>
         </div>
         <div class="option" onclick="window.location.href='../ListForGames/Index.php';">
             <h2><?= $_SESSION['page_language'] === 'lv' ? 'Vidiospēļu Saraksts' : 'Videogame List'; ?></h2>

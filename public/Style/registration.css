@@ -130,15 +130,6 @@ i {
 .openFeatures button:active {
     background-color: rgb(217, 217, 217);
 }
-.footer {
-    width: 100%;
-    text-align: right;
-    color: white;
-}
-.footer p {
-    font-size: 100%;
-    margin-right: 1rem;
-}
 .material-symbols-outlined {
     margin-right: 1rem;
 }
@@ -337,9 +328,6 @@ i {
         width: 80%;
         padding-top: 20px;
         margin: 4rem auto;
-    }
-    .footer {
-        font-size: 70%;
     }
     #featureSidebar {
         width: 100%;
