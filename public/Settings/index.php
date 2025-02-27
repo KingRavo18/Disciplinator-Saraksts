@@ -108,46 +108,46 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     unset($_SESSION['success']);
                 }
             ?>
-            <section class="SettingsPage">
-                <div class="settingsdiv">
-                    <div class="SettingsTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'PROFILS' : 'PROFILE'; ?></h2></div>
-                    <div class="ProfileArea1">
-                        <form method="POST" enctype="multipart/form-data">
-                            <div class="ProfilePicture">
-                                <div class="ProfileCircle">
-                                    <img src="<?= isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : '../Images/default_profile.jpg'; ?>" alt="Profile Picture">
+            <div class="settingsPage">
+                <div class="settingsTop">
+                    <div class="settingsdiv">
+                        <div class="settingsTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'PROFILS' : 'PROFILE'; ?></h2></div>
+                        <div class="profileArea1">
+                            <form method="POST" enctype="multipart/form-data">
+                                <div class="profilePicture">
+                                    <div class="profileCircle">
+                                        <img src="<?= isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : '../Images/default_profile.jpg'; ?>" alt="Profile Picture">
+                                    </div>
+                                    <div class="fileInput">
+                                        <input type="file" name="profile_picture">
+                                    </div>
+                                    <div class="fileInput">
+                                        <button type="submit" name="upload_picture"><?= $_SESSION['page_language'] === 'lv' ? 'Apstiprināt' : 'Upload'; ?></button>
+                                    </div>
                                 </div>
-                                <div class="FileInput">
-                                    <input type="file" name="profile_picture">
-                                </div>
-                                <div class="FileInput">
-                                    <button type="submit" name="upload_picture"><?= $_SESSION['page_language'] === 'lv' ? 'Apstiprināt' : 'Upload'; ?></button>
-                                </div>
+                            </form>
+                            <div class="profileNames">
+                                <p><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Unknown User'; ?></p>
+                                <p><?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : 'Unknown Email'; ?></p>
+                                <form method="POST">
+                                    <input class="changeInput" style="margin-top:90px" type="text" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns Lietotājvārds' : 'New Username'; ?>" name="username" required>
+                                    <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt lietotājvārdu' : 'Change Username'; ?></button>
+                                </form>
+                                <form method="POST">
+                                    <input class="changeInput" type="email" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns E-pasts' : 'New E-mail'; ?>" name="email" required>
+                                    <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt e-pastu' : 'Change E-mail'; ?></button>
+                                </form>
                             </div>
-                        </form>
-                        <div class="ProfileNames">
-                            <p><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Unknown User'; ?></p>
-                            <p><?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : 'Unknown Email'; ?></p>
-                            <form method="POST">
-                                <input class="changeInput" style="margin-top:90px" type="text" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns Lietotājvārds' : 'New Username'; ?>" name="username" required>
-                                <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt lietotājvārdu' : 'Change Username'; ?></button>
-                            </form>
-                            <form method="POST">
-                                <input class="changeInput" type="email" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns E-pasts' : 'New E-mail'; ?>" name="email" required>
-                                <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt e-pastu' : 'Change E-mail'; ?></button>
-                            </form>
                         </div>
                     </div>
-                </div>
-                <div style="display:flex">
                     <div class="settingsThemediv">
                         <?php require "themeChange.php"; ?>
                     </div>
-                    <div class="settingsThemediv">
-                        <?php require "languageChange.php"; ?>
-                    </div>
                 </div>
-            </section>
+                <div class="settingsLangdiv">
+                    <?php require "languageChange.php"; ?>
+                </div>
+            </div>
         </main>
     </body>
 </html>

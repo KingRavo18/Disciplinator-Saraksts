@@ -4,7 +4,7 @@ if (empty($_SESSION['csrf_token'])) {
 }
 ?>
 <div>
-     <div class="SettingsTitle"><h2 style="font-size: 13px"><?= $_SESSION['page_language'] === 'lv' ? 'LAPAS VALODA' : 'PAGE LANGUAGE'; ?></h2></div>
+     <div class="settingsTitle"><h2 style="font-size: 13px"><?= $_SESSION['page_language'] === 'lv' ? 'LAPAS VALODA' : 'PAGE LANGUAGE'; ?></h2></div>
      <div class="themechange">
         <form method="POST" action="languageUpload.php">
             <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
