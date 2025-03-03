@@ -3,11 +3,12 @@
         <div id="termsTitle">
             <h2>NOTEIKUMI UN NOSACĪJUMI</h2>
         </div>
+        <p class="date">Efektīvs no: 2025. gada marta</p>
         <div id="terms">
         <ol>
           <li>
             <h3>Terms of use</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, quidem doloribus cumque vero, culpa voluptates dolorum reprehenderit nihil nisi odit necessitatibus voluptate voluptatibus magni ducimus sed accusamus illo nobis veniam.</p>
+            <p></p>
           </li>
           <li>
             <h3>Intellectual property rights</h3>

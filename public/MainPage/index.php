@@ -59,7 +59,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                     </form>
                                     <form method="POST" action="failedTask.php" style="display: inline;">
                                         <input type="hidden" name="task_id" value="<?= $task['id']; ?>">
-                                        <button class="completeButton deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Nepabeigts' : 'Not Finished'; ?></button>
+                                        <button class="completeButton deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Nav Pabeigts' : 'Not Finished'; ?></button>
                                     </form>
                                 <?php endif; ?>
                                 <?php if ($task['is_completed'] || $task['is_failed']): ?>

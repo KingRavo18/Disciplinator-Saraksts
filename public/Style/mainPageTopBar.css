@@ -10,9 +10,11 @@ header {
     box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
 }
 #pageTitle {
-    height: 80%;
     display: flex;
-    padding: 1.5rem 0 0 2rem;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 0 2rem;
     font-weight: bold;
     width: 10%;
     font-size: 150%;
@@ -24,8 +26,9 @@ header {
     font-family: 'Inter';
 }
 #pointArea {
-    margin: -5.4rem 0 0 92rem;
+    margin: -4.9rem 10px 0 0;
     display: flex;
+    float: right;
     font-family: 'Inter';
 }
 #pointArea img {

@@ -8,7 +8,7 @@
         </div>
 <?php
     require "../../Database/database.php"; 
-    $stmt = $mysqli->prepare("SELECT title, message, date FROM features_news ORDER BY date DESC");
+    $stmt = $mysqli->prepare("SELECT title, message, date FROM features_news ORDER BY date");
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {

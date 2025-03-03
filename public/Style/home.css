@@ -1,3 +1,6 @@
+body, main {
+    overflow-y: hidden;
+}
 .option {
     background-color: white;
     width: 40%;

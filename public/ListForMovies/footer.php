@@ -5,49 +5,32 @@
         </div>
         <form method="post" action="./sendMovieData.php" enctype="multipart/form-data">
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>
-                    <input type="text" class="longInput" name="img_url"/>
-                </label>
+                <input type="text" class="longInput" name="img_url" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>"/>
             </div>
             <p style="text-align: center; font-size: 14px;"><?= $_SESSION['page_language'] === 'lv' ? 'vai' : 'or'; ?></p>
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>
-                    <input type="file" class="longInput" name="img_file" accept="image/*"/>
-                </label>
+                <input type="file" class="longInput" name="img_file" accept="image/*" title="<?= $_SESSION['page_language'] === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>"/>
             </div>
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Nosaukums' : 'Title'; ?>
-                    <input type="text" class="longInput" name="title" required/>
-                </label>
+                <input type="text" class="longInput" name="title" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Nosaukums' : 'Title'; ?>" required/>
             </div>
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
-                    <input type="number" max="10" min="1" class="longInput" name="rating" required/>
-                </label>
+                <input type="number" max="10" min="1" class="longInput" name="rating" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>" required/>
             </div>
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <div>
+                <div>
                     <label>
-                            <input type="radio" name="type" value="movie" onclick="adjustPopupHeight()" required>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Filma' : 'Movie'; ?>
-                        </label>
-                        <label>
-                            <input type="radio" name="type" value="tv_show" onclick="adjustPopupHeight()" required>
-                            <?= $_SESSION['page_language'] === 'lv' ? 'Seriāls' : 'TV Show'; ?>
-                        </label>
-                    </div>
-                </label>
+                        <input type="radio" name="type" value="movie" onclick="adjustPopupHeight()" required>
+                        <?= $_SESSION['page_language'] === 'lv' ? 'Filma' : 'Movie'; ?>
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="tv_show" onclick="adjustPopupHeight()" required>
+                        <?= $_SESSION['page_language'] === 'lv' ? 'Seriāls' : 'TV Show'; ?>
+                    </label>
+                </div>
             </div>
-            <div id="EpisodeCountInput" class="uploadWindowWithLongInput" style="display: none;">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Sēriju skaits' : 'Episode Count'; ?>
-                    <input type="number" class="longInput" name="episode_count" min="1">
-                </label>
+            <div id="episodeCountInput" class="uploadWindowWithLongInput" style="display: none;">
+                <input type="number" class="longInput" name="episode_count" min="1" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Sēriju skaits' : 'Episode Count'; ?>">
             </div>
             <div class="newEntrySubmit">
                 <button class="newEntrySubmitButton" type="submit">
@@ -65,7 +48,7 @@
         const popup = document.getElementById("addContentPopup");
         const overlay = document.getElementById("addContentFullPage");
         
-        overlay.style.display = "block";
+        overlay.style.display = "flex";
         popup.classList.remove("hide"); 
         popup.classList.add("show");  
         popup.style.display = "block"; 
@@ -87,4 +70,19 @@
         const episodeInput = document.getElementById("episodeCountInput");
         episodeInput.style.display = show ? "block" : "none";
     }
+
+    
+function adjustPopupHeight() {
+    const popup = document.getElementById("AddContentPopup");
+    const typeInput = document.querySelector('input[name="type"]:checked');
+    const episodeCountInput = document.getElementById("episodeCountInput");
+
+    if (typeInput && typeInput.value === "tv_show") {
+        episodeCountInput.style.display = "flex";
+        popup.style.height = "auto"; 
+    } else {
+        episodeCountInput.style.display = "none";
+        popup.style.height = "auto"; 
+    }
+}
 </script>

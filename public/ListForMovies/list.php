@@ -54,7 +54,7 @@ foreach ($movieList as $ListArticle) {
                     </span>
                 </p>
             <?php else: ?>
-                <p class="showListCounter">
+                <p class="showListCounter" style="cursor: auto;">
                     <?= $_SESSION['page_language'] === 'lv' ? 'Filma' : 'Movie'; ?>
                 </p>
             <?php endif; ?>
@@ -118,19 +118,6 @@ document.querySelectorAll(".EditableEpisodeCount").forEach((element) => {
         }
     });
 });
-function adjustPopupHeight() {
-    const popup = document.getElementById("AddContentPopup");
-    const typeInput = document.querySelector('input[name="type"]:checked');
-    const episodeCountInput = document.getElementById("EpisodeCountInput");
-
-    if (typeInput && typeInput.value === "tv_show") {
-        episodeCountInput.style.display = "block";
-        popup.style.height = "auto"; 
-    } else {
-        episodeCountInput.style.display = "none";
-        popup.style.height = "auto"; 
-    }
-}
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".showListTitle").forEach(makeTitleEditable);
     document.querySelectorAll(".showListRating").forEach(makeRatingEditable);

@@ -1,5 +1,6 @@
 <?php
 session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -43,3 +44,9 @@ session_start();
     </main>
 </body>
 </html>
+<?php 
+} else {
+    header("Location: ../Registration/index.php"); 
+    exit();
+}
+?>

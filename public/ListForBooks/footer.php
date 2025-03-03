@@ -5,29 +5,17 @@
         </div>
         <form method="post" action="./sendBookData.php" enctype="multipart/form-data">
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>
-                    <input type="text" class="longInput" name="img_url"/>
-                </label>
+                <input type="text" class="longInput" name="img_url" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>"/>
             </div>
             <p style="text-align: center; font-size: 14px;"><?= $_SESSION['page_language'] === 'lv' ? 'vai' : 'or'; ?></p>
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>
-                    <input type="file" class="longInput" name="img_file" accept="image/*"/>
-                </label>
+                <input type="file" class="longInput" name="img_file" accept="image/*" title="<?= $_SESSION['page_language'] === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>"/>
             </div>
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Grāmatas Nosaukums' : 'Book Title'; ?>
-                    <input type="text" class="longInput" name="title" required/>
-                </label>
+                <input type="text" class="longInput" name="title" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Grāmatas Nosaukums' : 'Book Title'; ?>" required/>
             </div>
             <div class="uploadWindowWithLongInput">
-                <label>
-                    <?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>
-                    <input type="number" max="10" min="1" class="longInput" name="rating" required/>
-                </label>
+                <input type="number" max="10" min="1" class="longInput" name="rating" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>" required/>
             </div>
             <div class="newEntrySubmit">
                 <button class="newEntrySubmitButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
@@ -43,7 +31,7 @@
     const popup = document.getElementById("addContentPopup");
     const overlay = document.getElementById("addContentFullPage");
     
-    overlay.style.display = "block";
+    overlay.style.display = "flex";
     popup.classList.remove("hide"); 
     popup.classList.add("show");  
     popup.style.display = "block";

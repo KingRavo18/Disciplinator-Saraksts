@@ -118,6 +118,7 @@
     max-height: 80px;
     max-width: 80%;
     min-width: 80%;
+    border: 3px solid rgb(209, 209, 209);
     padding: 10px;
     margin: 10px 0 0 7.6%;
     border-radius: 5px;
@@ -137,6 +138,7 @@
     width: 40%;
     padding: 10px;
     margin: 10px 0 0 27%;
+    border: 3px solid rgb(209, 209, 209);
     border-radius: 5px;
     font-family: 'Inter';
     transition: background-color 0.3s ease;

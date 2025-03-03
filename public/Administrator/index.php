@@ -5,11 +5,13 @@ $message = '';
 $tasks = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['DeleteUser']) && !isset($_POST['SearchUser'])) {
-        $usernameToDelete = trim($_POST['DeleteUser']);
+        $usernameToDelete = filter_var(trim($_POST['DeleteUser']), FILTER_SANITIZE_STRING);
         if (empty($usernameToDelete)) {
             $message = "Lietotājvārds nevar būt tukšs.";
+        } elseif ($usernameToDelete === 'Kingravo18') {
+            $message = "Jums nav autoritātes dzēst šo kontu!";
         } else {
-            $sql = "DELETE FROM users WHERE username = ?";
+            $sql = "DELETE FROM users WHERE username = ? AND protected = 0";
             $stmt = $mysqli->prepare($sql);
             if ($stmt) {
                 $stmt->bind_param('s', $usernameToDelete);
@@ -32,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usernameToSearch = trim($_POST['SearchUser']);
         if (empty($usernameToSearch)) {
             $message = "Lietotājvārds nevar būt tukšs.";
+        } elseif ($usernameToSearch === 'KingRavo18') {
+            $message = "Jums nav autoritātes redzēt šī konta darbības!";
         } else {
             $sql = "SELECT t.id, t.task, t.completeTime, t.is_completed, t.is_deleted 
                     FROM users u 
@@ -100,14 +104,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="adminForm">
                     <form method="POST">
                         <input type="text" name="DeleteUser" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
+                        <?php if ($message && isset($_POST['DeleteUser'])): ?>
+                            <div class="feedback-message">
+                                <p style="color:red; font-size: 80%; margin-top: 20px;"><?= htmlspecialchars($message); ?></p>
+                            </div>
+                        <?php endif; ?>
                         <button class="adminButton deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
                     </form>
                 </div>
-                <?php if ($message && isset($_POST['DeleteUser'])): ?>
-                    <div class="feedback-message">
-                        <p><?= htmlspecialchars($message); ?></p>
-                    </div>
-                <?php endif; ?>
+                
             </div>
         </section>
         <section>
@@ -147,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
             <?php if ($message && isset($_POST['SearchUser'])): ?>
                 <div class="feedback-message">
-                    <p><?= htmlspecialchars($message); ?></p>
+                    <p style="color:red; font-size: 80%;"><?= htmlspecialchars($message); ?></p>
                 </div>
             <?php endif; ?>
         </section>
