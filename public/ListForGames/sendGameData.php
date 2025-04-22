@@ -71,10 +71,7 @@ if ($stmt) {
         error_log("Database Insert Error: " . $stmt->error);
         die("Error: Unable to add the game. Please try again later.");
     }
-    $stmt->close();
 } else {
     error_log("SQL Preparation Error: " . $mysqli->error);
     die("Error: Database issue. Please try again later.");
 }
-
-$mysqli->close();

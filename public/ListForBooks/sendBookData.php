@@ -92,5 +92,3 @@ if ($stmt->execute()) {
     die("Database error.");
 }
 
-$stmt->close();
-$mysqli->close();

@@ -81,10 +81,8 @@ if ($update_stmt) {
         error_log("Database Update Error: " . $update_stmt->error);
         die("Error: Unable to update the image. Please try again later.");
     }
-    $update_stmt->close();
 } else {
     error_log("SQL Preparation Error: " . $mysqli->error);
     die("Error: Database issue. Please try again later.");
 }
 
-$mysqli->close();
