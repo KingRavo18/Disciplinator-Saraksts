@@ -26,7 +26,7 @@ h1 {
 }
 i {
     position: fixed;
-    margin: 2.4rem 0 0 19.7rem;
+    margin: 2.4rem 0 0 17.5rem;
     cursor: pointer;
 }
 .pageTitle {
@@ -174,6 +174,12 @@ i {
     justify-content: space-between;
     align-items: center; 
 }
+.featuresMainArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #closeButton {
     height: 1.3rem;
     margin-left: 95%;
@@ -196,7 +202,7 @@ i {
 .featureSidebarMessage {
     width: 95%;
     min-height: 5rem;
-    margin: 10px 0 0 2.5%;
+    margin-top: 10px;
     background-color: white;
     max-height: auto;
     border: 3px solid rgb(209, 209, 209);
@@ -255,7 +261,7 @@ i {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
-    display: block; 
+    display: none; 
 }
 #termsArea {
     width: 35rem;
@@ -270,17 +276,6 @@ i {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease; 
-}
-#termsArea.hide {
-    animation: fadeOutDown 0.3s ease forwards;
-}
-@keyframes fadeOutDown {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
 }
 #termsTitle {
     text-align: center;
@@ -320,31 +315,81 @@ i {
     color: rgb(51, 51, 51);
     cursor: pointer;
 }
+.needTerms {
+    text-align: center;
+}
 @media only screen and (max-width: 600px) {
     h1 {
         font-size: 200%;
     }
-    .pageTitle {
-        margin-top: 2rem;
-    }
     .inputWindows {
-        display: block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
     }
     .explanation {
-       margin: 140px auto;
+       text-align: center;
+       width: 95%;
     }
     .openFeatures button {
-        top: 7rem;
+        top: 4rem;
+        position: fixed;
     }
     .registration {
-        width: 80%;
+        width: 96%;
         padding-top: 20px;
-        margin: 4rem auto;
+        margin-top: -60px;
+    }
+    .registration2 {
+        margin-top: -30px;
+        margin-bottom: 30px;
+    }
+    i {
+        margin: 2.4rem 0 0 16.8rem;
     }
     #featureSidebar {
         width: 100%;
     }
     #featureSidebarCloseButtonArea {
         width: 98%;
+    }
+    #termsArea {
+        width: 100%;
+        top: 52%;
+        height: 46rem;
+    }
+    #termsButtons {
+        justify-content: center;
+        align-items: center;
+        gap: 20px; 
+    }
+    .needTerms {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        padding: 0 4px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    h1 {
+        font-size: 600%;
+        margin-top: 100px;
+    }
+
+    .inputWindows{
+        margin-top: 120px;
+    }
+
+    .openFeatures button {
+        top: 7rem;
+    }
+
+    i {
+        margin: 2.4rem 0 0 22.5rem;
     }
 }

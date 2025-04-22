@@ -11,10 +11,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = validate($_POST['username']);
     $pass = validate($_POST['password']);
     if (empty($username)) {
-        header("Location: index.php?login_error=Lietotājvārds ir nepieciešams");
+        header("Location: ../../index.php?login_error=Lietotājvārds ir nepieciešams");
         exit();
     } else if (empty($pass)) {
-        header("Location: index.php?login_error=Parole ir nepieciešama");
+        header("Location: ../../index.php?login_error=Parole ir nepieciešama");
         exit();
     } else {
         $sql = "SELECT * FROM users WHERE username=?";
@@ -38,19 +38,19 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     header("Location: ../Home/index.php");
                     exit();
                 } else {
-                    header("Location: index.php?login_error=Nepareizs lietotājvārds vai parole");
+                    header("Location: ../../index.php?login_error=Nepareizs lietotājvārds vai parole");
                     exit();
                 }
             } else {
-                header("Location: index.php?login_error=Nepareizs lietotājvārds vai parole");
+                header("Location: ../../index.php?login_error=Nepareizs lietotājvārds vai parole");
                 exit();
             }
         } else {
-            header("Location: index.php?login_error=Database error");
+            header("Location: ../../index.php?login_error=Database error");
             exit();
         }
     }
 } else {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }

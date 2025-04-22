@@ -2,9 +2,6 @@
 session_start();
 require '../../Database/database.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        die("CSRF token validation failed");
-    }
     if (isset($_POST['page_language'])) {
         function validate($data) {
             return htmlspecialchars(stripslashes(trim($data)));

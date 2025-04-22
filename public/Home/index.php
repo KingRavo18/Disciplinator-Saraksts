@@ -1,6 +1,15 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+if (!isset($_SESSION['page_language'])) {
+    $_SESSION['page_language'] = 'lv'; 
+}
+if (!isset($_SESSION['page_theme'])) {
+    $_SESSION['page_theme'] = '#fff'; 
+}
+$language = $_SESSION['page_language'] ?? 'lv';
 ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -15,38 +24,38 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <link rel="stylesheet" href="../Style/mainPageTopBar.css">
     <link rel="stylesheet" href="../Style/global.css"/>
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title>Disciplinators</title>
+    <title><?= $language === 'lv' ? 'Disciplinators - Mājaslapa' : 'Disciplinators - Homepage'; ?></title>
 </head>
 <body>
     <main>
         <div class="pageTitle">
-            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'PIEDĀVĀJAM' : 'WE OFFER'; ?></h1>
+            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $language === 'lv' ? 'PIEDĀVĀJAM' : 'WE OFFER'; ?></h1>
         </div>
         <?php
             require "../Accesories/mainPageTopBar.php";
             require "../Accesories/sidebar.php";
         ?>
-        <div class="option" onclick="window.location.href='../MainPage/Index.php';">
-            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Darāmo Darbu Saraksts' : 'To-Do List'; ?></h2>
+        <div class="option" onclick="window.location.href='../MainPage/index.php';">
+            <h2><?= $language === 'lv' ? 'Darāmo Darbu Saraksts' : 'To-Do List'; ?></h2>
         </div>
-        <div class="option" onclick="window.location.href='../ListForGames/Index.php';">
-            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Vidiospēļu Saraksts' : 'Videogame List'; ?></h2>
+        <div class="option" onclick="window.location.href='../ListForGames/index.php';">
+            <h2><?= $language === 'lv' ? 'Videospēļu Saraksts' : 'Videogame List'; ?></h2>
         </div>
-        <div class="option" onclick="window.location.href='../ListForBooks/Index.php';">
-            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Grāmatu Saraksts' : 'Book List'; ?></h2>
+        <div class="option" onclick="window.location.href='../ListForBooks/index.php';">
+            <h2><?= $language === 'lv' ? 'Grāmatu Saraksts' : 'Book List'; ?></h2>
         </div>
-        <div class="option" onclick="window.location.href='../ListForMovies/Index.php';">
-            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Filmu/Seriālu Saraksts' : 'Movie/Show List'; ?></h2>
+        <div class="option" onclick="window.location.href='../ListForMovies/index.php';">
+            <h2><?= $language === 'lv' ? 'Filmu/Seriālu Saraksts' : 'Movie/Show List'; ?></h2>
         </div>
-        <div class="option" onclick="window.location.href='../Leaderboard/Index.php';">
-            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Līderu Saraksts' : 'Leaderboard'; ?></h2>
+        <div class="option" onclick="window.location.href='../Leaderboard/index.php';">
+            <h2><?= $language === 'lv' ? 'Līderu Saraksts' : 'Leaderboard'; ?></h2>
         </div>
     </main>
 </body>
 </html>
 <?php 
 } else {
-    header("Location: ../Registration/index.php"); 
+    header("Location: ../../index.php"); 
     exit();
 }
 ?>

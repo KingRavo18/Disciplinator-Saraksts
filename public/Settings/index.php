@@ -1,9 +1,15 @@
 <?php
-session_start();
-require '../../Database/database.php'; 
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
+if (!isset($_SESSION['page_language'])) {
+    $_SESSION['page_language'] = 'lv'; 
+}
+if (!isset($_SESSION['page_theme'])) {
+    $_SESSION['page_theme'] = '#fff'; 
+}
+$language = $_SESSION['page_language'] ?? 'lv';
+require '../../Database/database.php'; 
 if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     function updateUserData($mysqli, $column, $value, $userId) {
         $stmt = $mysqli->prepare("UPDATE users SET $column = ? WHERE id = ?");
@@ -14,16 +20,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         return false;
     }
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-            $_SESSION['error'] = "CSRF token validation failed";
-            header("Location: index.php");
-            exit();
-        }
         if (isset($_POST['username'])) {
             $new_username = htmlspecialchars(trim($_POST['username']));
             if (!empty($new_username)) {
                 if (updateUserData($mysqli, 'username', $new_username, $_SESSION['id'])) {
-                    $_SESSION['username'] = $new_username; // Update session value
+                    $_SESSION['username'] = $new_username;
                     $_SESSION['success'] = "Lietotājvārds veiksmīgi atjaunināts!";
                 } else {
                     $_SESSION['error'] = "Kļūda atjauninot lietotājvārdu.";
@@ -89,29 +90,29 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <link rel="stylesheet" href="../Style/mainPageTopBar.css">
         <link rel="stylesheet" href="../Style/global.css"/>
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-        <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Iestatījumi' : 'Disciplinators - Settings'; ?></title>
+        <title><?= $language === 'lv' ? 'Disciplinators - Iestatījumi' : 'Disciplinators - Settings'; ?></title>
     </head>
     <body>
         <main>
             <div class="pageTitle">
-                <h1 id="Title" style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'IESTATĪJUMI' : 'SETTINGS'; ?></h1>
+                <h1 id="Title" style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $language === 'lv' ? 'IESTATĪJUMI' : 'SETTINGS'; ?></h1>
             </div>
             <?php
                 require "../Accesories/mainPageTopBar.php";
                 require "../Accesories/sidebar.php";
                 if (isset($_SESSION['error'])) {
-                    echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
+                    echo '<div style="text-align: center; color: red;">' . $_SESSION['error'] . '</div>';
                     unset($_SESSION['error']);
                 }
                 if (isset($_SESSION['success'])) {
-                    echo '<div class="success-message">' . $_SESSION['success'] . '</div>';
+                    echo '<div style="text-align: center; color: green;">' . $_SESSION['success'] . '</div>';
                     unset($_SESSION['success']);
                 }
             ?>
             <div class="settingsPage">
                 <div class="settingsTop">
                     <div class="settingsdiv">
-                        <div class="settingsTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'PROFILS' : 'PROFILE'; ?></h2></div>
+                        <div class="settingsTitle"><h2><?= $language === 'lv' ? 'PROFILS' : 'PROFILE'; ?></h2></div>
                         <div class="profileArea1">
                             <form method="POST" enctype="multipart/form-data">
                                 <div class="profilePicture">
@@ -122,7 +123,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         <input type="file" name="profile_picture">
                                     </div>
                                     <div class="fileInput">
-                                        <button type="submit" name="upload_picture"><?= $_SESSION['page_language'] === 'lv' ? 'Apstiprināt' : 'Upload'; ?></button>
+                                        <button type="submit" name="upload_picture"><?= $language === 'lv' ? 'Apstiprināt' : 'Upload'; ?></button>
                                     </div>
                                 </div>
                             </form>
@@ -130,12 +131,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                 <p><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Unknown User'; ?></p>
                                 <p><?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : 'Unknown Email'; ?></p>
                                 <form method="POST">
-                                    <input class="changeInput" style="margin-top:90px" type="text" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns Lietotājvārds' : 'New Username'; ?>" name="username" required>
-                                    <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt lietotājvārdu' : 'Change Username'; ?></button>
+                                    <input class="changeInput" style="margin-top:90px" type="text" placeholder="<?= $language === 'lv' ? 'Jauns Lietotājvārds' : 'New Username'; ?>" name="username" required>
+                                    <button class="changeButton" type="submit"><?= $language === 'lv' ? 'Mainīt lietotājvārdu' : 'Change Username'; ?></button>
                                 </form>
                                 <form method="POST">
-                                    <input class="changeInput" type="email" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Jauns E-pasts' : 'New E-mail'; ?>" name="email" required>
-                                    <button class="changeButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt e-pastu' : 'Change E-mail'; ?></button>
+                                    <input class="changeInput" type="email" placeholder="<?= $language === 'lv' ? 'Jauns E-pasts' : 'New E-mail'; ?>" name="email" required>
+                                    <button class="changeButton" type="submit"><?= $language === 'lv' ? 'Mainīt e-pastu' : 'Change E-mail'; ?></button>
                                 </form>
                             </div>
                         </div>
@@ -147,13 +148,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 <div class="settingsLangdiv">
                     <?php require "languageChange.php"; ?>
                 </div>
+                <div style="margin-top: 10px; color: blue; text-decoration: underline; cursor: pointer;">
+                    <a href="terms&Conditions.php"><?= $language === 'lv' ? 'Noteikumi un Nosacījumi' : 'Terms & Conditions'; ?></a>
+                </div>
             </div>
         </main>
     </body>
 </html>
 <?php 
 } else {
-    header("Location: ../Registration/index.php"); 
+    header("Location: ../../index.php"); 
     exit();
 }
 ?>

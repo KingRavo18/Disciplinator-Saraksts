@@ -1,10 +1,20 @@
 <?php
-session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+    if (!isset($_SESSION['page_language'])) {
+        $_SESSION['page_language'] = 'lv'; 
+    }
+    if (!isset($_SESSION['page_theme'])) {
+        $_SESSION['page_theme'] = '#fff'; 
+    }
+    $language = $_SESSION['page_language'] ?? 'lv';
 ?>
 <!DOCTYPE html>
 <html lang="lv">
     <head>
-        <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Grāmatu Saraksts' : 'Disciplinators - Book List'; ?></title>
+        <title><?= $language === 'lv' ? 'Disciplinators - Grāmatu Saraksts' : 'Disciplinators - Book List'; ?></title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
@@ -20,8 +30,18 @@ session_start();
     </head>
     <body>
         <main>
+            <div style="display: flex;">
+                <select id="sortEntry">
+                    <option value="abc"><?= $language === 'lv' ? 'A-Z (Noklusējuma)' : 'A-Z (Default)'; ?></option>
+                    <option value="cba">Z-A</option>
+                    <option value="byRating"><?= $language === 'lv' ? 'Pēc Reitinga' : 'By Rating'; ?></option>   
+                    <option value="byDate"><?= $language === 'lv' ? 'Pēc Jaunākā' : 'By Newest'; ?></option>
+                    <option value="byDateRev"><?= $language === 'lv' ? 'Pēc Vecākā' : 'By Oldest'; ?></option>
+                </select>
+                <input type="text" id="searchEntry" placeholder="<?= $language === 'lv' ? 'Meklēt ierakstu' : 'Search for an Entry'; ?>">
+            </div>
             <div class="pageTitle">
-                <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'GRĀMATU SARAKSTS' : 'BOOK LIST'; ?></h1>
+                <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $language === 'lv' ? 'GRĀMATU SARAKSTS' : 'BOOK LIST'; ?></h1>
             </div>
             <?php
                 require "../Accesories/mainPageTopBar.php";
@@ -37,4 +57,75 @@ session_start();
             require "./footer.php";
         ?>
     </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("searchEntry");
+            const bookArticles = document.querySelectorAll("article");
+
+            searchInput.addEventListener("input", function () {
+                const searchQuery = searchInput.value.toLowerCase();
+
+                bookArticles.forEach(article => {
+                    const titleElement = article.querySelector(".showListTitle");
+                    const bookTitle = titleElement.textContent.toLowerCase();
+
+                    if (bookTitle.includes(searchQuery)) {
+                        article.style.display = "block";
+                    } else {
+                        article.style.display = "none"; 
+                    }
+                });
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const sortSelect = document.getElementById("sortEntry");
+            const bookContainer = document.querySelector("section"); 
+
+            sortSelect.addEventListener("change", function () {
+                sortBookList(sortSelect.value);
+            });
+
+            function sortBookList(criteria) {
+                let articles = Array.from(document.querySelectorAll("article"));
+
+                articles.sort((a, b) => {
+                    let titleA = a.dataset.title;
+                    let titleB = b.dataset.title;
+                    let ratingA = parseFloat(a.dataset.rating) || 0;
+                    let ratingB = parseFloat(b.dataset.rating) || 0;
+                    let dateA = parseInt(a.dataset.date) || 0;
+                    let dateB = parseInt(b.dataset.date) || 0;
+
+                    switch (criteria) {
+                        case "abc": 
+                            return titleA.localeCompare(titleB);
+                        case "cba":
+                            return titleB.localeCompare(titleA);
+                        case "byRating": 
+                            return ratingB - ratingA;
+                        case "byDate": 
+                            return dateB - dateA;
+                        case "byDateRev": 
+                            return dateA - dateB;
+                        default:
+                            return 0;
+                    }
+                });
+                articles.forEach((article, index) => {
+                    bookContainer.appendChild(article);
+
+                    const counterElement = article.querySelector(".counter");
+                    if (counterElement) {
+                        counterElement.innerText = (index + 1) + ".";
+                    }
+                });
+            }
+        });
+    </script>
 </html>
+<?php 
+} else {
+    header("Location: ../../index.php"); 
+    exit();
+}
+?>

@@ -1,5 +1,19 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if ($_SESSION['user_role'] !== 'administrator') {
+    header("Location: ../../index.php");
+    exit();
+}
+if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+if (!isset($_SESSION['page_language'])) {
+    $_SESSION['page_language'] = 'lv'; 
+}
+if (!isset($_SESSION['page_theme'])) {
+    $_SESSION['page_theme'] = '#fff'; 
+}
+$language = $_SESSION['page_language'] ?? 'lv';
 require '../../Database/database.php'; 
 $message = '';
 $tasks = [];
@@ -74,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCut.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="../Images/fistLogoCutDarkMode.png" media="(prefers-color-scheme: dark)">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <title><?= $_SESSION['page_language'] === 'lv' ? 'Disciplinators - Admin Logs' : 'Disciplinators - Admin Window'; ?></title>
+    <title><?= $language === 'lv' ? 'Disciplinators - Admin Logs' : 'Disciplinators - Admin Window'; ?></title>
 </head>
 <body>
     <?php
@@ -83,33 +97,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ?>
     <main>
         <div class="pageTitle">
-            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $_SESSION['page_language'] === 'lv' ? 'ADMINISTRATORA LOGS' : 'ADMINISTRATOR WINDOW'; ?></h1>
+            <h1 style="color: <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>"><?= $language === 'lv' ? 'ADMINISTRATORA LOGS' : 'ADMINISTRATOR WINDOW'; ?></h1>
         </div>
         <section>
             <div class="adminDiv">
-                <div class="adminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'FUNKCIJAS UN JAUNUMI' : 'FUNCTIONS AND NEWS'; ?></h2></div>
+                <div class="adminTitle"><h2><?= $language === 'lv' ? 'FUNKCIJAS UN JAUNUMI' : 'FUNCTIONS AND NEWS'; ?></h2></div>
                 <div class="adminForm">
                     <form method="POST" action="features&news.php">
-                        <input type="text" name="title" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Tēma ' : 'Subject '; ?>" required><br>
-                        <textarea name="info" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Informācija' : 'Information'; ?>" required></textarea><br>
+                        <input type="text" name="title" placeholder="<?= $language === 'lv' ? 'Tēma ' : 'Subject '; ?>" required><br>
+                        <textarea name="info" placeholder="<?= $language === 'lv' ? 'Informācija' : 'Information'; ?>" required></textarea><br>
                         <input type="hidden" name="author" value="<?= $_SESSION['username']; ?>">
-                        <button class="adminButton"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
+                        <button class="adminButton"><?= $language === 'lv' ? 'Pievienot' : 'Add'; ?></button>
                     </form>
                 </div>
             </div>
         </section>
         <section>
             <div class="adminDiv">
-                <div class="adminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'DZĒST LIETOTĀJU' : 'DELETE USER'; ?></h2></div>
+                <div class="adminTitle"><h2><?= $language === 'lv' ? 'DZĒST LIETOTĀJU' : 'DELETE USER'; ?></h2></div>
                 <div class="adminForm">
                     <form method="POST">
-                        <input type="text" name="DeleteUser" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
+                        <input type="text" name="DeleteUser" placeholder="<?= $language === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
                         <?php if ($message && isset($_POST['DeleteUser'])): ?>
                             <div class="feedback-message">
                                 <p style="color:red; font-size: 80%; margin-top: 20px;"><?= htmlspecialchars($message); ?></p>
                             </div>
                         <?php endif; ?>
-                        <button class="adminButton deleteButton"><?= $_SESSION['page_language'] === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
+                        <button class="adminButton deleteButton"><?= $language === 'lv' ? 'Dzēst' : 'Delete'; ?></button>
                     </form>
                 </div>
                 
@@ -117,23 +131,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
         <section>
             <div class="adminDiv">
-                <div class="adminTitle"><h2><?= $_SESSION['page_language'] === 'lv' ? 'LIETOTĀJU UZDEVUMI' : 'USER TASKS'; ?></h2></div>
+                <div class="adminTitle"><h2><?= $language === 'lv' ? 'LIETOTĀJU UZDEVUMI' : 'USER TASKS'; ?></h2></div>
                 <div class="adminForm">
                     <form method="POST">
-                        <input type="text" name="SearchUser" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
-                        <button class="adminButton"><?= $_SESSION['page_language'] === 'lv' ? 'Meklēt' : 'Search'; ?></button>
+                        <input type="text" name="SearchUser" placeholder="<?= $language === 'lv' ? 'Ievadi Lietotājvārdu' : 'Enter Username'; ?>" required>
+                        <button class="adminButton"><?= $language === 'lv' ? 'Meklēt' : 'Search'; ?></button>
                     </form>
                 </div>
             <?php if (!empty($tasks)): ?>
                 <div>
-                    <h3><?= $_SESSION['page_language'] === 'lv' ? 'Uzdevumi Lietotājam ' : 'Tasks for the User '; ?><?= htmlspecialchars($usernameToSearch); ?></h3>
+                    <h3><?= $language === 'lv' ? 'Uzdevumi Lietotājam ' : 'Tasks for the User '; ?><?= htmlspecialchars($usernameToSearch); ?></h3>
                     <table>
                         <thead>
                             <tr>
-                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Uzdevumus' : 'Tasks'; ?></th>
-                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Pabeigšanas Laiks' : 'Finish Time'; ?></th>
-                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Statuss' : 'Status'; ?></th>
-                                <th><?= $_SESSION['page_language'] === 'lv' ? 'Dzēsts' : 'Deleted'; ?></th>
+                                <th><?= $language === 'lv' ? 'Uzdevumus' : 'Tasks'; ?></th>
+                                <th><?= $language === 'lv' ? 'Pabeigšanas Laiks' : 'Finish Time'; ?></th>
+                                <th><?= $language === 'lv' ? 'Statuss' : 'Status'; ?></th>
+                                <th><?= $language === 'lv' ? 'Dzēsts' : 'Deleted'; ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -159,3 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 </body>
 </html>
+<?php 
+} else {
+    header("Location: ../../index.php"); 
+    exit();
+}
+?>

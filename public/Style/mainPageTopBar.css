@@ -30,6 +30,7 @@ header {
     display: flex;
     float: right;
     font-family: 'Inter';
+    height: 100%;
 }
 #pointArea img {
     width: 50px;
@@ -42,26 +43,41 @@ header {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin: 14px 0 0 10px;
+    margin: 19px 0 0 10px;
     object-fit: cover;
 }
+.points p {
+    margin-top: 30px;
+}
 @media only screen and (max-width: 600px) {
-    #pageTitle {
-        font-size: 120%;       
+    #pageTitle a{
+        font-size: 90%;     
+        padding-left: 6rem;  
     }
     #pointArea {
-        margin: -4rem 0 0 13.5rem;
+        margin-left: 17.5rem;
         font-size: 60%;
+        display: flex;
+        justify-content: center;
     }
     .topBarProfilePicture {
         background-color: rgb(184, 184, 184);
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        margin: 0 0 0 10rem;
+        margin-top: 24px;
     }
     #pointArea img {
         width: 40px;
         height: 40px;
+    }
+    #pointArea p {
+        margin-right: 30px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #pointArea {
+        margin: -5.7rem 10px 0 0;
     }
 }

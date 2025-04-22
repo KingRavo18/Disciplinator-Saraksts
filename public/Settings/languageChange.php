@@ -1,8 +1,3 @@
-<?php
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
-?>
 <div>
      <div class="settingsTitle"><h2 style="font-size:13px"><?= $_SESSION['page_language'] === 'lv' ? 'LAPAS VALODA' : 'PAGE LANGUAGE'; ?></h2></div>
      <div class="themechange">
@@ -13,7 +8,7 @@ if (empty($_SESSION['csrf_token'])) {
                 <option value="en" <?= $_SESSION['page_language'] === 'en' ? 'selected' : ''; ?>>English</option>
             </select>
             <div class="langChangeButtonEnd">
-                <button type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Apstiprināt' : 'Upload'; ?></button>
+                <button type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt' : 'Change'; ?></button>
             </div>
         </form>
      </div>

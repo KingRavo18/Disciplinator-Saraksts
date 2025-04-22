@@ -12,8 +12,8 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <title>Disciplinators - Noteikumi un Nosacījumi</title>
     </head>
-<body>
-    <h2 style="text-align:center">Ir nepieciešams, ka jūs apstiprinat legālu iemeslu dēļ. Savādāk, pametiet tīmekļa vietni.</h2>
-    <p style="text-align:center">Paldies par jūsu saprašanu.</p>
+<body class="needTerms">
+    <h2>Ir nepieciešams, ka jūs apstiprinat legālu iemeslu dēļ. Savādāk, pametiet tīmekļa vietni.</h2>
+    <p>Paldies par jūsu saprašanu.</p>
 </body>
 </html>

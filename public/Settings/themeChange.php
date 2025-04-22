@@ -32,7 +32,7 @@ if (empty($_SESSION['csrf_token'])) {
                 <input type="radio" name="page_theme" onclick="blackButton()" value="rgb(0, 0, 0)">
                 <span class="checkmarkBlack"></span>
             </label>
-            <button type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Apstiprināt' : 'Upload'; ?></button>
+            <button type="submit" style="margin-left: 16px;"><?= $_SESSION['page_language'] === 'lv' ? 'Mainīt' : 'Change'; ?></button>
         </form>
     </div>
     </div>

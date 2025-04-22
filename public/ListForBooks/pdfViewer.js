@@ -1,3 +1,4 @@
+// Set up PDF.js worker
 if (typeof pdfjsLib !== 'undefined') {
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
 } else {
@@ -14,14 +15,16 @@ const canvas = document.getElementById('pdf-canvas');
 const context = canvas.getContext('2d');
 const pdfViewer = document.getElementById('pdf-viewer');
 
+// Load PDF from file path
 function loadPDF(filePath, fileId) {
     pdfjsLib.getDocument(filePath).promise
         .then(pdf => {
             pdfDoc = pdf;
             totalPages = pdf.numPages;
 
-            renderPage(currentPage);
+            renderPage(currentPage); // Render first page
 
+            // Save the last viewed page when closing
             document.getElementById('close-pdf-btn').addEventListener('click', () => {
                 saveLastViewedPage(fileId, currentPage);
             });
@@ -32,10 +35,10 @@ function loadPDF(filePath, fileId) {
         });
 }
 
+// Render a specific page with a given scale
 function renderPage(pageNumber, scale = 1.5) {
     pdfDoc.getPage(pageNumber).then(page => {
         const viewport = page.getViewport({ scale });
-
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
@@ -44,10 +47,11 @@ function renderPage(pageNumber, scale = 1.5) {
             .then(() => console.log("Page rendered successfully!"))
             .catch(renderError => console.error("Error rendering page:", renderError));
 
-        currentPage = pageNumber; 
+        currentPage = pageNumber;
     }).catch(pageError => console.error("Error retrieving page:", pageError));
 }
 
+// Open PDF in full-screen mode
 function toggleFullScreen() {
     if (!document.fullscreenElement) {
         pdfViewer.requestFullscreen();
@@ -60,23 +64,33 @@ function OpenBookList(title, bookId, filePath) {
     const BookListPopup = document.getElementById("bookListPopup");
     const BookListFullPage = document.getElementById("bookListFullPage");
 
+    // Set title and book ID for the popup
     BookListPopup.querySelector(".showListTitle").textContent = title;
     BookListPopup.querySelector("#book_id").value = bookId;
 
+    // Show the popup
     BookListFullPage.style.display = "block";
     BookListPopup.classList.remove("hide"); 
-    BookListPopup.classList.add("show");  
+    BookListPopup.classList.add("show");
     BookListPopup.style.display = "block";
 
+    // If a file path is available, load the existing PDF
     if (filePath) {
         loadExistingPDF(filePath);
     }
 }
 
-function handleError(message) {
-    alert(message);
+// Function to load existing PDF into the viewer
+function loadExistingPDF(filePath) {
+    currentPdfUrl = filePath;
+    pdfjsLib.getDocument(filePath).promise.then(pdf => {
+        pdfDoc = pdf;
+        totalPages = pdf.numPages;
+        renderPage(1, previewScale); 
+    }).catch(error => console.error("Error loading existing PDF:", error));
 }
 
+// Preview PDF file when selected
 function previewPDF(input) {
     const file = input.files[0];
     if (file && file.type === "application/pdf") {
@@ -87,7 +101,7 @@ function previewPDF(input) {
                 .then(pdf => {
                     pdfDoc = pdf;
                     totalPages = pdf.numPages;
-                    renderPage(1, previewScale); 
+                    renderPage(1, previewScale); // Preview first page
                 })
                 .catch(error => {
                     console.error("Failed to load PDF:", error);
@@ -101,6 +115,7 @@ function previewPDF(input) {
     }
 }
 
+// Render preview of a PDF in canvas
 function renderPdfPreview(pdfUrl) {
     pdfjsLib.getDocument({ data: pdfUrl }).promise.then(pdf => {
         pdf.getPage(1).then(page => {
@@ -109,28 +124,54 @@ function renderPdfPreview(pdfUrl) {
             canvas.height = viewport.height;
             page.render({ canvasContext: context, viewport: viewport });
 
-        
+            // Allow clicking the canvas to open full-screen PDF
             canvas.onclick = () => openFullScreenPDF(pdfUrl);
         });
     });
 }
 
-function renderPage(pageNumber, scale = 1.5) {
-    pdfDoc.getPage(pageNumber).then(page => {
-        const viewport = page.getViewport({ scale });
-
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-
-        const renderContext = { canvasContext: context, viewport: viewport };
-        page.render(renderContext).promise
-            .then(() => console.log("Page rendered successfully!"))
-            .catch(renderError => console.error("Error rendering page:", renderError));
-
-        currentPage = pageNumber; 
-    }).catch(pageError => console.error("Error retrieving page:", pageError));
+// Open the full-screen PDF viewer
+function openFullScreenPDF() {
+    if (currentPdfUrl) {
+        pdfViewer.style.display = 'block';
+        renderPage(currentPage, 1.5); // Render current page
+    } else {
+        console.error("No PDF URL set for viewing.");
+    }
 }
 
+// Close the book list popup and clear the canvas
+function CloseBookList() {
+    const BookListPopup = document.getElementById("bookListPopup");
+    const BookListFullPage = document.getElementById("bookListFullPage");
+    const canvas = document.getElementById("pdf-canvas");
+    const context = canvas.getContext("2d");
+
+    BookListPopup.classList.remove("show");
+    BookListPopup.classList.add("hide");   
+
+    setTimeout(() => {
+        BookListPopup.style.display = "none";
+        BookListFullPage.style.display = "none";
+
+        // Clear canvas on close
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }, 300); 
+}
+
+// Close the PDF viewer
+function closePDFViewer() {
+    pdfViewer.style.display = 'none';
+}
+
+document.getElementById("close-pdf-btn").onclick = closePDFViewer;
+
+// Allow canvas click to open full-screen PDF
+document.getElementById("pdf-canvas").onclick = function () {
+    openPDFViewer();
+};
+
+// Open the full-screen PDF viewer
 function openPDFViewer() {
     if (currentPdfUrl) {
         const embedElement = document.getElementById("pdf-embed");
@@ -140,49 +181,3 @@ function openPDFViewer() {
         console.error("No PDF URL set for viewing.");
     }
 }
-function openFullScreenPDF() {
-    if (currentPdfUrl) {
-        pdfViewer.style.display = 'block';
-        renderPage(currentPage, 1.5); 
-    } else {
-        console.error("No PDF URL set for viewing.");
-    }
-}
-
-function loadExistingPDF(filePath) {
-    currentPdfUrl = filePath;
-    pdfjsLib.getDocument(filePath).promise.then(pdf => {
-        pdfDoc = pdf;
-        totalPages = pdf.numPages;
-        renderPage(1, previewScale); 
-    }).catch(error => console.error("Error loading existing PDF:", error));
-}
-
-
-function CloseBookList() {
-    const BookListPopup = document.getElementById("bookListPopup");
-    const BookListFullPage = document.getElementById("bookListFullPage");
-    const canvas = document.getElementById("pdf-canvas");
-    const context = canvas.getContext("2d");
-
-    BookListPopup.classList.remove("show"); 
-    BookListPopup.classList.add("hide");   
-
-    setTimeout(() => {
-        BookListPopup.style.display = "none";
-        BookListFullPage.style.display = "none";
-
-        context.clearRect(0, 0, canvas.width, canvas.height);
-    }, 300); 
-}
-
-document.getElementById("pdf-canvas").onclick = function () {
-    openPDFViewer();
-};
-
-function closePDFViewer() {
-    pdfViewer.style.display = 'none';
-}
-
-document.getElementById("close-pdf-btn").onclick = closePDFViewer;
-

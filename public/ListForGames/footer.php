@@ -5,26 +5,32 @@
         </div>
         <form method="post" action="./sendGameData.php" enctype="multipart/form-data">
             <div class="uploadWindowWithLongInput">
-                <input type="text" class="longInput" name="img_url" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Bildes URL' : 'Image URL'; ?>"/>
+                <input type="text" class="longInput" name="img_url" placeholder="<?= $language === 'lv' ? 'Bildes URL' : 'Image URL'; ?>"/>
             </div>
-            <p style="text-align: center; font-size: 14px;"><?= $_SESSION['page_language'] === 'lv' ? 'vai' : 'or'; ?></p>
+            <p style="text-align: center; font-size: 14px;"><?= $language === 'lv' ? 'vai' : 'or'; ?></p>
             <div class="uploadWindowWithLongInput">
-                <input type="file" class="longInput" name="img_file" accept="image/*" title="<?= $_SESSION['page_language'] === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>"/>
+                <input type="file" class="longInput" name="img_file" accept="image/*" title="<?= $language === 'lv' ? 'Augšupielādēt attēlu' : 'Upload Image'; ?>"/>
+            </div>
+            <div class="uploadWindowWithLongInput" style="display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" id="useDefaultImage" name="use_default_image" />
+                <label for="useDefaultImage" style="font-size: 14px;">
+                    <?= $language === 'lv' ? 'Izmantot noklusējuma attēlu' : 'Use default image'; ?>
+                </label>
             </div>
             <div class="uploadWindowWithLongInput">
-                <input type="text" class="longInput" name="title" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Spēles Nosaukums' : 'Videogame Title'; ?>" required/>
+                <input type="text" class="longInput" name="title" placeholder="<?= $language === 'lv' ? 'Spēles Nosaukums' : 'Videogame Title'; ?>" required/>
             </div>
             <div class="uploadWindowWithLongInput">
-                <input type="number" max="10" min="1" class="longInput" name="rating" placeholder="<?= $_SESSION['page_language'] === 'lv' ? 'Reitings' : 'Rating'; ?>" required/>
+                <input type="number" max="10" min="1" class="longInput" name="rating" placeholder="<?= $language === 'lv' ? 'Reitings' : 'Rating'; ?>" required/>
             </div>
             <div class="newEntrySubmit">
-                <button class="newEntrySubmitButton" type="submit"><?= $_SESSION['page_language'] === 'lv' ? 'Pievienot' : 'Add'; ?></button>
+                <button class="newEntrySubmitButton" type="submit"><?= $language === 'lv' ? 'Pievienot' : 'Add'; ?></button>
             </div>
         </form>
     </div>
 </div>
 <footer>
-    <button onclick="OpenAddContentPopup()" title="Add a new entry to this list"><?= $_SESSION['page_language'] === 'lv' ? 'Jauns Ieraksts' : 'New Entry'; ?></button>
+    <button onclick="OpenAddContentPopup()" title="Add a new entry to this list"><?= $language === 'lv' ? 'Jauns Ieraksts' : 'New Entry'; ?></button>
 </footer>
 <script>
         function OpenAddContentPopup() {
@@ -48,4 +54,18 @@ function closeAddContentPopup() {
         overlay.style.display = "none";
     }, 300); 
 } 
+document.getElementById("useDefaultImage").addEventListener("change", function () {
+    const urlInput = document.querySelector('input[name="img_url"]');
+    const fileInput = document.querySelector('input[name="img_file"]');
+
+    if (this.checked) {
+        urlInput.disabled = true;
+        fileInput.disabled = true;
+        urlInput.value = "";
+        fileInput.value = "";
+    } else {
+        urlInput.disabled = false;
+        fileInput.disabled = false;
+    }
+});
 </script>

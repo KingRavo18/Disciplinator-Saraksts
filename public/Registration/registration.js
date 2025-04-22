@@ -35,19 +35,21 @@ window.addEventListener('load', function() {
     }
 });
 
-function HideTermsArea() {
-    const termsArea = document.getElementById("termsArea");
+document.addEventListener("DOMContentLoaded", function () {
     const termsFullArea = document.getElementById("termsFullArea");
 
-    termsArea.classList.add("hide");
+    if (localStorage.getItem("termsAccepted") !== "true") {
+        termsFullArea.style.display = "block"; 
+    }
+});
 
-    termsArea.addEventListener('animationend', function() {
-        termsArea.style.display = "none"; 
-        termsFullArea.style.display = "none"; 
-    });
+function HideTermsArea() {
+    const termsFullArea = document.getElementById("termsFullArea");
 
-    termsFullArea.style.display = "block";
-    termsArea.style.visibility = "visible";
+    localStorage.setItem("termsAccepted", "true");
+
+    termsFullArea.style.display = "none";
 }
+
 
 

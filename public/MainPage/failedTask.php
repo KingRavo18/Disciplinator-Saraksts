@@ -40,7 +40,7 @@ if (isset($_SESSION['id'])) {
         exit();
     }
 } else {
-    header("Location: ../Registration/index.php");
+    header("Location: ../../index.php");
     exit();
 }
 

@@ -148,7 +148,7 @@
 }
 .toDoList-Form button {
     width: 200px;
-    margin: 10px 0 20px 28%;
+    margin: 10px 0 20px 25.8%;
     background-color: #d3d3d3; 
     border: none;                       
     padding: 10px 0;    
@@ -164,4 +164,11 @@
 }
 .toDoList-Form button:active {
     background-color: #a9a9a9;
+}
+
+@media only screen and (min-width: 1800px) {
+    .toDoList-Form button {
+        width: 200px;
+        margin: 20px 0 20px 30.4%;
+    }
 }

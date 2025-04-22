@@ -1,26 +1,26 @@
 <div class="sidebar" id="sidebar" style="border-right: 2px solid <?= isset($_SESSION['page_theme']) ? $_SESSION['page_theme'] : '#fff'; ?>">
     <ul>
-        <li><a href="../Home/Index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">home</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Māja' : 'Home'; ?></span></a></li>
-        <li><a href="../MainPage/Index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">lists</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Darāmo Darbu Saraksts' : 'To Do List'; ?></span></a></li>
-        <li><a href="../ListForGames/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">sports_esports</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Vidiospēļu Saraksts' : 'Videogame List'; ?></span></a></li>
-        <li><a href="../ListForBooks/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">book_ribbon</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Grāmatu Saraksts' : ' Book List'; ?></span></a></li>
-        <li><a href="../ListForMovies/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">live_tv</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Filmu Saraksts' : 'Movie List'; ?></span></a></li>
-        <li><a href="../Leaderboard/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">trophy</span></span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Līderu Saraksts' : 'Leaderboard'; ?></span></a></li>
-        <li><a href="../Settings/index.php"><span class="material-symbols-outlined">settings</span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Iestatījumi' : 'Settings'; ?></span></a></li>
+        <li><a href="../Home/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">home</span></span><span class="label"><?= $language === 'lv' ? 'Māja' : 'Home'; ?></span></a></li>
+        <li><a href="../MainPage/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">lists</span></span><span class="label"><?= $language === 'lv' ? 'Darāmo Darbu Saraksts' : 'To Do List'; ?></span></a></li>
+        <li><a href="../ListForGames/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">sports_esports</span></span><span class="label"><?= $language === 'lv' ? 'Videospēļu Saraksts' : 'Videogame List'; ?></span></a></li>
+        <li><a href="../ListForBooks/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">book_ribbon</span></span><span class="label"><?= $language === 'lv' ? 'Grāmatu Saraksts' : ' Book List'; ?></span></a></li>
+        <li><a href="../ListForMovies/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">live_tv</span></span><span class="label"><?= $language === 'lv' ? 'Filmu Saraksts' : 'Movie List'; ?></span></a></li>
+        <li><a href="../Leaderboard/index.php"><span class="material-symbols-outlined"><span class="material-symbols-outlined" id="toDoList">trophy</span></span><span class="label"><?= $language === 'lv' ? 'Līderu Saraksts' : 'Leaderboard'; ?></span></a></li>
+        <li><a href="../Settings/index.php"><span class="material-symbols-outlined">settings</span><span class="label"><?= $language === 'lv' ? 'Iestatījumi' : 'Settings'; ?></span></a></li>
         <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'administrator'): ?>
-            <li><a href="../Administrator/index.php"><span class="material-symbols-outlined">admin_panel_settings</span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Administratora Logs' : 'Administrator Window'; ?></span></a></li>
+            <li><a href="../Administrator/index.php"><span class="material-symbols-outlined">admin_panel_settings</span><span class="label"><?= $language === 'lv' ? 'Administratora Logs' : 'Administrator Window'; ?></span></a></li>
         <?php endif; ?>
-        <li><a onclick="ShowLogoutArea()"><span class="material-symbols-outlined">logout</span><span class="label"><?= $_SESSION['page_language'] === 'lv' ? 'Atslēgties' : 'Log Out'; ?></span></a></li>
+        <li><a onclick="ShowLogoutArea()"><span class="material-symbols-outlined">logout</span><span class="label"><?= $language === 'lv' ? 'Atslēgties' : 'Log Out'; ?></span></a></li>
     </ul>
 </div>
 <div id="logoutFullArea">
     <div id="logoutArea">
         <div id="logoutTitle">
-            <h2><?= $_SESSION['page_language'] === 'lv' ? 'Vai esat pārliecināti?' : 'Are you sure?'; ?></h2>
+            <h2><?= $language === 'lv' ? 'Vai esat pārliecināti?' : 'Are you sure?'; ?></h2>
         </div>
         <div class="logoutYesNoButtons">
-            <a href="../Accesories/logout.php"><?= $_SESSION['page_language'] === 'lv' ? 'Jā' : 'Yes'; ?></a>
-            <button onclick="HideLogoutArea()"><?= $_SESSION['page_language'] === 'lv' ? 'Nē' : 'No'; ?></button>
+            <a href="../Accesories/logout.php"><?= $language === 'lv' ? 'Jā' : 'Yes'; ?></a>
+            <button onclick="HideLogoutArea()"><?= $language === 'lv' ? 'Nē' : 'No'; ?></button>
         </div>
     </div>
 </div>
